@@ -15,7 +15,8 @@ namespace Roshalonline.Web.Controllers
         {
             using (ModelsContext roshalDBContext = new ModelsContext())
             {
-                roshalDBContext.AllNews.Add(new News {
+                roshalDBContext.AllNews.Add(new News
+                {
                     NewsID = 0,
                     NewsHeader = "First news",
                     NewsAuthor = "Admin",
@@ -23,6 +24,20 @@ namespace Roshalonline.Web.Controllers
                     NewsPathToIcon = "None",
                     NewsViewsCount = 0,
                     NewsBody = "blablbalbalblalbalblabl"
+                });
+                roshalDBContext.Notes.Add(new Note
+                {
+                    NoteID = 0,
+                    NoteHeader = "First note",
+                    NoteCategory = "Construction note",
+                    NoteCreateDate = DateTime.Now,
+                    NotePathToIcon = "none",
+                    NotePathToPhotos = new List<string>()
+                    {
+                        "none","none"
+                    },
+                    NoteBody = "blablabalballablab",
+                    NoteViewsCount = 0
                 });
                 roshalDBContext.SaveChanges();
             } 

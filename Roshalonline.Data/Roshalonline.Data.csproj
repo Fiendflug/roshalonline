@@ -50,6 +50,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\ModelsContext.cs" />
+    <Compile Include="Migrations\201610101555015_InitialCreate.cs" />
+    <Compile Include="Migrations\201610101555015_InitialCreate.Designer.cs">
+      <DependentUpon>201610101555015_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610101651515_Notes.cs" />
+    <Compile Include="Migrations\201610101651515_Notes.Designer.cs">
+      <DependentUpon>201610101651515_Notes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610101657236_Feedback.cs" />
+    <Compile Include="Migrations\201610101657236_Feedback.Designer.cs">
+      <DependentUpon>201610101657236_Feedback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610101702251_AddAnyModels.cs" />
+    <Compile Include="Migrations\201610101702251_AddAnyModels.Designer.cs">
+      <DependentUpon>201610101702251_AddAnyModels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\Note.cs" />
@@ -68,6 +85,20 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201610101555015_InitialCreate.resx">
+      <DependentUpon>201610101555015_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610101651515_Notes.resx">
+      <DependentUpon>201610101651515_Notes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610101657236_Feedback.resx">
+      <DependentUpon>201610101657236_Feedback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610101702251_AddAnyModels.resx">
+      <DependentUpon>201610101702251_AddAnyModels.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
