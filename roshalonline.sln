@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roshalonline.Data", "Roshalonline.Data\Roshalonline.Data.csproj", "{0D1A9292-E28F-413E-B381-F6D8B1B3F9F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roshalonline.Web", "Roshalonline.Web\Roshalonline.Web.csproj", "{133B1371-7256-41E5-ACB9-B956220E5486}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0D1A9292-E28F-413E-B381-F6D8B1B3F9F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D1A9292-E28F-413E-B381-F6D8B1B3F9F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D1A9292-E28F-413E-B381-F6D8B1B3F9F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D1A9292-E28F-413E-B381-F6D8B1B3F9F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{133B1371-7256-41E5-ACB9-B956220E5486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{133B1371-7256-41E5-ACB9-B956220E5486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{133B1371-7256-41E5-ACB9-B956220E5486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{133B1371-7256-41E5-ACB9-B956220E5486}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
