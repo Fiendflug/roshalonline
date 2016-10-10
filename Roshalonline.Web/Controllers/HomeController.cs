@@ -32,10 +32,7 @@ namespace Roshalonline.Web.Controllers
                     NoteCategory = "Construction note",
                     NoteCreateDate = DateTime.Now,
                     NotePathToIcon = "none",
-                    NotePathToPhotos = new List<string>()
-                    {
-                        "none","none"
-                    },
+                    NotePathToPhotos = "123121",
                     NoteBody = "blablabalballablab",
                     NoteViewsCount = 0
                 });

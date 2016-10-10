@@ -66,6 +66,10 @@
     <Compile Include="Migrations\201610101702251_AddAnyModels.Designer.cs">
       <DependentUpon>201610101702251_AddAnyModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610101810108_Annotation.cs" />
+    <Compile Include="Migrations\201610101810108_Annotation.Designer.cs">
+      <DependentUpon>201610101810108_Annotation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\News.cs" />
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610101702251_AddAnyModels.resx">
       <DependentUpon>201610101702251_AddAnyModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610101810108_Annotation.resx">
+      <DependentUpon>201610101810108_Annotation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
