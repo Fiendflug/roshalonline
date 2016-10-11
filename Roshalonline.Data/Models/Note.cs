@@ -11,6 +11,7 @@ namespace Roshalonline.Data.Models
     {     
         public int NoteID { get; set; }
         public string NoteHeader { get; set; }
+        public string NoteAuthor { get; set; }
         public string NotePathToIcon { get; set; }
         public DateTime NoteCreateDate { get; set; }
         public string NotePathToPhotos { get; set; }

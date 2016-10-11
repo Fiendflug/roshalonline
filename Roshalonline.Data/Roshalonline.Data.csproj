@@ -86,6 +86,14 @@
     <Compile Include="Migrations\201610111150512_anotherFuent.Designer.cs">
       <DependentUpon>201610111150512_anotherFuent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610111159369_authoenote.cs" />
+    <Compile Include="Migrations\201610111159369_authoenote.Designer.cs">
+      <DependentUpon>201610111159369_authoenote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610111248371_fluentproperties.cs" />
+    <Compile Include="Migrations\201610111248371_fluentproperties.Designer.cs">
+      <DependentUpon>201610111248371_fluentproperties.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\News.cs" />
@@ -137,6 +145,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610111150512_anotherFuent.resx">
       <DependentUpon>201610111150512_anotherFuent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610111159369_authoenote.resx">
+      <DependentUpon>201610111159369_authoenote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610111248371_fluentproperties.resx">
+      <DependentUpon>201610111248371_fluentproperties.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
