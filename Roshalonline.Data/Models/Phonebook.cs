@@ -10,8 +10,10 @@ namespace Roshalonline.Data.Models
     public class Phonebook
     {
         public int PhonebookID { get; set; }
-        public string PhonebookCategory { get; set; }
         public int PhonebookPhonenumber { get; set; }
         public string PhonebookDescription { get; set; }
+
+        public int CategoryID { get; set; }
+        public virtual PhonebookCategory PhonebookCategory { get; set; }
     }
 }

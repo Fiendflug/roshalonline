@@ -1,4 +1,5 @@
 ﻿
+@model Dictionary<int, string>
 @{
     Layout = null;
 }
@@ -12,7 +13,13 @@
 </head>
 <body>
     <div> 
-        Hello Roshalonline
+        <h3>Hello Roshalonline</h3>
+        <p>
+            @foreach(KeyValuePair<int, string> kvp in @Model)
+            {
+                <h6>@kvp.Key</h6> @kvp.Value  
+            }
+        </p>
     </div>
 </body>
 </html>

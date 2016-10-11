@@ -13,6 +13,7 @@ namespace Roshalonline.Web.Controllers
         // GET: Home
         public ActionResult Index()
         {
+            /*
             using (ModelsContext roshalDBContext = new ModelsContext())
             {
                 roshalDBContext.AllNews.Add(new News
@@ -37,8 +38,58 @@ namespace Roshalonline.Web.Controllers
                     NoteViewsCount = 0
                 });
                 roshalDBContext.SaveChanges();
-            } 
-            return View();
+            }
+            
+            using (ModelsContext db = new ModelsContext())
+            {
+                NewsCategory breakingNews = new NewsCategory
+                {
+                    NewsCategoryID = 1,
+                    NewsCategoryName = "Breaking"
+                };
+                NewsCategory dailyNews = new NewsCategory
+                {
+                    NewsCategoryID = 2,
+                    NewsCategoryName = "Daily"
+                };
+                db.SaveChanges();
+                News n = new News
+                {
+                    NewsID = 1,
+                    NewsAuthor = "Admin",
+                    NewsCategory = breakingNews,
+                    NewsCreateDate = DateTime.Now,
+                    NewsHeader = "Extra",
+                    NewsPathToIcon = "none",
+                    NewsBody = "babalbalblaalbalbl",
+                    NewsViewsCount = 0
+                };
+                News n2 = new News
+                {
+                    NewsID = 1,
+                    NewsAuthor = "Admin",
+                    NewsCategory = dailyNews,
+                    NewsCreateDate = DateTime.Now,
+                    NewsHeader = "Daily",
+                    NewsPathToIcon = "none",
+                    NewsBody = "ddddddddddd",
+                    NewsViewsCount = 0
+                };
+                db.AllNews.AddRange(new List<News> {
+                    n, n2
+                });
+                db.SaveChanges();
+            }
+            */
+            using (ModelsContext db = new ModelsContext())
+            {
+                Dictionary<int, string> d = new Dictionary<int, string>();
+                foreach (NewsCategory nC in db.NewsCategories)
+                {
+                    d[nC.NewsCategoryID] = nC.NewsCategoryName;
+                }
+                return View(d);
+            }
         }
     }
 }

@@ -70,15 +70,31 @@
     <Compile Include="Migrations\201610101810108_Annotation.Designer.cs">
       <DependentUpon>201610101810108_Annotation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201610110813289_fluentAdd.cs" />
+    <Compile Include="Migrations\201610110813289_fluentAdd.Designer.cs">
+      <DependentUpon>201610110813289_fluentAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610110836221_fluent1.cs" />
+    <Compile Include="Migrations\201610110836221_fluent1.Designer.cs">
+      <DependentUpon>201610110836221_fluent1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201610111025442_fluent2.cs" />
+    <Compile Include="Migrations\201610111025442_fluent2.Designer.cs">
+      <DependentUpon>201610111025442_fluent2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\News.cs" />
+    <Compile Include="Models\NewsCategory.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Phonebook.cs" />
+    <Compile Include="Models\PhonebookCategory.cs" />
     <Compile Include="Models\PresencePoint.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
     <Compile Include="Models\Tarif.cs" />
+    <Compile Include="Models\TarifCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -105,6 +121,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610101810108_Annotation.resx">
       <DependentUpon>201610101810108_Annotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610110813289_fluentAdd.resx">
+      <DependentUpon>201610110813289_fluentAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610110836221_fluent1.resx">
+      <DependentUpon>201610110836221_fluent1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201610111025442_fluent2.resx">
+      <DependentUpon>201610111025442_fluent2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

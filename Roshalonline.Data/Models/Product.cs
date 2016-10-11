@@ -10,9 +10,11 @@ namespace Roshalonline.Data.Models
     {
         public int ProductID { get; set; }
         public string ProductName { get; set; }
-        public string ProductCategory { get; set; }
         public string ProductDescription { get; set; }
         public List<string> ProductPathToPhotos { get; set; }
         public decimal ProductPrice { get; set; }
+
+        public int CategoryID { get; set; }
+        public virtual ProductCategory ProductCategory { get; set; }
     }
 }
