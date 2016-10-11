@@ -41,6 +41,9 @@ namespace Roshalonline.Data.Context
             modelBuilder.Entity<Phonebook>().HasRequired(ph => ph.PhonebookCategory)
                 .WithMany(phc => phc.Phonbooks)
                 .HasForeignKey(ph => ph.CategoryID);
+
+            modelBuilder.Entity<News>().Property(n => n.NewsHeader).HasMaxLength(50)
+                .IsRequired();
         }
     }
 }
