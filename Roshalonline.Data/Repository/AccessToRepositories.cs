@@ -9,13 +9,13 @@ namespace Roshalonline.Data.Repository
 {
     public class AccessToRepositories : IDisposable
     {
-        private ModelsContext _workModelsContext = new ModelsContext();
+        private ModelsContext _workModelsContext;
         private NewsRepository _newsRepository;
         private NotesRepository _notesRepository;
         private PhoneBookRepository _phonebookRepository;
         private ProductsRepository _productsRepository;
         private TarifsRepository _tarifsRepository;
-        private bool _disposed = false;
+        private bool _disposed;
 
         public NewsRepository NewsRepository
         {
@@ -71,6 +71,12 @@ namespace Roshalonline.Data.Repository
                 }
                 return _tarifsRepository;
             }
+        }
+
+        public AccessToRepositories()
+        {
+            _workModelsContext = new ModelsContext();
+            _disposed = false;
         }
 
         public void Save()
