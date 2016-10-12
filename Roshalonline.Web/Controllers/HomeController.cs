@@ -5,14 +5,23 @@ using System.Web;
 using System.Web.Mvc;
 using Roshalonline.Data.Context;
 using Roshalonline.Data.Models;
+using Roshalonline.Data.Repository;
 
 namespace Roshalonline.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private AccessToRepositories _accessToDatabase;
+
+        public HomeController()
+        {
+            _accessToDatabase = new AccessToRepositories();
+        }
         // GET: Home
         public ActionResult Index()
         {
+            var news = _accessToDatabase.NewsRepository.GetIAll();
+            return View(news);
             /*
             using (ModelsContext roshalDBContext = new ModelsContext())
             {
@@ -81,15 +90,6 @@ namespace Roshalonline.Web.Controllers
                 db.SaveChanges();
             }
             */
-            using (ModelsContext db = new ModelsContext())
-            {
-                Dictionary<int, string> d = new Dictionary<int, string>();
-                foreach (NewsCategory nC in db.NewsCategories)
-                {
-                    d[nC.NewsCategoryID] = nC.NewsCategoryName;
-                }
-                return View(d);
-            }
         }
     }
 }

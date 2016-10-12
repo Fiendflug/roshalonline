@@ -108,6 +108,13 @@
     <Compile Include="Models\Tarif.cs" />
     <Compile Include="Models\TarifCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AccessToRepositories.cs" />
+    <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\NewsRepository.cs" />
+    <Compile Include="Repository\NotesRepository.cs" />
+    <Compile Include="Repository\PhoneBookRepository.cs" />
+    <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\TarifsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

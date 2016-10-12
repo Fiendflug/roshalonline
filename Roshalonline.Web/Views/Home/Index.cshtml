@@ -1,5 +1,5 @@
-﻿
-@model Dictionary<int, string>
+﻿@using Roshalonline.Data.Models;
+@model IEnumerable<News>
 @{
     Layout = null;
 }
@@ -15,9 +15,9 @@
     <div> 
         <h3>Hello Roshalonline</h3>
         <p>
-            @foreach(KeyValuePair<int, string> kvp in @Model)
+            @foreach(var n in @Model)
             {
-                <h6>@kvp.Key</h6> @kvp.Value  
+                <h6>@n.NewsHeader</h6> @n.NewsBody
             }
         </p>
     </div>
