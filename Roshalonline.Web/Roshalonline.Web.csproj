@@ -161,6 +161,10 @@
       <Project>{0d1a9292-e28f-413e-b381-f6d8b1b3f9f1}</Project>
       <Name>Roshalonline.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Roshalonline.Provider\Roshalonline.DataTransfer.csproj">
+      <Project>{024965e9-8b1a-457e-ac7c-7b2a46ab3dc2}</Project>
+      <Name>Roshalonline.DataTransfer</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

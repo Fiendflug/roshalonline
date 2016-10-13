@@ -109,11 +109,16 @@
     <Compile Include="Models\TarifCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccessToRepositories.cs" />
+    <Compile Include="Repository\ICategoryRepository.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\NewsCategoriesRepository.cs" />
     <Compile Include="Repository\NewsRepository.cs" />
     <Compile Include="Repository\NotesRepository.cs" />
+    <Compile Include="Repository\PhonebookCategoriesRepository.cs" />
     <Compile Include="Repository\PhoneBookRepository.cs" />
+    <Compile Include="Repository\ProductCategoriesRepository.cs" />
     <Compile Include="Repository\ProductRepository.cs" />
+    <Compile Include="Repository\TarifsCategoriesRepository.cs" />
     <Compile Include="Repository\TarifsRepository.cs" />
   </ItemGroup>
   <ItemGroup>

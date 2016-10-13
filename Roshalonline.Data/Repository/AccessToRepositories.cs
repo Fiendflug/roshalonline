@@ -15,6 +15,12 @@ namespace Roshalonline.Data.Repository
         private PhoneBookRepository _phonebookRepository;
         private ProductsRepository _productsRepository;
         private TarifsRepository _tarifsRepository;
+
+        private NewsCategoriesRepository _newsCategoryRepository;
+        private TarifsCategoriesRepository _tarifCategoryRepository;
+        private PhonebookCategoriesRepository _phonebookCategoryRepository;
+        private ProductCategoriesRepository _productCategoryRepository;
+
         private bool _disposed;
 
         public NewsRepository NewsRepository
@@ -70,6 +76,51 @@ namespace Roshalonline.Data.Repository
                     _tarifsRepository = new TarifsRepository(_workModelsContext);
                 }
                 return _tarifsRepository;
+            }
+        }
+
+        public NewsCategoriesRepository NewsCategoriesRepository
+        {
+            get
+            {
+                if (_newsCategoryRepository == null)
+                {
+                    _newsCategoryRepository = new NewsCategoriesRepository(_workModelsContext);
+                }
+                return _newsCategoryRepository;
+            }
+        }
+        public TarifsCategoriesRepository TarifsCategoriesRepository
+        {
+            get
+            {
+                if (_tarifCategoryRepository == null)
+                {
+                    _tarifCategoryRepository = new TarifsCategoriesRepository(_workModelsContext);
+                }
+                return _tarifCategoryRepository;
+            }
+        }
+        public PhonebookCategoriesRepository PhonebookCategoriesRepository
+        {
+            get
+            {
+                if (_phonebookCategoryRepository == null)
+                {
+                    _phonebookCategoryRepository = new PhonebookCategoriesRepository(_workModelsContext);
+                }
+                return _phonebookCategoryRepository;
+            }
+        }
+        public ProductCategoriesRepository ProductCategoriesRepository
+        {
+            get
+            {
+                if (_productCategoryRepository == null)
+                {
+                    _productCategoryRepository = new ProductCategoriesRepository(_workModelsContext);
+                }
+                return _productCategoryRepository;
             }
         }
 
