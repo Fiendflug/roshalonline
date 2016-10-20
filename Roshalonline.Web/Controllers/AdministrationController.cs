@@ -2,6 +2,7 @@
 using Roshalonline.Data.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -23,8 +24,14 @@ namespace Roshalonline.Web.Controllers
             return View(database.AllNews.ToList());
         }
 
+        public ActionResult CreateNews()
+        {
+            return View();
+        }
+
         [HttpPost]
-        public ActionResult CreateNews(News newsParam)
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateNews([Bind(Include = "Header, CreateDate, AuthorID, Category, Body, PathToIcon")] News newsParam)
         {
             try
             {
@@ -35,9 +42,9 @@ namespace Roshalonline.Web.Controllers
                     return RedirectToAction("News");
                 }
             }
-            catch
+            catch (DataException)
             {
-
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
             return View(newsParam);
         }

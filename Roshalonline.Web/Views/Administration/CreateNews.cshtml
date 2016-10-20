@@ -12,9 +12,16 @@
     <title>CreateNews</title>
 </head>
 <body>
-    <div> 
+    <div class="editor-label"> 
         <h3>Добавление новой новости</h3>
-
+        @Html.LabelFor(n => Model.Header)
+    </div>
+    <div class="edotor-field">
+        @Html.EditorFor(n => n.CreateDate)
+        @Html.EditorFor(n => n.AuthorID)
+        @Html.EditorFor(n => n.Category)
+        @Html.EditorFor(n => n.Body)
+        @Html.EditorFor(n => n.PathToIcon)
     </div>
 </body>
 </html>
