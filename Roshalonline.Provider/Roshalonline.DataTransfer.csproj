@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data_Objects\NewsCategoryDTO.cs" />
     <Compile Include="Data_Objects\NewsDTO.cs" />
     <Compile Include="Data_Objects\NoteDTO.cs" />
     <Compile Include="Data_Objects\PhonebookDTO.cs" />
@@ -59,6 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Intrfaces\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

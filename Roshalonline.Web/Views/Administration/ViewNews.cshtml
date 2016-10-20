@@ -1,0 +1,30 @@
+﻿@model Roshalonline.Data.Models.News
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ViewNews</title>
+</head>
+<body>
+    <div>
+        <h6>@Model.ID   @Model.Header</h6>
+        @Model.CreateDate
+        @Model.Author
+        @Model.AuthorID
+        @Model.Category
+        @Model.PathToIcon
+        @Model.Body
+        @Model.ViewsCount 
+    </div>
+    <div>
+        @Html.ActionLink("Назад", "News")
+        @Html.ActionLink("Редактировать", "EditNews", new { id = Model.ID })
+    </div>
+</body>
+</html>

@@ -128,10 +128,13 @@
     <Content Include="Global.asax" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -145,6 +148,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Administration\Index.cshtml" />
+    <Content Include="Views\Administration\News.cshtml" />
+    <Content Include="Views\Administration\ViewNews.cshtml" />
+    <Content Include="Views\Administration\CreateNews.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -160,10 +167,6 @@
     <ProjectReference Include="..\Roshalonline.Data\Roshalonline.Data.csproj">
       <Project>{0d1a9292-e28f-413e-b381-f6d8b1b3f9f1}</Project>
       <Name>Roshalonline.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Roshalonline.Provider\Roshalonline.DataTransfer.csproj">
-      <Project>{024965e9-8b1a-457e-ac7c-7b2a46ab3dc2}</Project>
-      <Name>Roshalonline.DataTransfer</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

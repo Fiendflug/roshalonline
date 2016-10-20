@@ -15,6 +15,7 @@ namespace Roshalonline.Provider.Data_Objects
         public string NewsPathToPhotos { get; set; }
         public DateTime NewsCreateDate { get; set; }
         public string NewsBody { get; set; }
+        public NewsCategoryDTO NewsCategory { get; set; }
         public long NewsViewsCount { get; set; }
     }
 }

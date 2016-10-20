@@ -1,0 +1,70 @@
+﻿@using Roshalonline.Data.Models
+@model List<News>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewsAdmin</title>
+</head>
+<body>
+    @Html.ActionLink("Добавить новость", "CreateNews")
+    <div class="data_table">
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(n => Model[0].ID) 
+                </th>
+                <th>
+                    @Html.DisplayNameFor(n => Model[0].Header)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(n => Model[0].AuthorID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(n => Model[0].CreateDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(n => Model[0].Category)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(n => Model[0].ViewsCount)
+                </th>
+            </tr>
+            @foreach(var n in Model)
+            {
+                <tr>
+                    <td>
+                        @n.ID
+                    </td>
+                    <td>
+                        @n.Header
+                    </td>
+                    <td>
+                        @n.AuthorID
+                    </td>
+                    <td>
+                        @n.CreateDate
+                    </td>
+                    <td>
+                        @n.Category
+                    </td>
+                    <td>
+                        @n.ViewsCount
+                    </td>
+                    <td>
+                        @Html.ActionLink("Просмотр", "ViewNews", new { n.ID })
+                        @Html.ActionLink("Редактировать", "EditNews", new { n.ID })
+                        @Html.ActionLink("Удалить новоть", "DeleteNews", new { n.ID })
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>
+</html>

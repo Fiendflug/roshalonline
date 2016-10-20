@@ -49,80 +49,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\ModelsContext.cs" />
-    <Compile Include="Migrations\201610101555015_InitialCreate.cs" />
-    <Compile Include="Migrations\201610101555015_InitialCreate.Designer.cs">
-      <DependentUpon>201610101555015_InitialCreate.cs</DependentUpon>
+    <Compile Include="Context\DatabaseContext.cs" />
+    <Compile Include="Context\Initializer.cs" />
+    <Compile Include="Entities\Feedback.cs" />
+    <Compile Include="Entities\News.cs" />
+    <Compile Include="Entities\Note.cs" />
+    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\Tarif.cs" />
+    <Compile Include="Entities\User.cs" />
+    <Compile Include="Migrations\201610190839013_today.cs" />
+    <Compile Include="Migrations\201610190839013_today.Designer.cs">
+      <DependentUpon>201610190839013_today.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610101651515_Notes.cs" />
-    <Compile Include="Migrations\201610101651515_Notes.Designer.cs">
-      <DependentUpon>201610101651515_Notes.cs</DependentUpon>
+    <Compile Include="Migrations\201610190923422_today1.cs" />
+    <Compile Include="Migrations\201610190923422_today1.Designer.cs">
+      <DependentUpon>201610190923422_today1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610101657236_Feedback.cs" />
-    <Compile Include="Migrations\201610101657236_Feedback.Designer.cs">
-      <DependentUpon>201610101657236_Feedback.cs</DependentUpon>
+    <Compile Include="Migrations\201610190945235_today2.cs" />
+    <Compile Include="Migrations\201610190945235_today2.Designer.cs">
+      <DependentUpon>201610190945235_today2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610101702251_AddAnyModels.cs" />
-    <Compile Include="Migrations\201610101702251_AddAnyModels.Designer.cs">
-      <DependentUpon>201610101702251_AddAnyModels.cs</DependentUpon>
+    <Compile Include="Migrations\201610190956120_today3.cs" />
+    <Compile Include="Migrations\201610190956120_today3.Designer.cs">
+      <DependentUpon>201610190956120_today3.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610101810108_Annotation.cs" />
-    <Compile Include="Migrations\201610101810108_Annotation.Designer.cs">
-      <DependentUpon>201610101810108_Annotation.cs</DependentUpon>
+    <Compile Include="Migrations\201610190958304_today4.cs" />
+    <Compile Include="Migrations\201610190958304_today4.Designer.cs">
+      <DependentUpon>201610190958304_today4.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610110813289_fluentAdd.cs" />
-    <Compile Include="Migrations\201610110813289_fluentAdd.Designer.cs">
-      <DependentUpon>201610110813289_fluentAdd.cs</DependentUpon>
+    <Compile Include="Migrations\201610191012219_today5.cs" />
+    <Compile Include="Migrations\201610191012219_today5.Designer.cs">
+      <DependentUpon>201610191012219_today5.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610110836221_fluent1.cs" />
-    <Compile Include="Migrations\201610110836221_fluent1.Designer.cs">
-      <DependentUpon>201610110836221_fluent1.cs</DependentUpon>
+    <Compile Include="Migrations\201610191030325_today6.cs" />
+    <Compile Include="Migrations\201610191030325_today6.Designer.cs">
+      <DependentUpon>201610191030325_today6.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201610111025442_fluent2.cs" />
-    <Compile Include="Migrations\201610111025442_fluent2.Designer.cs">
-      <DependentUpon>201610111025442_fluent2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610111150512_anotherFuent.cs" />
-    <Compile Include="Migrations\201610111150512_anotherFuent.Designer.cs">
-      <DependentUpon>201610111150512_anotherFuent.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610111159369_authoenote.cs" />
-    <Compile Include="Migrations\201610111159369_authoenote.Designer.cs">
-      <DependentUpon>201610111159369_authoenote.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201610111248371_fluentproperties.cs" />
-    <Compile Include="Migrations\201610111248371_fluentproperties.Designer.cs">
-      <DependentUpon>201610111248371_fluentproperties.cs</DependentUpon>
+    <Compile Include="Migrations\201610191201157_today7.cs" />
+    <Compile Include="Migrations\201610191201157_today7.Designer.cs">
+      <DependentUpon>201610191201157_today7.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Feedback.cs" />
-    <Compile Include="Models\News.cs" />
-    <Compile Include="Models\NewsCategory.cs" />
-    <Compile Include="Models\Note.cs" />
-    <Compile Include="Models\Payment.cs" />
-    <Compile Include="Models\Phonebook.cs" />
-    <Compile Include="Models\PhonebookCategory.cs" />
-    <Compile Include="Models\PresencePoint.cs" />
-    <Compile Include="Models\Product.cs" />
-    <Compile Include="Models\ProductCategory.cs" />
-    <Compile Include="Models\Tarif.cs" />
-    <Compile Include="Models\TarifCategory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\AccessToRepositories.cs" />
-    <Compile Include="Repository\ICategoryRepository.cs" />
-    <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Repository\NewsCategoriesRepository.cs" />
-    <Compile Include="Repository\NewsRepository.cs" />
-    <Compile Include="Repository\NotesRepository.cs" />
-    <Compile Include="Repository\PhonebookCategoriesRepository.cs" />
-    <Compile Include="Repository\PhoneBookRepository.cs" />
-    <Compile Include="Repository\ProductCategoriesRepository.cs" />
-    <Compile Include="Repository\ProductRepository.cs" />
-    <Compile Include="Repository\TarifsCategoriesRepository.cs" />
-    <Compile Include="Repository\TarifsRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Repository\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -131,38 +103,29 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201610101555015_InitialCreate.resx">
-      <DependentUpon>201610101555015_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610190839013_today.resx">
+      <DependentUpon>201610190839013_today.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610101651515_Notes.resx">
-      <DependentUpon>201610101651515_Notes.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610190923422_today1.resx">
+      <DependentUpon>201610190923422_today1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610101657236_Feedback.resx">
-      <DependentUpon>201610101657236_Feedback.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610190945235_today2.resx">
+      <DependentUpon>201610190945235_today2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610101702251_AddAnyModels.resx">
-      <DependentUpon>201610101702251_AddAnyModels.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610190956120_today3.resx">
+      <DependentUpon>201610190956120_today3.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610101810108_Annotation.resx">
-      <DependentUpon>201610101810108_Annotation.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610190958304_today4.resx">
+      <DependentUpon>201610190958304_today4.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610110813289_fluentAdd.resx">
-      <DependentUpon>201610110813289_fluentAdd.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610191012219_today5.resx">
+      <DependentUpon>201610191012219_today5.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610110836221_fluent1.resx">
-      <DependentUpon>201610110836221_fluent1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610191030325_today6.resx">
+      <DependentUpon>201610191030325_today6.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610111025442_fluent2.resx">
-      <DependentUpon>201610111025442_fluent2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610111150512_anotherFuent.resx">
-      <DependentUpon>201610111150512_anotherFuent.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610111159369_authoenote.resx">
-      <DependentUpon>201610111159369_authoenote.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201610111248371_fluentproperties.resx">
-      <DependentUpon>201610111248371_fluentproperties.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201610191201157_today7.resx">
+      <DependentUpon>201610191201157_today7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

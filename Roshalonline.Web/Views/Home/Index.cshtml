@@ -1,11 +1,7 @@
-﻿@using Roshalonline.Data.Models;
-@model IEnumerable<News>
-@{
-    Layout = null;
-}
+﻿@using Roshalonline.Data.Models
+@model List<News>
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -14,12 +10,18 @@
 <body>
     <div> 
         <h3>Hello Roshalonline</h3>
-        <p>
-            @foreach(var n in @Model)
-            {
-                <h6>@n.NewsHeader</h6> @n.NewsBody
-            }
-        </p>
+        
+        @foreach(var n in Model)
+        {
+            <p>@n.Header</p>
+            <p>@n.CreateDate</p>
+            <p>@n.Category</p>
+            <p>@n.AuthorID</p>
+            <p>@n.PathToIcon</p>
+            
+            <p>@n.Body</p>
+            <p>@n.ViewsCount</p>
+        }
     </div>
 </body>
 </html>

@@ -5,15 +5,14 @@ namespace Roshalonline.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Roshalonline.Data.Context.ModelsContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Roshalonline.Data.Context.DatabaseContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Roshalonline.Data.Context.ModelsContext";
         }
 
-        protected override void Seed(Roshalonline.Data.Context.ModelsContext context)
+        protected override void Seed(Roshalonline.Data.Context.DatabaseContext context)
         {
             //  This method will be called after migrating to the latest version.
 
