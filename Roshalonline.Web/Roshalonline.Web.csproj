@@ -152,6 +152,8 @@
     <Content Include="Views\Administration\News.cshtml" />
     <Content Include="Views\Administration\ViewNews.cshtml" />
     <Content Include="Views\Administration\CreateNews.cshtml" />
+    <Content Include="Views\Administration\EditNews.cshtml" />
+    <Content Include="Views\Administration\DeleteNews.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

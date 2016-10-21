@@ -12,16 +12,31 @@
     <title>CreateNews</title>
 </head>
 <body>
-    <div class="editor-label"> 
-        <h3>Добавление новой новости</h3>
-        @Html.LabelFor(n => Model.Header)
-    </div>
-    <div class="edotor-field">
-        @Html.EditorFor(n => n.CreateDate)
-        @Html.EditorFor(n => n.AuthorID)
-        @Html.EditorFor(n => n.Category)
-        @Html.EditorFor(n => n.Body)
-        @Html.EditorFor(n => n.PathToIcon)
-    </div>
+    <h3>Добавление новой новости</h3>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>@Html.LabelFor(n => n.Header)</td>
+                <td>@Html.EditorFor(n => n.Header)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(n => n.AuthorID)</td>
+                <td>@Html.EditorFor(n => n.AuthorID)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(n => n.PathToIcon)</td>
+                <td>@Html.EditorFor(n => n.PathToIcon)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(n => n.Body)</td>
+                <td>@Html.EditorFor(n => n.Body)</td>
+            </tr>
+        </table>
+        <input type="submit" value="Создать" />
+    }
+        
+    
+    
 </body>
 </html>

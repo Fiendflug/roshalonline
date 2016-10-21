@@ -1,0 +1,38 @@
+﻿@model Roshalonline.Data.Models.News
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>EditNews</title>
+</head>
+<body>
+    <h3>Редактирование новости - ID-"@Model.ID   @Model.Header</h3>
+    @using (Html.BeginForm())
+    {
+        <fieldset>
+            @Html.HiddenFor(n => n.AuthorID)
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(n => n.Header)</td>
+                    <td>@Html.EditorFor(n => n.Header)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(n => n.PathToIcon)</td>
+                    <td>@Html.EditorFor(n => n.PathToIcon)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(n => n.Body)</td>
+                    <td>@Html.EditorFor(n => n.Body)</td>
+                </tr>
+            </table>
+            <input type="submit" value="Сохранить"/>
+        </fieldset>
+    }    
+</body>
+</html>

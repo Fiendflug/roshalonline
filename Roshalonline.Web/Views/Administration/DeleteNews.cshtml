@@ -1,0 +1,28 @@
+﻿@model Roshalonline.Data.Models.News
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DeleteNews</title>
+</head>
+<body>
+    <div> 
+        <table>
+            <tr>
+                <td>Вы собираетесь удалить новость @Model.Header (ID - @Model.ID)</td>
+            </tr>            
+        </table>
+        @using (Html.BeginForm())
+        {
+            <input type="submit" value="Удалить" />
+        }
+        @Html.ActionLink("Отменить", "News");
+    </div>
+</body>
+</html>

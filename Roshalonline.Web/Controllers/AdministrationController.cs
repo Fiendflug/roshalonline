@@ -13,6 +13,7 @@ namespace Roshalonline.Web.Controllers
     {
         DatabaseContext database = new DatabaseContext();
 
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -24,19 +25,23 @@ namespace Roshalonline.Web.Controllers
             return View(database.AllNews.ToList());
         }
 
+        [HttpGet]
         public ActionResult CreateNews()
         {
             return View();
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CreateNews([Bind(Include = "Header, CreateDate, AuthorID, Category, Body, PathToIcon")] News newsParam)
+        public ActionResult CreateNews(News newsParam)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
+                    newsParam.CreateDate = DateTime.Now;
+                    newsParam.Category = Relevance.Active;
+                    newsParam.ViewsCount = 0;
+                    newsParam.PathToImages = null;
                     database.AllNews.Add(newsParam);
                     database.SaveChanges();
                     return RedirectToAction("News");
@@ -49,14 +54,74 @@ namespace Roshalonline.Web.Controllers
             return View(newsParam);
         }
 
+        [HttpGet]
+        public ActionResult EditNews(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var news = database.AllNews.Find(id);
+            if (news != null)
+            {
+                return View(news);
+            }
+            return HttpNotFound();
+        }
+
+        [HttpPost]
+        public ActionResult EditNews(News newsParam)
+        {
+            newsParam.CreateDate = DateTime.Now;
+            database.Entry(newsParam).State = System.Data.Entity.EntityState.Modified;
+            database.SaveChanges();
+            return RedirectToAction("News");
+        }
+
+        [HttpGet]
         public ActionResult ViewNews(int? id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(502); 
+                return HttpNotFound();
             }
             var news = database.AllNews.Find(id);
-            return View(news);
+            if (news != null)
+            {
+                return View(news);
+            }
+            return HttpNotFound();
+        }       
+        
+        [HttpGet]
+        public ActionResult DeleteNews(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var news = database.AllNews.Find(id);
+            if (news != null)
+            {
+                return View(news);
+            }
+            return HttpNotFound();
+        } 
+        [HttpPost, ActionName("DeleteNews")]
+        public ActionResult ConfirmDeleteNews(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            var news = database.AllNews.Find(id);
+            if (news != null)
+            {
+                database.AllNews.Remove(news);
+                database.SaveChanges();
+                return RedirectToAction("News");
+            }
+            return HttpNotFound();
         }
     }
 }
