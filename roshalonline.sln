@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roshalonline.Data", "Roshal
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roshalonline.Web", "Roshalonline.Web\Roshalonline.Web.csproj", "{133B1371-7256-41E5-ACB9-B956220E5486}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roshalonline.Logic", "Roshalonline.Logic\Roshalonline.Logic.csproj", "{125ECD19-FEE8-4C9F-B901-19AB94FD695C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{133B1371-7256-41E5-ACB9-B956220E5486}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{133B1371-7256-41E5-ACB9-B956220E5486}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{133B1371-7256-41E5-ACB9-B956220E5486}.Release|Any CPU.Build.0 = Release|Any CPU
+		{125ECD19-FEE8-4C9F-B901-19AB94FD695C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{125ECD19-FEE8-4C9F-B901-19AB94FD695C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{125ECD19-FEE8-4C9F-B901-19AB94FD695C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{125ECD19-FEE8-4C9F-B901-19AB94FD695C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Roshalonline.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Roshalonline.Data.Repositories;
 
-namespace Roshalonline.Data.Models
+namespace Roshalonline.Logic.MiddleEntities
 {
-    public class Feedback
+    public class FeedbackME
     {
         public int ID { get; set; }
         public Relevance Category { get; set; }
