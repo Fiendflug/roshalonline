@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Roshalonline.Data.Repositories;
 
 namespace Roshalonline.Data.Models
 {
@@ -16,5 +17,10 @@ namespace Roshalonline.Data.Models
         public string ClientAddress { get; set; }
         public string ClientPhone { get; set; }
         public string Body { get; set; }
+
+        public static implicit operator Feedback(FeedbackRepository v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
