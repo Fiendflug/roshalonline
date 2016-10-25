@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\ValidationException.cs" />
+    <Compile Include="Interfaces\IEntry.cs" />
     <Compile Include="MiddleEntities\FeedbackME.cs" />
     <Compile Include="MiddleEntities\NewsME.cs" />
     <Compile Include="MiddleEntities\NoteME.cs" />
@@ -51,6 +53,7 @@
     <Compile Include="MiddleEntities\TarifME.cs" />
     <Compile Include="MiddleEntities\UserME.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\NewsService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Roshalonline.Data\Roshalonline.Data.csproj">
@@ -61,6 +64,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
