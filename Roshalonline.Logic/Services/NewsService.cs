@@ -2,6 +2,7 @@
 using Roshalonline.Logic.MiddleEntities;
 using Roshalonline.Data.Repositories;
 using Roshalonline.Logic.Infrastructure;
+using Roshalonline.Data.Interfaces;
 using System;
 using System.Collections.Generic;
 using AutoMapper;
@@ -16,9 +17,9 @@ namespace Roshalonline.Logic.Services
     {
         private DatabaseWorker _database;
 
-        public NewsService(DatabaseWorker database)
+        public NewsService()
         {
-            _database = database;
+            _database = new DatabaseWorker(); 
         }
 
         public void Create(NewsME item)
@@ -41,7 +42,7 @@ namespace Roshalonline.Logic.Services
         {
             if (id == null)
             {
-                throw new ValidationException("id не найден", "");
+                throw new ValidationException("Не указан id", "");
             }            
             _database.News.Delete(id);
         }
@@ -55,7 +56,7 @@ namespace Roshalonline.Logic.Services
         {
             if (id == null)
             {
-                throw new ValidationException("id не найден", "");
+                throw new ValidationException("Не указан id", "");
             }
             var item = _database.News.GetItem(id);
             if (item == null)
@@ -75,7 +76,7 @@ namespace Roshalonline.Logic.Services
         {
             if (id == null)
             {
-                throw new ValidationException("id не найден", "");
+                throw new ValidationException("Не указан id", "");
             }
             var item = _database.News.GetItem(id);
             if (item == null)
@@ -88,7 +89,8 @@ namespace Roshalonline.Logic.Services
 
         public IList<NewsME> GetItems(Func<NewsME, bool> predicate)
         {
-            throw new NotImplementedException();
+            Mapper.Initialize(cfg => cfg.CreateMap<News, NewsME>());
+            return Mapper.Map<IList<News>, List<NewsME>>(_database.News.GetAllItems()).Where(predicate).ToList();
         }
     }
 }

@@ -1,0 +1,38 @@
+﻿@model Roshalonline.Web.Models.NewsVM
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateNews</title>
+</head>
+<body>
+    <h3>Добавление новой новости</h3>
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>@Html.LabelFor(n => n.Header)</td>
+                <td>@Html.EditorFor(n => n.Header)</td>
+            </tr>            
+            <tr>
+                <td>@Html.LabelFor(n => n.PathToIcon)</td>
+                <td>@Html.EditorFor(n => n.PathToIcon)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(n => n.Body)</td>
+                <td>@Html.EditorFor(n => n.Body)</td>
+            </tr>
+        </table>
+        <input type="submit" value="Создать" />
+    }
+
+
+
+</body>
+</html>
