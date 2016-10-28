@@ -23,17 +23,9 @@ namespace Roshalonline.Logic.Services
         }
 
         public void Create(NewsME item)
-        {
-            News news = new News
-            {
-                Header = item.Header,
-                Category = item.Category,
-                Author = item.Author,
-                PathToIcon = item.PathToIcon,
-                CreateDate = item.CreateDate,
-                Body = item.Body,
-                ViewsCount = 0
-            };
+        {            
+            Mapper.Initialize(cfg => cfg.CreateMap<NewsME, News>());
+            var news = Mapper.Map<NewsME, News>(item);
             _database.News.Create(news);
             _database.Save();
         }
@@ -45,6 +37,7 @@ namespace Roshalonline.Logic.Services
                 throw new ValidationException("Не указан id", "");
             }            
             _database.News.Delete(id);
+            _database.Save();
         }
 
         public void Dispose()
@@ -52,18 +45,16 @@ namespace Roshalonline.Logic.Services
             _database.Dispose();
         }
 
-        public void Edit(int? id)
-        {
-            if (id == null)
-            {
-                throw new ValidationException("Не указан id", "");
-            }
-            var item = _database.News.GetItem(id);
+        public void Edit(NewsME item)
+        {            
             if (item == null)
             {
                 throw new ValidationException("Не удалось получить объект News по указанному id", "");
             }
-            _database.News.Edit(item);
+            Mapper.Initialize(cfg => cfg.CreateMap<NewsME, News>());
+            var itemME = Mapper.Map<NewsME, News>(item);
+            _database.News.Edit(itemME);
+            _database.Save();
         }
 
         public IList<NewsME> GetAllItems()

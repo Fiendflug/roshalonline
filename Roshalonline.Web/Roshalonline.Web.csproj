@@ -167,7 +167,8 @@
     <Compile Include="Models\NoteVM.cs" />
     <Compile Include="Models\ProductVM.cs" />
     <Compile Include="Models\TarifVM.cs" />
-    <Compile Include="Models\UserVM.cs" />
+    <Compile Include="Models\UserAddVM.cs" />
+    <Compile Include="Models\UserLoginVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +187,10 @@
     <Content Include="Views\Management\Index.cshtml" />
     <Content Include="Views\Management\News.cshtml" />
     <Content Include="Views\Management\CreateNews.cshtml" />
+    <Content Include="Views\Management\ViewNews.cshtml" />
+    <Content Include="Views\Management\EditNews.cshtml" />
+    <Content Include="Views\Management\DeleteNews.cshtml" />
+    <Content Include="Views\Management\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

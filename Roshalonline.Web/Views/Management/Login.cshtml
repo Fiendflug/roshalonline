@@ -1,0 +1,33 @@
+﻿@model Roshalonline.Web.Models.UserLoginVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div> 
+        <h3>Введите свои Логин и Пароль</h3>
+        @using (Html.BeginForm())
+        {
+            //Html.AntiForgeryToken();
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(u => u.Login)</td>
+                    <td>@Html.EditorFor(u => u.Login)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(u => u.Password)</td>
+                    <td>@Html.EditorFor(u => u.Password)</td>
+                </tr>
+            </table>
+            <input type="submit" value="Войти"/>
+        }
+    </div>
+</body>
+</html>
