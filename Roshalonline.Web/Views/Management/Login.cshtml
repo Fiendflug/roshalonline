@@ -15,7 +15,7 @@
         <h3>Введите свои Логин и Пароль</h3>
         @using (Html.BeginForm())
         {
-            //Html.AntiForgeryToken();
+            @Html.AntiForgeryToken()
             <table>
                 <tr>
                     <td>@Html.LabelFor(u => u.Login)</td>

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using Roshalonline.Logic.Services;
 using Roshalonline.Logic.Interfaces;
 using Roshalonline.Logic.MiddleEntities;
 using AutoMapper;
@@ -37,32 +36,32 @@ namespace Roshalonline.Web.Controllers
             else
             {
                 return RedirectToAction("Login");
-            }            
+            }     
         }
 
         [HttpGet]
         public ActionResult Login()
         {
-            
-
-            return View();
-        }
-
-        [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult Login(UserLoginVM userParam)
-        {
-            var user = _userService.GetUsers(u => u.Login == userParam.Login && u.Password == userParam.Password);
-            if (user != null)
+            if (User.Identity.IsAuthenticated)
             {
-                FormsAuthentication.SetAuthCookie(userParam.Login, true);
-                RedirectToAction("Index");
+                return RedirectToAction("Index");
             }
             else
             {
-                RedirectToAction("Index", "Home"); //ВРЕМЕННО ПЕРЕДЕЛАТЬ
+                return View();
+            }            
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(UserLoginVM userParam)
+        {            
+            var user = _userService.Login(userParam.Login, userParam.Password);
+            if (user.Name != "Failed")
+            {
+                FormsAuthentication.SetAuthCookie(userParam.Login, true);                
             }
-            return View(userParam);
+            return RedirectToAction("Index");
         }        
 
         [HttpGet]

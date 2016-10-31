@@ -12,11 +12,11 @@ using Roshalonline.Logic.Infrastructure;
 
 namespace Roshalonline.Logic.Services
 {
-    public class AuthenticationService : IUser
+    public class UserService : IUser
     {
         private DatabaseWorker _database;
 
-        public AuthenticationService()
+        public UserService()
         {
             _database = new DatabaseWorker();
         }
@@ -39,16 +39,18 @@ namespace Roshalonline.Logic.Services
             return Mapper.Map<IList<User>, IList<UserME>>(_database.Users.GetAllItems()).ToList();
         }
 
-        public UserME GetUser(int? id)
+        public UserME Login(string login, string password)
         {
-            if (id == null)
+            if (login == null && password == null)
             {
-                throw new ValidationException("Не указан id", "");
+                //Добавить ведения логов
+                return new UserME { Name = "Failed", Login = "Failed", Password = "Failed" };
             }
-            var item = _database.Users.GetItem(id);
+            var item = _database.Users.GetAllItems().FirstOrDefault(u => u.Login == login | u.Password == password);
             if (item == null)
             {
-                throw new ValidationException("Не удалось получить объект News по указанному id", "");
+                //Добавить ведения логов
+                return new UserME { Name = "Failed", Login = "Failed", Password = "Failed" };
             }
             Mapper.Initialize(cfg => cfg.CreateMap<User, UserME>());
             return Mapper.Map<User, UserME>(item);

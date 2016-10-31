@@ -9,7 +9,7 @@ namespace Roshalonline.Logic.Interfaces
 {
     public interface IUser
     {
-        UserME GetUser(int? id);
+        UserME Login(string login, string password);
         IList<UserME> GetUsers(Func<UserME, bool> predicate);
         IList<UserME> GetAllUsers();
         void Create(UserME user);

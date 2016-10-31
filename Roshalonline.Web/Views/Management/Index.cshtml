@@ -11,13 +11,16 @@
     <title>Administration</title>
 </head>
 <body>
-    <div>
+    <div class="menu">
         @Html.ActionLink("Пользователи", "Users")
         @Html.ActionLink("Новости", "News")
         @Html.ActionLink("Статьи", "Notes")
         @Html.ActionLink("Тарифы", "Tarifs")
         @Html.ActionLink("Товары", "Products")
         @Html.ActionLink("Отзывы", "Feedbacks")
+    </div>
+    <div class="user">
+        Текущий пользователь - @User.Identity.Name
     </div>
 </body>
 </html>
