@@ -1,0 +1,46 @@
+﻿@using Roshalonline.Web.Models
+@model List<UserLoginVM>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Управление пользователями</title>
+</head>
+<body>
+    <div> 
+        @Html.ActionLink("Добавить пользователя", "AddUser")
+        <div class="data_table">
+            <table>
+                <tr>
+                    <th>@Html.DisplayNameFor(u => Model[0].Name)</th>
+                    <th>@Html.DisplayNameFor(u => Model[0].Login)</th>
+                    <th>@Html.DisplayNameFor(u => Model[0].Password)</th>
+                </tr>
+                @foreach (var n in Model)
+                {
+                    <tr>
+                        <td>
+                            @n.Login
+                        </td>
+                        <td>
+                            @n.Name
+                        </td>
+                        <td>
+                            @n.Password
+                        </td>                        
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="logout">
+        @Html.ActionLink("Выйти", "Logout")
+    </div>
+</body>
+</html>

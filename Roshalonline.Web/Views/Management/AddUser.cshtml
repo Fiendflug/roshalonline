@@ -1,0 +1,48 @@
+﻿@model Roshalonline.Web.Models.UserAddVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddUser</title>
+</head>
+<body>
+    <div> 
+        <h3>Добавление нового пользователя</h3>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(u => u.Name)</td>
+                    <td>@Html.EditorFor(u => u.Name)</td>
+                    <td>@Html.ValidationMessageFor(u => u.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(u => u.Login)</td>
+                    <td>@Html.EditorFor(u => u.Login)</td>
+                    <td>@Html.ValidationMessageFor(u => u.Login)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(u => u.Password)</td>
+                    <td>@Html.EditorFor(u => u.Password)</td>
+                    <td>@Html.ValidationMessageFor(u => u.Password)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(u => u.ConfirmPassword)</td>
+                    <td>@Html.EditorFor(u => u.ConfirmPassword)</td>
+                    <td>@Html.ValidationMessageFor(u => u.ConfirmPassword)</td>
+                </tr>
+            </table>
+            <input type="submit" value="Добавить" />
+        }
+    </div>
+    <div class="logout">
+        @Html.ActionLink("Выйти", "Logout")
+    </div>
+</body>
+</html>

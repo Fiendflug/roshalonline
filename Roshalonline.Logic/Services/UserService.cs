@@ -39,7 +39,7 @@ namespace Roshalonline.Logic.Services
             return Mapper.Map<IList<User>, IList<UserME>>(_database.Users.GetAllItems()).ToList();
         }
 
-        public UserME Login(string login, string password)
+        public UserME GetUser(string login, string password)
         {
             if (login == null && password == null)
             {

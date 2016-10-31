@@ -191,6 +191,8 @@
     <Content Include="Views\Management\EditNews.cshtml" />
     <Content Include="Views\Management\DeleteNews.cshtml" />
     <Content Include="Views\Management\Login.cshtml" />
+    <Content Include="Views\Management\AddUser.cshtml" />
+    <Content Include="Views\Management\Users.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
