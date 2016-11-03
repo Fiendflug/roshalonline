@@ -2,7 +2,7 @@
 @model List<NewsVM>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -11,57 +11,101 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Управление новостями</title>
+    <style>
+        .table-fixed thead {
+          width: 97%;
+        }
+        .table-fixed tbody {
+          height: 230px;
+          overflow-y: auto;
+          width: 100%;
+        }
+        .table-fixed thead, .table-fixed tbody, .table-fixed tr, .table-fixed td, .table-fixed th {
+          display: block;
+        }
+        .table-fixed tbody td, .table-fixed thead > tr> th {
+          float: left;
+          border-bottom-width: 0;
+        }
+    </style>
 </head>
 <body>
-    @Html.ActionLink("Добавить новость", "CreateNews")
-    <div class="data_table">
-        <table>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(n => Model[0].ID)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(n => Model[0].Header)
-                </th>                
-                <th>
-                    @Html.DisplayNameFor(n => Model[0].CreateDate)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(n => Model[0].Category)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(n => Model[0].ViewsCount)
-                </th>
-            </tr>
-            @foreach (var n in Model)
-            {
+    @*<div class="panel panel-default">
+        <div class="panel-heading" style="text-align:center; margin-top:50px; border:0px; height:50px; overflow-y:auto">
+            <h5>Управление новостями</h5>   
+        </div>
+        <div class="panel-body">            
+            <table class="table table-striped table-condensed table-bordered table-hover">
                 <tr>
-                    <td>
-                        @n.ID
-                    </td>
-                    <td>
-                        @n.Header
-                    </td>                    
-                    <td>
-                        @n.CreateDate
-                    </td>
-                    <td>
-                        @n.Category
-                    </td>
-                    <td>
-                        @n.ViewsCount
-                    </td>
-                    <td>
-                        @Html.ActionLink("Просмотр", "ViewNews", new { n.ID })
-                        @Html.ActionLink("Редактировать", "EditNews", new { n.ID })
-                        @Html.ActionLink("Удалить новоть", "DeleteNews", new { n.ID })
-                    </td>
+                    <th class="text-center">ID</th>
+                    <th class="text-center">Название</th>
+                    <th class="text-center">Автор</th>
+                    <th class="text-center">Категория</th>
+                    <th class="text-center">Дата создания</th>
+                    <th class="text-center">Просмотры</th>
                 </tr>
-            }
-        </table>
-    </div>
-    <div class="logout">
-        @Html.ActionLink("Выйти", "Logout")
+                @foreach(var n in Model)
+                {
+                    <tr onclick="location.href='@Url.Action("EditNews", "Management", new { n.ID })'" onmouseover="this.style.cursor='pointer'">
+                        <td class="text-center">@n.ID</td>
+                        <td class="text-center">@n.Header</td>
+                        <td class="text-center">@n.Author</td>
+                        <td class="text-center">@n.Category</td>
+                        <td class="text-center">@n.CreateDate</td>
+                        <td class="text-center">@n.ViewsCount</td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="panel-footer clearfix">
+            <div class="btn-group btn-group-justified pull-right" role="group" aria-label="Показать ">
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default">Все</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default">Активные</button>
+                </div>
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-default">В архиве</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4>
+                        Управление новостями
+                    </h4>
+                </div>
+                <table class="table table-fixed">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">Название</th>
+                            <th class="text-center">Автор</th>
+                            <th class="text-center">Категория</th>
+                            <th class="text-center">Дата создания</th>
+                            <th class="text-center">Просмотры</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var n in Model)
+                        {
+                            <tr onclick="location.href='@Url.Action("EditNews", "Management", new { n.ID })'" onmouseover="this.style.cursor='pointer'">
+                                <td class="text-center">@n.ID</td>
+                                <td class="text-center">@n.Header</td>
+                                <td class="text-center">@n.Author</td>
+                                <td class="text-center">@n.Category</td>
+                                <td class="text-center">@n.CreateDate</td>
+                                <td class="text-center">@n.ViewsCount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 ﻿
 @{
-    Layout = null;
+        Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -8,22 +8,11 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Administration</title>
+    <title>Панель управления</title>
 </head>
 <body>
-    <div class="menu">
-        @Html.ActionLink("Пользователи", "Users")
-        @Html.ActionLink("Новости", "News")
-        @Html.ActionLink("Статьи", "Notes")
-        @Html.ActionLink("Тарифы", "Tarifs")
-        @Html.ActionLink("Товары", "Products")
-        @Html.ActionLink("Отзывы", "Feedbacks")
-    </div>
-    <div class="user">
-        Текущий пользователь - @User.Identity.Name
-    </div>
-    <div class="logout">
-        @Html.ActionLink("Выйти", "Logout")
+    <div class="panel panel-default">
+        <div class="panel-heading" style="text-align: center; margin-top:50px; border:0px; height:50px; overflow-y:auto"><h5>Панель управления</h5></div>
     </div>
 </body>
 </html>
