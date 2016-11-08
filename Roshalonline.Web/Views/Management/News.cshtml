@@ -6,7 +6,6 @@
 }
 
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -16,7 +15,7 @@
     <div class="container-fluid" style="padding-top: 50px;">          
         <div class="row" style="position: fixed; width: 100%; background-color: white;">
             <div class="btn-group-xs pull-left" style="padding-left: 10px; padding-right: 10px; padding-top: 10px;">
-                <button type="button" class="btn btn-success">Создать новость</button>
+                <button type="button" class="btn btn-success" onclick="location.href='@Url.Action("CreateNews", "Management")'">Создать новость</button>
             </div>
             <div class="btn-group-xs pull-right" style="padding-left: 10px; padding-right: 10px; padding-top: 10px;">
                 <button type="button" class="btn btn-primary">Все</button>
