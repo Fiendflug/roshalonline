@@ -99,6 +99,37 @@ namespace Roshalonline.Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult FiltredNews(int filter)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                if (filter != 1 && filter != 2)
+                {
+                    return View("Index"); //Добавить редирект на страницу ошибки
+                }
+                IList<NewsME> items = null;
+                switch (filter)
+                {
+                    case 1:
+                        items = _newsService.GetItems(u => u.Category == Relevance.Active);
+                        break;
+                    case 2:
+                        items = _newsService.GetItems(u => u.Category == Relevance.Archive);
+                        break;
+                    default:
+                        break;
+                }
+                Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
+                var filtredItems = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items);
+                return View("News", filtredItems.ToList());
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
+        }
+
+        [HttpGet]
         public ActionResult CreateNews()
         {
             if (User.Identity.IsAuthenticated)
@@ -112,6 +143,7 @@ namespace Roshalonline.Web.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult CreateNews(NewsVM newsParam)
         {
             if (User.Identity.IsAuthenticated)
@@ -123,7 +155,6 @@ namespace Roshalonline.Web.Controllers
                     newsParam.ViewsCount = 0;
                     var test = new DatabaseWorker(); //TEST
                     newsParam.Author = test.Users.GetItem(1);   //TEST
-
                     Mapper.Initialize(cfg => cfg.CreateMap<NewsVM, NewsME>());
                     var item = Mapper.Map<NewsVM, NewsME>(newsParam);
                     _newsService.Create(item);
