@@ -163,17 +163,9 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Scripts\ckeditor\CHANGES.md" />
-    <Content Include="Scripts\ckeditor\LICENSE.md" />
-    <Content Include="Scripts\ckeditor\README.md" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\ckeditor\build-config.js" />
-    <Content Include="Scripts\ckeditor\ckeditor.js" />
-    <Content Include="Scripts\ckeditor\config.js" />
-    <Content Include="Scripts\ckeditor\contents.css" />
-    <Content Include="Scripts\ckeditor\styles.js" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Web.config">
@@ -191,6 +183,7 @@
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\FeedbackVM.cs" />
+    <Compile Include="Models\ImageVM.cs" />
     <Compile Include="Models\NewsVM.cs" />
     <Compile Include="Models\NoteVM.cs" />
     <Compile Include="Models\ProductVM.cs" />
@@ -223,6 +216,7 @@
     <Content Include="Views\Management\Users.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\_ManagementLayout.cshtml" />
+    <Content Include="Views\Management\UploadPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -233,11 +227,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Images\" />
-    <Folder Include="Scripts\ckeditor\adapters\" />
-    <Folder Include="Scripts\ckeditor\lang\" />
-    <Folder Include="Scripts\ckeditor\plugins\" />
-    <Folder Include="Scripts\ckeditor\samples\" />
-    <Folder Include="Scripts\ckeditor\skins\" />
+    <Folder Include="Content\Images\" />
+    <Folder Include="Scripts\ckeditor\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Roshalonline.Data\Roshalonline.Data.csproj">

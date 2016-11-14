@@ -13,8 +13,7 @@
     @*<script src="//cdn.ckeditor.com/4.5.11/standard-all/ckeditor.js"></script>*@
     <script src="~/Scripts/ckeditor/ckeditor.js"></script>
 </head>
-<body>   
-     
+<body>
     @using (Html.BeginForm("CreateNews", "Management", FormMethod.Post, new { style = "margin-top: 50px;" }))
     {
         <table>
@@ -22,14 +21,22 @@
                 <td>@Html.LabelFor(n => n.Header)</td>
                 <td>@Html.EditorFor(n => n.Header)</td>
             </tr>
-            <tr>
+            @*<tr>
                 <td>@Html.LabelFor(n => n.PathToIcon)</td>
                 <td>@Html.EditorFor(n => n.PathToIcon)</td>
-            </tr>
+            </tr>*@
         </table>
-        @Html.TextAreaFor(n => n.Body, new { @id = "editor1" })        
+        @Html.TextAreaFor(n => n.Body, new { @id = "editor1", @name = "editor1", @Value = "&lt;p&gt;Initial value.&lt;/p&gt;" })
         <script>
-            CKEDITOR.replace('editor1');
+            CKEDITOR.replace('editor1', {
+                filebrowserImageBrowseUrl: '/Management/UploadPartial',
+                filebrowserImageUploadUrl: '/Management/Upload'
+            });
+
+            function updateValue(id, value) {
+                var dialog = CKEDITOR.dialog.getCurrent();
+                dialog.setValueOf('info', 'txtUrl', value);
+            }
         </script>
         <input type="submit" value="Submit" id="btnSubmit" />
     }

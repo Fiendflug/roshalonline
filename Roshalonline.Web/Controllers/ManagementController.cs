@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -78,11 +79,34 @@ namespace Roshalonline.Web.Controllers
             {
                 return View();
             }
-        }       
+        }
 
-       //Новости
+        //Меда-контент
 
-       [HttpGet]
+        [HttpPost]
+        public void Upload(HttpPostedFileWrapper upload)
+        {
+            if (upload != null)
+            {
+                string ImageName = upload.FileName;
+                string path = Path.Combine(Server.MapPath("~/Content/Images"), ImageName);
+                upload.SaveAs(path);
+            }
+        }
+
+        public ActionResult UploadPartial()
+        {
+            var path = Server.MapPath("~/Content/Images");
+            var allImages = Directory.GetFiles(path).Select(i => new ImageVM
+            {
+                Url = Url.Content("/Content/Images/" + Path.GetFileName(i))
+            });
+            return View(allImages);
+        }
+
+        //Новости
+
+        [HttpGet]
         public ActionResult News()
         {
             if (User.Identity.IsAuthenticated)
