@@ -4,28 +4,15 @@
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>CreateNews</title>    
-    @*<script src="//cdn.ckeditor.com/4.5.11/standard-all/ckeditor.js"></script>*@
-    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
-</head>
-<body>
-    @using (Html.BeginForm("CreateNews", "Management", FormMethod.Post, new { style = "margin-top: 50px;" }))
-    {
-        <table>
-            <tr>
-                <td>@Html.LabelFor(n => n.Header)</td>
-                <td>@Html.EditorFor(n => n.Header)</td>
-            </tr>
-            @*<tr>
-                <td>@Html.LabelFor(n => n.PathToIcon)</td>
-                <td>@Html.EditorFor(n => n.PathToIcon)</td>
-            </tr>*@
-        </table>
+<script src="~/Scripts/ckeditor/ckeditor.js"></script>
+@using (Html.BeginForm("CreateNews", "Management", FormMethod.Post, new { style = "margin-top: 50px;" }))
+{
+    <table>
+        <tr>
+            <td>@Html.LabelFor(n => n.Header)</td>
+            <td>@Html.EditorFor(n => n.Header)</td>
+        </tr>
+    </table>
         @Html.TextAreaFor(n => n.Body, new { @id = "editor1", @name = "editor1", @Value = "&lt;p&gt;Initial value.&lt;/p&gt;" })
         <script>
             CKEDITOR.replace('editor1', {
@@ -39,32 +26,4 @@
             }
         </script>
         <input type="submit" value="Submit" id="btnSubmit" />
-    }
-    
-    
-    <h3>Добавление новой новости</h3>
-    @*@using (Html.BeginForm())
-    {
-        <table>
-            <tr>
-                <td>@Html.LabelFor(n => n.Header)</td>
-                <td>@Html.EditorFor(n => n.Header)</td>
-            </tr>            
-            <tr>
-                <td>@Html.LabelFor(n => n.PathToIcon)</td>
-                <td>@Html.EditorFor(n => n.PathToIcon)</td>
-            </tr>
-            <tr>
-                <td>@Html.LabelFor(n => n.Body)</td>
-                <td>@Html.EditorFor(n => n.Body)</td>
-            </tr>
-        </table>
-        <input type="submit" value="Создать" />
-    }
-    <div class="logout">
-        @Html.ActionLink("Выйти", "Logout")
-    </div>*@
-
-
-</body>
-</html>
+}
