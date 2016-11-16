@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />
-    <link href="~/Content/management-index.css" rel="stylesheet" />
-    <title>@ViewBag.Title</title>
+    <link href="~/Content/management.css" rel="stylesheet" />
+    <title>Панель управления</title>
     <script src="~/scripts/jquery-1.9.1.min.js"></script>
     <script src="~/scripts/bootstrap.min.js"></script>
 </head>
@@ -22,7 +22,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand small-logo" @*style="padding-left:15px; padding-top: 8px;"*@ href="#">
+                <a class="navbar-brand small-logo" href="#">
                     <img alt="Logo" src="~/Assets/Logos/current_main_logo_32x137px.png">
                 </a>
             </div>
@@ -38,16 +38,14 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
+            <div class="col-sm-3 col-md-2 sidebar text-center">
                 <ul class="nav nav-sidebar">
-                    <li class="sub-header text-center"x @*style="font-size: 16px; padding-top: 10px; padding-left: 15px;"*@>Панель управления</li>
+                    <li class="sub-header">Панель управления</li>
                 </ul>
-                <ul class="nav nav-sidebar">                    
-                    <li class="nav-divider"></li>
+                <ul class="nav nav-sidebar">  
                     <li class="active">@Html.ActionLink("Общая информация", "Index", "Management")</li>
                 </ul>
-                <ul class="nav nav-sidebar">     
-                    <li class="nav-divider"></li>                                   
+                <ul class="nav nav-sidebar">                                     
                     <li>@Html.ActionLink("Управление новостями", "News", "Management")</li>
                     <li>@Html.ActionLink("Управление заметками", "Notes", "Management") </li>
                     <li>@Html.ActionLink("Управление тарифами", "Tarifs", "Management")</li>
@@ -55,7 +53,6 @@
                     <li>@Html.ActionLink("Обращения абонентов", "Feedbacks", "Management")</li>
                 </ul>
                 <ul class="nav nav-sidebar">
-                    <li class="nav-divider"></li>
                     <li><a href="#">Настройки</a></li>
                 </ul>
             </div>
