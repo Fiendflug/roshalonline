@@ -14,7 +14,6 @@ namespace Roshalonline.Data.Models
         public Relevance Category { get; set; }
         public string PathToIcon { get; set; }
         public DateTime CreateDate { get; set; }
-        public IList<PathToImage> PathToPhotos { get; set; }
         public string Body { get; set; }
         public long ViewsCount { get; set; }
 

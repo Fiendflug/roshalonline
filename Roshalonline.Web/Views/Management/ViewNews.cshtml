@@ -1,32 +1,101 @@
 ﻿@model Roshalonline.Web.Models.NewsVM
 
-@{
-    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
-}
-
 <!DOCTYPE html>
-
-<html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>ViewNews</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/management.css" rel="stylesheet" />
+    <title>Просмотр новости</title>
+    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
 </head>
+
 <body>
-    <div>
-        <h6>@Model.ID   @Model.Header</h6>
-        @Model.CreateDate
-        @Model.Author
-        @Model.Category
-        @Model.PathToIcon
-        @Model.Body
-        @Model.ViewsCount
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand small-logo" href="#">
+                    <img alt="Logo" src="~/Assets/Logos/current_main_logo_32x137px.png">
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><p class="navbar-text">Вы вошли как</p> </li>
+                    <li><a href="#">@User.Identity.Name</a></li>
+                    <li class="active"><a href="/Management/Logout" /><span class="glyphicon glyphicon-log-out"></span>Выйти</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar text-center">
+                <ul class="nav nav-sidebar">
+                    <li class="sub-header">Просмотр новости</li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li>@Html.ActionLink("Назад", "News", "Management")</li>
+                </ul>                    
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href='@Url.Action("EditNews", "Management", new { id = Model.ID })'>Редактировать</a></li>
+                    <li><a href='@Url.Action("DeleteNews", "Management", new { id = Model.ID })'>Перенести в архив</a></li>
+                    <li><a href='@Url.Action("PublishNews", "Management", new { id = Model.ID })'>Опубликовать</a></li>
+                </ul>                    
+            </div>
+        </div>
     </div>
-    <div>
-        @Html.ActionLink("Назад", "News")
-        @Html.ActionLink("Редактировать", "EditNews", new { id = Model.ID })
-    </div>
-    <div class="logout">
-        @Html.ActionLink("Выйти", "Logout")
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="panel panel-default">
+            <div class="panel-heading">Информация</div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <tr>
+                        <td>ID новости</td>
+                        <td>@Model.ID</td>
+                    </tr>
+                    <tr>
+                        <td>Заголовок новости</td>
+                        <td>@Model.Header</td>
+                    </tr>
+                    <tr>
+                        <td>Автор новости</td>
+                        <td>@Model.AuthorID</td>
+                    </tr>
+                    <tr>
+                        <td>Дата создания</td>
+                        <td>@Model.CreateDate</td>
+                    </tr>
+                    <tr>
+                        <td>Категория</td>
+                        <td>@Model.Category</td>
+                    </tr>
+                    <tr>
+                        <td>Статус публикации</td>
+                        <td>Добавить</td>
+                    </tr>
+                    <tr>
+                        <td>Количество просмотров</td>
+                        <td>@Model.ViewsCount</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Содержимое новости</div>
+            <div class="panel-body">
+                @Html.Raw(Model.Body);
+            </div>
+        </div>
     </div>
 </body>
 </html>

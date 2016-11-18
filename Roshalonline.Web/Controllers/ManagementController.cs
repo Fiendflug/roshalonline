@@ -81,7 +81,7 @@ namespace Roshalonline.Web.Controllers
             }
         }
 
-        //Меда-контент
+        //Медиа-контент
 
         [HttpPost]
         public void Upload(HttpPostedFileWrapper upload)
@@ -122,36 +122,36 @@ namespace Roshalonline.Web.Controllers
             }            
         }
 
-        [HttpGet]
-        public ActionResult FiltredNews(int filter)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                if (filter != 1 && filter != 2)
-                {
-                    return View("Index"); //Добавить редирект на страницу ошибки
-                }
-                IList<NewsME> items = null;
-                switch (filter)
-                {
-                    case 1:
-                        items = _newsService.GetItems(u => u.Category == Relevance.Active);
-                        break;
-                    case 2:
-                        items = _newsService.GetItems(u => u.Category == Relevance.Archive);
-                        break;
-                    default:
-                        break;
-                }
-                Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
-                var filtredItems = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items);
-                return View("News", filtredItems.ToList());
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
+        //[HttpGet]
+        //public ActionResult FiltredNews(int filter)
+        //{
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        if (filter != 1 && filter != 2)
+        //        {
+        //            return View("Index"); //Добавить редирект на страницу ошибки
+        //        }
+        //        IList<NewsME> items = null;
+        //        switch (filter)
+        //        {
+        //            case 1:
+        //                items = _newsService.GetItems(u => u.Category == Relevance.Active);
+        //                break;
+        //            case 2:
+        //                items = _newsService.GetItems(u => u.Category == Relevance.Archive);
+        //                break;
+        //            default:
+        //                break;
+        //        }
+        //        Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
+        //        var filtredItems = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items);
+        //        return View("News", filtredItems.ToList());
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Login");
+        //    }
+        //}
 
         [HttpGet]
         public ActionResult CreateNews()
@@ -177,8 +177,12 @@ namespace Roshalonline.Web.Controllers
                     newsParam.CreateDate = DateTime.Now;
                     newsParam.Category = Relevance.Active;
                     newsParam.ViewsCount = 0;
-                    var test = new DatabaseWorker(); //TEST
-                    newsParam.Author = test.Users.GetItem(1);   //TEST
+
+                    var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name);
+                    newsParam.AuthorID = currUser.First().ID;
+
+                    //var test = new DatabaseWorker(); //TEST
+                    //newsParam.Author = test.Users.GetItem(1);   //TEST
                     Mapper.Initialize(cfg => cfg.CreateMap<NewsVM, NewsME>());
                     var item = Mapper.Map<NewsVM, NewsME>(newsParam);
                     _newsService.Create(item);
@@ -250,8 +254,10 @@ namespace Roshalonline.Web.Controllers
             if (User.Identity.IsAuthenticated)
             {
                 itemParam.CreateDate = DateTime.Now;
-                var test = new DatabaseWorker(); //TEST
-                itemParam.Author = test.Users.GetItem(1);   //TEST
+                var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name);
+                itemParam.AuthorID = currUser.First().ID;
+                //var test = new DatabaseWorker(); //TEST
+                //itemParam.Author = test.Users.GetItem(1);   //TEST
 
                 Mapper.Initialize(cfg => cfg.CreateMap<NewsVM, NewsME>());
                 var item = Mapper.Map<NewsVM, NewsME>(itemParam);

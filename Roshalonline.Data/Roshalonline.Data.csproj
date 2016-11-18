@@ -91,6 +91,10 @@
     <Compile Include="Migrations\201610191201157_today7.Designer.cs">
       <DependentUpon>201610191201157_today7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611170838415_NewsResetup.cs" />
+    <Compile Include="Migrations\201611170838415_NewsResetup.Designer.cs">
+      <DependentUpon>201611170838415_NewsResetup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DatabaseWorker.cs" />
@@ -135,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201610191201157_today7.resx">
       <DependentUpon>201610191201157_today7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611170838415_NewsResetup.resx">
+      <DependentUpon>201611170838415_NewsResetup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

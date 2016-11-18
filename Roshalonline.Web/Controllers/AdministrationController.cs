@@ -41,7 +41,7 @@ namespace Roshalonline.Web.Controllers
                     newsParam.CreateDate = DateTime.Now;
                     newsParam.Category = Relevance.Active;
                     newsParam.ViewsCount = 0;
-                    newsParam.PathToImages = null;
+                    //newsParam.PathToImages = null;
                     database.AllNews.Add(newsParam);
                     database.SaveChanges();
                     return RedirectToAction("News");

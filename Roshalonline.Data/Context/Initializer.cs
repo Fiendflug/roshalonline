@@ -37,12 +37,12 @@ namespace Roshalonline.Data.Context
                     Header = "Просто новость",
                     Category = Relevance.Active,
                     PathToIcon = "/images/logo.png",
-                    PathToImages = new List<PathToImage>
-                    {
-                        new PathToImage { Path = "/images/small_logo.png" },
-                        new PathToImage { Path = "/images/common_logo.png" },
-                        new PathToImage { Path = "/images/galya.png" }
-                    },
+                    //PathToImages = new List<PathToImage>
+                    //{
+                    //    new PathToImage { Path = "/images/small_logo.png" },
+                    //    new PathToImage { Path = "/images/common_logo.png" },
+                    //    new PathToImage { Path = "/images/galya.png" }
+                    //},
                     CreateDate = DateTime.Now,
                     AuthorID = 1,
                     Body = "Это просто новость. Новость о новости. Больше ничего нет.",
@@ -53,12 +53,12 @@ namespace Roshalonline.Data.Context
                     Header = "Еще одна новость",
                     Category = Relevance.Active,
                     PathToIcon = "/images/logo.png",
-                    PathToImages = new List<PathToImage>
-                    {
-                        new PathToImage { Path = "/images/small_logo.png" },
-                        new PathToImage { Path = "/images/common_logo.png" },
-                        new PathToImage { Path = "/images/borodavka.png" }
-                    },
+                    //PathToImages = new List<PathToImage>
+                    //{
+                    //    new PathToImage { Path = "/images/small_logo.png" },
+                    //    new PathToImage { Path = "/images/common_logo.png" },
+                    //    new PathToImage { Path = "/images/borodavka.png" }
+                    //},
                     CreateDate = DateTime.Now,
                     AuthorID = 2,
                     Body = "Еще одна новость. Так как в Альтесе ничего не происходит. Пусть будет так как есть",
@@ -69,12 +69,12 @@ namespace Roshalonline.Data.Context
                     Header = "Удаленная новость",
                     Category = Relevance.Archive,
                     PathToIcon = "/images/deleted.png",
-                    PathToImages = new List<PathToImage>
-                    {
-                        new PathToImage { Path = "/images/small_logo.png" },
-                        new PathToImage { Path = "/images/common_logo.png" },
-                        new PathToImage { Path = "/images/zapach.png" }
-                    },
+                    //PathToImages = new List<PathToImage>
+                    //{
+                    //    new PathToImage { Path = "/images/small_logo.png" },
+                    //    new PathToImage { Path = "/images/common_logo.png" },
+                    //    new PathToImage { Path = "/images/zapach.png" }
+                    //},
                     CreateDate = DateTime.Now,
                     AuthorID = 1,
                     Body = "Эту новость удалили",
@@ -91,12 +91,12 @@ namespace Roshalonline.Data.Context
                     Header = "Первая статья",
                     Category = Relevance.Active,
                     PathToIcon = "/images/note_main_logo.png",
-                    PathToPhotos = new List<PathToImage>
-                    {
-                        new PathToImage { Path = "/images/small_logo.png" },
-                        new PathToImage { Path = "/images/common_logo.png" },
-                        new PathToImage { Path = "/images/galya.png" }
-                    },
+                    //PathToPhotos = new List<PathToImage>
+                    //{
+                    //    new PathToImage { Path = "/images/small_logo.png" },
+                    //    new PathToImage { Path = "/images/common_logo.png" },
+                    //    new PathToImage { Path = "/images/galya.png" }
+                    //},
                     CreateDate = DateTime.Now,
                     AuthorID = 1,
                     Body = "В этой статье мы поговрим о ниочем. Спасибо за внимание",
@@ -107,12 +107,12 @@ namespace Roshalonline.Data.Context
                     Header = "Вторая статья. Очень важная",
                     Category = Relevance.Active,
                     PathToIcon = "/images/note_logo.png",
-                    PathToPhotos = new List<PathToImage>
-                    {
-                        new PathToImage { Path = "/images/small_logo.png" },
-                        new PathToImage { Path = "/images/common_logo.png" },
-                        new PathToImage { Path = "/images/galya.png" }
-                    },
+                    //PathToPhotos = new List<PathToImage>
+                    //{
+                    //    new PathToImage { Path = "/images/small_logo.png" },
+                    //    new PathToImage { Path = "/images/common_logo.png" },
+                    //    new PathToImage { Path = "/images/galya.png" }
+                    //},
                     CreateDate = DateTime.Now,
                     AuthorID = 2,
                     Body = "Эта статья полностью дополняет первую. Важная информации о ничегонеделнье. Не пропустите.",
@@ -123,12 +123,12 @@ namespace Roshalonline.Data.Context
                     Header = "Удаленная статья",
                     Category = Relevance.Archive,
                     PathToIcon = "/images/note_deleted.png",
-                    PathToPhotos = new List<PathToImage>
-                    {
-                        new PathToImage { Path = "/images/small_logo.png" },
-                        new PathToImage { Path = "/images/common_logo.png" },
-                        new PathToImage { Path = "/images/galya.png" }
-                    },
+                    //PathToPhotos = new List<PathToImage>
+                    //{
+                    //    new PathToImage { Path = "/images/small_logo.png" },
+                    //    new PathToImage { Path = "/images/common_logo.png" },
+                    //    new PathToImage { Path = "/images/galya.png" }
+                    //},
                     CreateDate = DateTime.Now,
                     AuthorID = 1,
                     Body = "Эта статья не прошла модерацию. Увы и ах",
@@ -243,11 +243,11 @@ namespace Roshalonline.Data.Context
                     Description = "Самый лучший на свете роутер",
                     Category = Relevance.Active,
                     Type = TypeProduct.Router,
-                    PathToPhotos = new List<PathToImage>
-                    {
-                        new PathToImage {  Path = "/images/products/router.png" },
-                        new PathToImage { Path = "/images/products/router_1.png" }
-                    },
+                    //PathToPhotos = new List<PathToImage>
+                    //{
+                    //    new PathToImage {  Path = "/images/products/router.png" },
+                    //    new PathToImage { Path = "/images/products/router_1.png" }
+                    //},
                     Price = 1500M
                 },
                 new Product
@@ -257,11 +257,11 @@ namespace Roshalonline.Data.Context
                     Description = "2-х мегабитный модечик. Окунись в прошлое",
                     Category = Relevance.Active,
                     Type = TypeProduct.Modem,
-                    PathToPhotos = new List<PathToImage>
-                    {
-                        new PathToImage {  Path = "/images/products/modem.png" },
-                        new PathToImage { Path = "/images/products/modem_big.png" }
-                    },
+                    //PathToPhotos = new List<PathToImage>
+                    //{
+                    //    new PathToImage {  Path = "/images/products/modem.png" },
+                    //    new PathToImage { Path = "/images/products/modem_big.png" }
+                    //},
                     Price = 1000M
                 },
                 new Product
@@ -271,11 +271,11 @@ namespace Roshalonline.Data.Context
                     Description = "Самая бесценная куча мусора в мире.",
                     Category = Relevance.Archive,
                     Type = TypeProduct.Router,
-                    PathToPhotos = new List<PathToImage>
-                    {
-                        new PathToImage {  Path = "/images/products/trash.png" },
-                        new PathToImage { Path = "/images/products/trash-3.png" }
-                    },
+                    //PathToPhotos = new List<PathToImage>
+                    //{
+                    //    new PathToImage {  Path = "/images/products/trash.png" },
+                    //    new PathToImage { Path = "/images/products/trash-3.png" }
+                    //},
                     Price = 5000M
                 }
             };

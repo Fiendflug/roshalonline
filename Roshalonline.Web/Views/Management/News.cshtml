@@ -8,7 +8,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    @*<link href="~/Content/bootstrap-theme.min.css" rel="stylesheet" />*@
     <link href="~/Content/management.css" rel="stylesheet"/>
     <title>Управление новостями</title>
     <script src="~/scripts/jquery-1.9.1.min.js"></script>
@@ -88,10 +87,10 @@
                         <tbody>
                             @foreach (var n in Model)
                             {
-                                <tr onclick="location.href='@Url.Action("EditNews", "Management", new { n.ID })'" onmouseover="this.style.cursor = 'pointer'">
+                                <tr onclick="location.href='@Url.Action("ViewNews", "Management", new { n.ID })'" onmouseover="this.style.cursor = 'pointer'">
                                     <td class="text-center">@n.ID</td>
                                     <td class="text-center">@n.Header</td>
-                                    <td class="text-center">@n.Author</td>
+                                    <td class="text-center">@n.AuthorID</td>
                                     <td class="text-center">@n.Category</td>
                                     <td class="text-center">@n.CreateDate</td>
                                     <td class="text-center">@n.ViewsCount</td>

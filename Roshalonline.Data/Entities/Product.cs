@@ -19,7 +19,6 @@ namespace Roshalonline.Data.Models
         public Relevance Category { get; set; }
         public TypeProduct Type { get; set; }
         public string Description { get; set; }
-        public IList<PathToImage> PathToPhotos { get; set; }
         public decimal Price { get; set; }
 
         public int AuthorID { get; set; }
