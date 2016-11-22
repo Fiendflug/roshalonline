@@ -2,7 +2,7 @@
 @model List<News>
 
 <!DOCTYPE html>
-<html lang="en" class="demo-1 no-js">
+<html lang="en" class="roshalonline no-js">
 <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -34,16 +34,19 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 <body>
     <div class="container">
         <!-- Top Navigation -->
-        <div class="codrops-top clearfix">
-            @*<a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/SVGDrawingAnimation/"><span>Previous Demo</span></a>*@
-            <span class="right">@*<a href="http://cargocollective.com/isaac317">Artwork by Isaac Montemayor</a>*@<a class="codrops-icon codrops-icon-drop" href="#"><span>Вход для клиентов</span></a></span>
+        <div class="codrops-top">
+            <a class="top-center" href="#"><span>+7(496)455-81-05 ООО "Альтес-Р" г. Рошаль, ул. Косякова, д. 13</span></a>
+            @*<span class="right"><a class="codrops-icon codrops-icon-drop" href="#"><span>Вход для клиентов</span></a></span>*@
         </div>
         <header class="codrops-header">
-            <h1>Рошаль Онлайн<span>Первая телекоммуникационная компания города@*<a href="http://christmasexperiments.com/">The Christmas Experiments</a>*@</span></h1>
+            <img src="~/Assets/Logos/logo_96.png" /><h1>ROSHAL ONLINE<span>Первый городской оператор связи</span></h1>
+            @*<img src="~/Assets/Logos/logo_96.png" />*@   
+                      
+            @*<h1>@*Рошаль Онлайн<span>Первая телекоммуникационная компания города+7(496)455-81-05 ООО "Альтес-Р" г. Рошаль, ул. Косякова, д. 13</span></h1>*@                     
             <nav class="codrops-demos">
-                <a class="current-demo" href="index.html">Частным клиентам</a>
-                <a href="index2.html">Бизнес клиентам</a>
-                @*<a href="index3.html">Demo 3</a>*@
+                <a class="current-demo" href="index.html">частным клиентам</a>
+                <a href="index2.html">бизнес клиентам</a>
+                <a href="index3.html">личный кабинет</a>
             </nav>
         </header>
         <section id="grid" class="grid clearfix">
@@ -130,16 +133,16 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                     <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
                     <figcaption>
                         <h2>о нас</h2>
-                        <p>Немного информации о нас. Скандалы, интриги, исследования.</p>
+                        <p>Немного информации о нас. Все что вы хотели бы знать, но не знали где спросить.</p>
                         @*<button>перейти</button>*@
                     </figcaption>
                 </figure>
             </a>
         </section>
-        <section class="related">
-            <p>If you enjoyed these effects you might also like:</p>
-            <div><a href="http://tympanus.net/Tutorials/CaptionHoverEffects/"><h4>Caption Hover Effects</h4></a></div>
-            <div><a href="http://tympanus.net/Development/AnimatedSVGIcons/"><h4>Animated SVG Icons</h4></a></div>
+        <section class="footer">
+            <p>Присоединяйся к нам в популярных социальных сервисах</p>            
+            <div><a href="#"><img src="~/Assets/Logos/vk_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/ok_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/fb_flat_64.png" /></a></div>
+            <div><a href="#"><h6>Powered by Kineev Alexey</h6></a></div>
         </section>
     </div><!-- /container -->
     <script>
