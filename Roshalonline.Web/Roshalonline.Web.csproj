@@ -145,22 +145,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Logos\about.png" />
+    <Content Include="Assets\Logos\Home\Business\about_b2b.png" />
+    <Content Include="Assets\Logos\Home\Business\consalting.png" />
+    <Content Include="Assets\Logos\Home\Business\enginiring.png" />
+    <Content Include="Assets\Logos\Home\Business\internet_b2b.png" />
+    <Content Include="Assets\Logos\Home\Business\new_client_b2b.png" />
+    <Content Include="Assets\Logos\Home\Business\operators.png" />
+    <Content Include="Assets\Logos\Home\Business\partners.png" />
+    <Content Include="Assets\Logos\Home\Business\phone_b2b.png" />
+    <Content Include="Assets\Logos\Home\enginiring.png" />
+    <Content Include="Assets\Logos\Home\Index\about.png" />
     <Content Include="Assets\Logos\current_main_logo_32x137px.png" />
-    <Content Include="Assets\Logos\domofon.png" />
-    <Content Include="Assets\Logos\fb_flat_64.png" />
-    <Content Include="Assets\Logos\feedback.png" />
-    <Content Include="Assets\Logos\internet.png" />
-    <Content Include="Assets\Logos\logo_96.png" />
-    <Content Include="Assets\Logos\named_logo.png" />
-    <Content Include="Assets\Logos\news.png" />
-    <Content Include="Assets\Logos\new_client.png" />
-    <Content Include="Assets\Logos\notes.png" />
-    <Content Include="Assets\Logos\ok_flat_64.png" />
+    <Content Include="Assets\Logos\Home\Index\domofon.png" />
+    <Content Include="Assets\Logos\Common\fb_flat_64.png" />
+    <Content Include="Assets\Logos\Home\Index\feedback.png" />
+    <Content Include="Assets\Logos\Home\Index\internet.png" />
+    <Content Include="Assets\Logos\Common\logo_96.png" />
+    <Content Include="Assets\Logos\Home\Index\news.png" />
+    <Content Include="Assets\Logos\Home\Index\new_client.png" />
+    <Content Include="Assets\Logos\Home\Index\notes.png" />
+    <Content Include="Assets\Logos\Common\ok_flat_64.png" />
     <Content Include="Assets\Logos\payment.png" />
-    <Content Include="Assets\Logos\phone.png" />
-    <Content Include="Assets\Logos\test_logo.png" />
-    <Content Include="Assets\Logos\vk_flat_64.png" />
+    <Content Include="Assets\Logos\Home\Index\phone.png" />
+    <Content Include="Assets\Logos\Common\vk_flat_64.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -237,6 +244,8 @@
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Shared\_ManagementLayout.cshtml" />
     <Content Include="Views\Management\UploadPartial.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <Content Include="Views\Home\Business.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -246,6 +255,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\Logos\Home\News\" />
+    <Folder Include="Assets\Logos\Home\Notes\" />
+    <Folder Include="Assets\Logos\Management\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Scripts\ckeditor\" />
   </ItemGroup>

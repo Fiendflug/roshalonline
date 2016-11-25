@@ -1,15 +1,25 @@
-﻿using Roshalonline.Data.Context;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Roshalonline.Data.Models;
+using Roshalonline.Logic.MiddleEntities;
+using Roshalonline.Logic.Interfaces;
+using AutoMapper;
+using Roshalonline.Web.Models;
 
 namespace Roshalonline.Web.Controllers
 {
     public class HomeController : Controller
-    {     
+    {
+        private IEntry<NewsME> _newsService;
+        private IUser _userService;
+        //private IEntry<NoteME> _noteService;    
+
+        public HomeController(IEntry<NewsME> newsService, IUser userService)
+        {
+            _newsService = newsService;
+            _userService = userService;
+        }
+
         public ActionResult Index()
         {
             //DatabaseContext context = new DatabaseContext();
@@ -321,6 +331,20 @@ namespace Roshalonline.Web.Controllers
             //context.SaveChanges();
 
             return View(/*context.AllNews.ToList()*/);
+        }
+
+        public ActionResult Business()
+        {
+            return View();
+        }
+            
+        [HttpGet]
+        public ActionResult News()
+        {
+            IList<NewsME> items = _newsService.GetAllItems();
+            Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
+            var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items);
+            return View(allNews.ToList());
         }
     }
 }
