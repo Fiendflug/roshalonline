@@ -1,0 +1,96 @@
+﻿@model Roshalonline.Web.Models.UserLoginVM
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en" class="roshalonline no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roshalonline = провайдер, который всегда с тобой</title>
+    <meta name="author" content="Kineev Alexey" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="~/Content/main.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/component.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/login.css" />
+    <script src="~/Scripts/snapsvg.js"></script>
+    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    @*<script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-7243260-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+            </script>*@
+
+
+</head>
+<body>
+    <div class="container">
+        <!-- Top Navigation -->
+        <div class="codrops-top">
+            <a class="top-center" href="#"><span>+7(496)455-81-05 ООО "Альтес-Р" г. Рошаль, ул. Косякова, д. 13</span></a>
+        </div>
+        <header class="codrops-header">
+            <img src="~/Assets/Logos/Common/logo_96.png" /><h1>ROSHAL ONLINE<span>Первый городской оператор связи</span></h1>
+            <nav class="codrops-demos">
+                <a href="@Url.Action("Index", "Home")">частным клиентам</a>
+                <a href="@Url.Action("Business", "Home")">бизнес клиентам</a>
+                <a class="current-demo" href="@Url.Action("Client", "Home")">личный кабинет</a>
+            </nav>
+        </header>         
+            <div class="form">
+                <div class="thumbnail"><img src="~/Assets/Logos/Home/Login/users-login.png" /></div>
+                <form class="register-form">                    
+                    <input type="text" placeholder="Носер лицевого счета" />
+                    <input type="password" placeholder="Пароль" />
+                    <input type="text" placeholder="email address" />
+                    <button>Отправить запрос</button>
+                    <p class="message">Ложная тревога? <a href="#">Войти</a></p>
+                </form>
+                <form class="login-form">                    
+                    <input type="text" placeholder="Имя пользователя" />
+                    <input type="password" placeholder="Пароль" />
+                    <button>Войти</button>
+                    <p class="message">Нет доступа к личному кабинету или к вашим регистрационным данным?</p>
+                    <p class="message"><a href="#">Отправьте запрос на активацию досутпа к личному кабинету</a></p>
+                </form>
+            </div>
+            @*<div class="login-screen">
+                @using (Html.BeginForm(new { @class = "login-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <ul class="input-list clearfix style-1">
+                        <li>
+                            @Html.EditorFor(u => u.Login, new { htmlAttributes = new { @class = "input-text clearfix", placeholder = "Имя пользователя" } })
+                        </li>
+                        <li>
+                            @Html.EditorFor(u => u.Password, new { htmlAttributes = new { @class = "input-text clearfix", placeholder = "Пароль" } })
+                        </li>
+                    </ul>
+                    <input type="submit" class="input-submit" value="Войти" />
+                }
+            </div>*@
+            <section class="footer">
+                <p>Присоединяйся к нам в популярных социальных сервисах</p>
+                <div><a href="#"><img src="~/Assets/Logos/Common/vk_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/ok_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/fb_flat_64.png" /></a></div>
+                <div><a href="#"><h6>Powered by Kineev Alexey</h6></a></div>
+            </section>
+</div><!-- /container -->
+    <script>
+        $('.message a').click(function () {
+            $('form').animate({ height: "toggle", opacity: "toggle" }, "fast");
+        });
+    </script>    
+</body>
+</html>
+
+

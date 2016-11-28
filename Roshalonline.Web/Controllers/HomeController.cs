@@ -5,6 +5,7 @@ using Roshalonline.Logic.MiddleEntities;
 using Roshalonline.Logic.Interfaces;
 using AutoMapper;
 using Roshalonline.Web.Models;
+using System.Web.Security;
 
 namespace Roshalonline.Web.Controllers
 {
@@ -337,6 +338,11 @@ namespace Roshalonline.Web.Controllers
         {
             return View();
         }
+
+        public ActionResult Client()
+        {
+            return View();
+        }
             
         [HttpGet]
         public ActionResult News()
@@ -345,6 +351,45 @@ namespace Roshalonline.Web.Controllers
             Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
             var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items);
             return View(allNews.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Client");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(UserLoginVM userParam)
+        {
+            var user = _userService.GetUser(userParam.Login, userParam.Password);
+            if (user.Name != "Failed")
+            {
+                FormsAuthentication.SetAuthCookie(userParam.Login, true);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                FormsAuthentication.SignOut();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

@@ -139,6 +139,10 @@ a:hover, a:focus {
 	color: #333;
 }
 
+.body-form{
+    width:90%;
+}
+
 .footer{
     width: 100%;
     text-align: center;
@@ -167,3 +171,5 @@ a:hover, a:focus {
 		display: none;
 	}
 }
+
+
