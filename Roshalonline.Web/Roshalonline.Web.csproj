@@ -167,6 +167,7 @@
     <Content Include="Assets\Logos\Common\ok_flat_64.png" />
     <Content Include="Assets\Logos\Home\Login\user-group.png" />
     <Content Include="Assets\Logos\Home\Login\users-login.png" />
+    <Content Include="Assets\Logos\Home\News\news-test.png" />
     <Content Include="Assets\Logos\payment.png" />
     <Content Include="Assets\Logos\Home\Index\phone.png" />
     <Content Include="Assets\Logos\Common\vk_flat_64.png" />
@@ -175,6 +176,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\component.css" />
+    <Content Include="Content\Home\News\main.css" />
+    <Content Include="Content\Home\News\svg.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\management.css" />
@@ -260,7 +263,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Assets\Logos\Home\News\" />
     <Folder Include="Assets\Logos\Home\Notes\" />
     <Folder Include="Assets\Logos\Management\" />
     <Folder Include="Content\Images\" />

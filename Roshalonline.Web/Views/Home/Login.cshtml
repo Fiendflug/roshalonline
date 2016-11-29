@@ -30,8 +30,6 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
             </script>*@
-
-
 </head>
 <body>
     <div class="container">
@@ -49,20 +47,31 @@
         </header>         
             <div class="form">
                 <div class="thumbnail"><img src="~/Assets/Logos/Home/Login/users-login.png" /></div>
-                <form class="register-form">                    
-                    <input type="text" placeholder="Носер лицевого счета" />
-                    <input type="password" placeholder="Пароль" />
-                    <input type="text" placeholder="email address" />
-                    <button>Отправить запрос</button>
-                    <p class="message">Ложная тревога? <a href="#">Войти</a></p>
+                <form class="register-form">
+                    <p class="message">Заполните все поля и нажмите "Отправить запрос". Наши операторы обязательно с вами свяжутся.</p>                    
+                    <input type="text" placeholder="Номер договора" />
+                    <input type="text" placeholder="Полное имя" />
+                    <input type="tel" placeholder="Контактный телефон" />
+                    <button type="submit">Отправить запрос</button>
+                    <p class="message">Ложная тревога?</p>
+                    <p class="message"><a href="#">Вернуться к форме входа в личный кабинет</a></p>
                 </form>
-                <form class="login-form">                    
+                @using (Html.BeginForm(new { @class = "login-form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.EditorFor(u => u.Login, new { htmlAttributes = new { placeholder = "Имя пользователя" } })
+                    @Html.EditorFor(u => u.Password, new { htmlAttributes = new { placeholder = "Пароль" } })
+                    <button type="submit">Войти</button>
+                    <p class="message">Нет доступа к личному кабинету или к вашим регистрационным данным?</p>
+                    <p class="message"><a href="#">Отправьте запрос на активацию досутпа к личному кабинету</a></p>
+                }
+                @*<form class="login-form">                    
                     <input type="text" placeholder="Имя пользователя" />
                     <input type="password" placeholder="Пароль" />
                     <button>Войти</button>
                     <p class="message">Нет доступа к личному кабинету или к вашим регистрационным данным?</p>
                     <p class="message"><a href="#">Отправьте запрос на активацию досутпа к личному кабинету</a></p>
-                </form>
+                </form>*@
             </div>
             @*<div class="login-screen">
                 @using (Html.BeginForm(new { @class = "login-form" }))
@@ -87,7 +96,7 @@
 </div><!-- /container -->
     <script>
         $('.message a').click(function () {
-            $('form').animate({ height: "toggle", opacity: "toggle" }, "fast");
+            $('form').animate({ height: "toggle", opacity: "toggle" }, "1000");
         });
     </script>    
 </body>
