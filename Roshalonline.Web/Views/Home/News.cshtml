@@ -44,53 +44,26 @@
             </nav>
         </header>
         <section id="grid" class="grid clearfix">
-            <a href="#" data-path-hover="m 180,74.57627 -180,0 L 0,0 180,0 z">
-                <figure>
-                    <img src="~/Assets/Logos/Home/News/news-test.png" />
-                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
-                    <figcaption>
-                        <h2>технические работы</h2>
-                        <p>Актуальная информация только для вас. Заглядывайте сюда почаще</p>
-                    </figcaption>
-                </figure>
-            </a>
-            <a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
-                <figure>
-                    <img src="~/Assets/Logos/Home/News/news-test.png" />
-                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
-                    <figcaption>
-                        <h2>новости</h2>
-                        <p>Актуальная информация только для вас. Заглядывайте сюда почаще</p>
-                    </figcaption>
-                </figure>
-            </a>
-            <a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
-                <figure>
-                    <img src="~/Assets/Logos/Home/News/news-test.png" />
-                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
-                    <figcaption>
-                        <h2>новости</h2>
-                        <p>Актуальная информация только для вас. Заглядывайте сюда почаще</p>
-                    </figcaption>
-                </figure>
-            </a>
-            <a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
-                <figure>
-                    <img src="~/Assets/Logos/Home/News/news-test.png" />
-                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
-                    <figcaption>
-                        <h2>новости</h2>
-                        <p>Актуальная информация только для вас. Заглядывайте сюда почаще</p>
-                    </figcaption>
-                </figure>
-            </a>
+            @foreach (var n in Model)
+            {
+                <a href="@Url.Action("ViewNews", "Home", new { n.ID })" id="view" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                    <figure>                        
+                        <img src=@n.PathToIcon />
+                        <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                        <figcaption>
+                            <h2>@n.Header</h2>
+                            <p>@n.CreateDate</p>
+                        </figcaption>                        
+                    </figure>
+                </a>
+            }            
         </section>        
         <section class="footer">
             <p>Присоединяйся к нам в популярных социальных сервисах</p>
             <div><a href="#"><img src="~/Assets/Logos/Common/vk_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/ok_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/fb_flat_64.png" /></a></div>
             <div><a href="#"><h6>Powered by Kineev Alexey</h6></a></div>
         </section>
-    </div><!-- /container -->
+    </div><!-- /container -->    
     <script>
 			(function() {
 
@@ -118,6 +91,6 @@
 				init();
 
 			})();
-    </script>
+    </script>    
 </body>
 </html>

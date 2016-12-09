@@ -176,6 +176,19 @@ namespace Roshalonline.Web.Controllers
                 {
                     newsParam.CreateDate = DateTime.Now;
                     newsParam.Category = Relevance.Active;
+                    newsParam.Type = BackgroundType.Sales;
+                    switch (newsParam.Type)
+                    {
+                        case BackgroundType.Info:
+                            newsParam.PathToIcon = "/Assets/Logos/Home/News/break.png";
+                            break;
+                        case BackgroundType.Break:
+                            newsParam.PathToIcon = "/Assets/Logos/Home/News/break.png";
+                            break;
+                        case BackgroundType.Sales:
+                            newsParam.PathToIcon = "/Assets/Logos/Home/News/sales.png";
+                            break;                       
+                    }
                     newsParam.ViewsCount = 0;
 
                     var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name);

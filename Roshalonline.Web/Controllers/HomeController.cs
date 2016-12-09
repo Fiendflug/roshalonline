@@ -6,6 +6,7 @@ using Roshalonline.Logic.Interfaces;
 using AutoMapper;
 using Roshalonline.Web.Models;
 using System.Web.Security;
+using Roshalonline.Logic.Infrastructure;
 
 namespace Roshalonline.Web.Controllers
 {
@@ -351,6 +352,23 @@ namespace Roshalonline.Web.Controllers
             Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
             var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items);
             return View(allNews.ToList());
+        }
+
+        [HttpGet]
+        public ActionResult ViewNews(int? id)
+        {
+            try
+            {
+                var item = _newsService.GetItem(id);
+                Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
+                var itemVM = Mapper.Map<NewsME, NewsVM>(item);
+                return View(itemVM);
+            }
+            catch (ValidationException exc)
+            {
+                ModelState.AddModelError(exc.Property, exc.Message);
+            }
+            return View();
         }
 
         [HttpGet]

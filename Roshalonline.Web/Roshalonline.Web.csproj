@@ -165,9 +165,14 @@
     <Content Include="Assets\Logos\Home\Index\new_client.png" />
     <Content Include="Assets\Logos\Home\Index\notes.png" />
     <Content Include="Assets\Logos\Common\ok_flat_64.png" />
-    <Content Include="Assets\Logos\Home\Login\user-group.png" />
     <Content Include="Assets\Logos\Home\Login\users-login.png" />
-    <Content Include="Assets\Logos\Home\News\news-test.png" />
+    <Content Include="Assets\Logos\Home\News\break.png" />
+    <Content Include="Assets\Logos\Home\News\sales.png" />
+    <Content Include="Assets\Logos\Home\ViewsNews\fb_48.png" />
+    <Content Include="Assets\Logos\Home\ViewsNews\news_backgroung.png" />
+    <Content Include="Assets\Logos\Home\ViewsNews\ok_48.png" />
+    <Content Include="Assets\Logos\Home\ViewsNews\twitter_48.png" />
+    <Content Include="Assets\Logos\Home\ViewsNews\vk_48.png" />
     <Content Include="Assets\Logos\payment.png" />
     <Content Include="Assets\Logos\Home\Index\phone.png" />
     <Content Include="Assets\Logos\Common\vk_flat_64.png" />
@@ -178,6 +183,8 @@
     <Content Include="Content\component.css" />
     <Content Include="Content\Home\News\main.css" />
     <Content Include="Content\Home\News\svg.css" />
+    <Content Include="Content\Home\ViewNews\main.css" />
+    <Content Include="Content\Home\ViewNews\common-style.css" />
     <Content Include="Content\login.css" />
     <Content Include="Content\main.css" />
     <Content Include="Content\management.css" />
@@ -254,6 +261,7 @@
     <Content Include="Views\Home\Business.cshtml" />
     <Content Include="Views\Home\Client.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\ViewNews.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -12,12 +12,20 @@ namespace Roshalonline.Data.Models
         Active,
         Archive
     }
+    
+    public enum BackgroundType
+    {
+        Info,
+        Break,
+        Sales
+    }
 
     public class News
     {   
         public int ID { get; set; }
         public string Header { get; set; }
         public Relevance Category { get; set; }
+        public BackgroundType Type { get; set; }
         public string PathToIcon { get; set; }        
         public DateTime CreateDate { get; set; }
         public string Body { get; set; }        

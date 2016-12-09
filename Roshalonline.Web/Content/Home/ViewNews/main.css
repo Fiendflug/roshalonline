@@ -12,8 +12,9 @@
 
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
+
 body {
-	background: #333;
+	background: #3498db;
 	color: #fff;
 	font-weight: 400;
 	font-size: 1em;
@@ -136,19 +137,60 @@ a:hover, a:focus {
 .codrops-demos a.current-demo,
 .codrops-demos a.current-demo:hover {
 	border-color: #333;
-	color: #333;
+	color: white;
 }
 
 .body-form{
     width:90%;
 }
 
-.news-container{
-    background-color: white;
-    width: 90%;
-    display: none;
+.news-body-header{
+    text-align: center;
+    color: #3498DB;
+    text-transform: uppercase;
+    font-size: 120%;
 }
 
+.news-header-img{
+	text-align: center;
+}
+
+.news-author{
+    padding-left: 0.6em;
+    display: inline-block;
+    text-align: left;
+    color: #3498DB;
+    font-size: 100%;
+}
+
+.news-date{    
+    margin-left: 0.6em; 
+    display: inline-block;
+    font-size: 100%;
+}
+
+.news-body-content{
+    padding: 0.6em;
+    text-align: justify;
+}
+
+.news-body-content img {
+    display: block;
+    margin: 0 auto;
+}
+
+.news-footer-header{
+    text-align: center;
+    color: #3498DB;
+}
+
+.news-footer-ref{
+    text-align: center;
+}
+
+.news-footer-ref img{
+    padding: 0.3em;
+}
 
 .footer{
     width: 100%;
@@ -172,7 +214,12 @@ a:hover, a:focus {
     font-size: 0.80em;
 }
 
+
 @media screen and (max-width: 25em) {
+
+    .news-body-content img{
+        display: none;
+    }
 
 	.codrops-icon span {
 		display: none;
