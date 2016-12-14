@@ -7,6 +7,8 @@ using AutoMapper;
 using Roshalonline.Web.Models;
 using System.Web.Security;
 using Roshalonline.Logic.Infrastructure;
+using PagedList.Mvc;
+using PagedList;
 
 namespace Roshalonline.Web.Controllers
 {
@@ -346,12 +348,16 @@ namespace Roshalonline.Web.Controllers
         }
             
         [HttpGet]
-        public ActionResult News()
+        public ActionResult News(int? page)
         {
-            IList<NewsME> items = _newsService.GetAllItems();
+            IList<NewsME> items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active);
             Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
-            var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items);
-            return View(allNews.ToList());
+            var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items).ToList();
+            allNews.Reverse();
+            var pageSize = 8;
+            var pageNumber = (page ?? 1);
+
+            return View(allNews.ToPagedList(pageNumber, pageSize));
         }
 
         [HttpGet]
@@ -363,6 +369,33 @@ namespace Roshalonline.Web.Controllers
                 Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
                 var itemVM = Mapper.Map<NewsME, NewsVM>(item);
                 return View(itemVM);
+            }
+            catch (ValidationException exc)
+            {
+                ModelState.AddModelError(exc.Property, exc.Message);
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public ActionResult ViewStepNews(int currId, int step) //ДОбавить нормальный обработчик ислкючений 
+        {
+            try
+            {
+                IList<NewsME> items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active);
+                Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
+                var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items).ToList();
+                allNews.Reverse();
+                var currNewsIndex = allNews.IndexOf(allNews.Find(n => n.ID == currId));
+
+                if (step == 0)
+                {
+                    return View(allNews[currNewsIndex - 1]);
+                }
+                else if (step == 1)
+                {
+                    return View(allNews[currNewsIndex + 1]);
+                }                
             }
             catch (ValidationException exc)
             {

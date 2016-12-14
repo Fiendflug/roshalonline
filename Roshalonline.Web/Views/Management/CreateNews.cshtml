@@ -1,4 +1,12 @@
 ﻿@model Roshalonline.Web.Models.NewsVM
+@using Roshalonline.Data.Models
+
+@{ 
+    List<SelectListItem> allNewsTypes = new List<SelectListItem>();
+    allNewsTypes.Add(new SelectListItem { Text = "Общая новость", Value = "Info" });
+    allNewsTypes.Add(new SelectListItem { Text = "Акции: специальные предложения", Value = "Sales" });
+    allNewsTypes.Add(new SelectListItem { Text = "Технические работы", Value = "Techincal" });
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -58,6 +66,7 @@
         @using (Html.BeginForm("CreateNews", "Management", FormMethod.Post, new { @id = "formCreate" }))
         {
             @Html.EditorFor(n => n.Header, new { htmlAttributes = new { @class = "form-control input-sm", @placeholder = "Введите заголовок для вашей новости" } })
+            @Html.EnumDropDownListFor(n => n.Type, new { @class = "selectpicker" }) //SELECT            
             @Html.TextAreaFor(n => n.Body, new { @id = "editor1", @name = "editor1" })
             <script>
                 CKEDITOR.replace('editor1', {
@@ -79,39 +88,3 @@
         $('#formCreate').submit();
     }
 </script>
-@*<script>
-    function previewNews() {
-        var body = $('#editor1').val();
-        var myWindow = window.open("", "", "width=600,height=450");
-        newContent = myWindow.document.createElement("textarea");
-        myWindow.document.body.appendChild(body);
-    }
-</script>*@
-
-@*@{
-    Layout = "~/Views/Shared/_ManagementLayout.cshtml";
-}
-
-<script src="~/Scripts/ckeditor/ckeditor.js"></script>
-@using (Html.BeginForm("CreateNews", "Management", FormMethod.Post, new { style = "margin-top: 50px;" }))
-{
-    <table>
-        <tr>
-            <td>@Html.LabelFor(n => n.Header)</td>
-            <td>@Html.EditorFor(n => n.Header)</td>
-        </tr>
-    </table>
-        @Html.TextAreaFor(n => n.Body, new { @id = "editor1", @name = "editor1", @Value = "&lt;p&gt;Initial value.&lt;/p&gt;" })
-        <script>
-            CKEDITOR.replace('editor1', {
-                filebrowserImageBrowseUrl: '/Management/UploadPartial',
-                filebrowserImageUploadUrl: '/Management/Upload'
-            });
-
-            function updateValue(id, value) {
-                var dialog = CKEDITOR.dialog.getCurrent();
-                dialog.setValueOf('info', 'txtUrl', value);
-            }
-        </script>
-        <input type="submit" value="Submit" id="btnSubmit" />
-}*@

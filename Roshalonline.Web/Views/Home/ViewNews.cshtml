@@ -38,10 +38,10 @@
             <header class="codrops-header">
                 <img src="~/Assets/Logos/Common/logo_96.png" /><h1>ROSHAL ONLINE<span>Первый городской оператор связи</span></h1>
                 <nav class="codrops-demos">
-                    <a href="index2.html">На главную</a>
-                    <a href="index.html">К списку новостей</a>
-                    <a href="index3.html">Предыдущая</a>                    
-                    <a href=#>Следующая</a>
+                    <a href="@Url.Action("Index", "Home")">На главную</a>
+                    <a href="@Url.Action("News", "Home")">К списку новостей</a>
+                    <a href="@Url.Action("ViewStepNews", "Home", new { currId = Model.ID, step = 0 })">Предыдущая</a>                    
+                    <a href="@Url.Action("ViewStepNews", "Home", new { currId = Model.ID, step = 1 })">Следующая</a>
                 </nav>
             </header>
             @*<div class="view-container">
@@ -57,16 +57,16 @@
                     @*<h2 style="color: black;">@Model.Header</h2>*@ 
                     <figure> 
                         <p class="news-body-header">@Model.Header</p>   
-                        <p class="news-header-img"><img src="~/Assets/Logos/Home/Login/users-login.png" /></p>  
-                        <p class="news-author">Автор: Виталик</p>
+                        <p class="news-header-img"><img src=@Model.PathToIcon /></p>  
+                        <p class="news-author">Автор: @Model.AuthorName</p>
                         <p class="news-date">@Model.CreateDate</p>
                         <div class="news-body-content"><p>@Html.Raw(Model.Body)</p></div>
                         <p class="news-footer-header">Поделитесь с новостью с друзьями - нажмите иконку для репоста</p> 
                         <p class="news-footer-ref">
-                            <img src="~/Assets/Logos/Home/ViewsNews/vk_48.png" />
-                            <img src="~/Assets/Logos/Home/ViewsNews/fb_48.png" />
-                            <img src="~/Assets/Logos/Home/ViewsNews/ok_48.png" />
-                            <img src="~/Assets/Logos/Home/ViewsNews/twitter_48.png" />
+                            <img src="~/Assets/Logos/Home/ViewNews/vk_48.png" />
+                            <img src="~/Assets/Logos/Home/ViewNews/fb_48.png" />
+                            <img src="~/Assets/Logos/Home/ViewNews/ok_48.png" />
+                            <img src="~/Assets/Logos/Home/ViewNews/twitter_48.png" />
                         </p>                     
                     </figure>
                 </div>

@@ -176,26 +176,35 @@ namespace Roshalonline.Web.Controllers
                 {
                     newsParam.CreateDate = DateTime.Now;
                     newsParam.Category = Relevance.Active;
-                    newsParam.Type = BackgroundType.Sales;
                     switch (newsParam.Type)
                     {
                         case BackgroundType.Info:
-                            newsParam.PathToIcon = "/Assets/Logos/Home/News/break.png";
+                            newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/info_news_128.png";
+                            newsParam.PathToCover = "/Assets/Logos/Home/News/info_news.png";
                             break;
                         case BackgroundType.Break:
-                            newsParam.PathToIcon = "/Assets/Logos/Home/News/break.png";
+                            newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/take_a_break_128.png";
+                            newsParam.PathToCover = "/Assets/Logos/Home/News/break.png";
                             break;
                         case BackgroundType.Sales:
-                            newsParam.PathToIcon = "/Assets/Logos/Home/News/sales.png";
-                            break;                       
+                            newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/money_128.png";
+                            newsParam.PathToCover = "/Assets/Logos/Home/News/sales.png";
+                            break;
+                        case BackgroundType.Impotant:
+                            newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/impotant_news_128.png";
+                            newsParam.PathToCover = "/Assets/Logos/Home/News/impotant_news.png";
+                            break;
+                        case BackgroundType.Holiday:
+                            newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/holiday_128.png";
+                            newsParam.PathToCover = "/Assets/Logos/Home/News/holiday.png";
+                            break;
                     }
                     newsParam.ViewsCount = 0;
 
                     var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name);
                     newsParam.AuthorID = currUser.First().ID;
+                    newsParam.AuthorName = currUser.First().Name;
 
-                    //var test = new DatabaseWorker(); //TEST
-                    //newsParam.Author = test.Users.GetItem(1);   //TEST
                     Mapper.Initialize(cfg => cfg.CreateMap<NewsVM, NewsME>());
                     var item = Mapper.Map<NewsVM, NewsME>(newsParam);
                     _newsService.Create(item);

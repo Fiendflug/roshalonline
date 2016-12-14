@@ -93,7 +93,7 @@ a:hover, a:focus {
 	float: left;
 }
 
-.codrops-icon:before {
+/*.codrops-icon:before {
 	margin: 0 4px;
 	text-transform: none;
 	font-weight: normal;
@@ -111,6 +111,39 @@ a:hover, a:focus {
 
 .codrops-icon-prev:before {
 	content: "\e004";
+}*/
+
+/* Pagination */
+.pagination-container{
+    text-align: center;
+}
+
+.pagination-container ul{
+    padding: 0px;
+    list-style-type: none; 
+}
+
+.pagination-container a{
+    display: inline-block;
+	margin: 0.5em;
+	padding: 0.7em 1.1em;
+	outline: none;
+	border: 2px solid #fff;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+}
+
+.pagination-container a:hover,
+.active a{
+    border-color: #333;
+	color: #333;
+}
+
+.pagination-container li{
+    display: inline;    
 }
 
 /* Demo Buttons Style */
@@ -168,15 +201,8 @@ a:hover, a:focus {
     padding-bottom: 1.5em;
 }
 
-.footer h6 {
+.footer h6{
     font-size: 0.80em;
-}
-
-@media screen and (max-width: 25em) {
-
-	.codrops-icon span {
-		display: none;
-	}
 }
 
 

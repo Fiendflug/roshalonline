@@ -99,6 +99,18 @@
     <Compile Include="Migrations\201611301319198_today8.Designer.cs">
       <DependentUpon>201611301319198_today8.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612120651182_author.cs" />
+    <Compile Include="Migrations\201612120651182_author.Designer.cs">
+      <DependentUpon>201612120651182_author.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612120732110_typenews.cs" />
+    <Compile Include="Migrations\201612120732110_typenews.Designer.cs">
+      <DependentUpon>201612120732110_typenews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612120914266_1155.cs" />
+    <Compile Include="Migrations\201612120914266_1155.Designer.cs">
+      <DependentUpon>201612120914266_1155.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DatabaseWorker.cs" />
@@ -148,6 +160,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611301319198_today8.resx">
       <DependentUpon>201611301319198_today8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612120651182_author.resx">
+      <DependentUpon>201612120651182_author.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612120732110_typenews.resx">
+      <DependentUpon>201612120732110_typenews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612120914266_1155.resx">
+      <DependentUpon>201612120914266_1155.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
