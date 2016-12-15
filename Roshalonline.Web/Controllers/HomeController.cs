@@ -6,9 +6,8 @@ using Roshalonline.Logic.Interfaces;
 using AutoMapper;
 using Roshalonline.Web.Models;
 using System.Web.Security;
-using Roshalonline.Logic.Infrastructure;
-using PagedList.Mvc;
 using PagedList;
+using System;
 
 namespace Roshalonline.Web.Controllers
 {
@@ -361,24 +360,7 @@ namespace Roshalonline.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult ViewNews(int? id)
-        {
-            try
-            {
-                var item = _newsService.GetItem(id);
-                Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
-                var itemVM = Mapper.Map<NewsME, NewsVM>(item);
-                return View(itemVM);
-            }
-            catch (ValidationException exc)
-            {
-                ModelState.AddModelError(exc.Property, exc.Message);
-            }
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult ViewStepNews(int currId, int step) //ДОбавить нормальный обработчик ислкючений 
+        public ActionResult ViewNews(int currId, int step) 
         {
             try
             {
@@ -387,21 +369,48 @@ namespace Roshalonline.Web.Controllers
                 var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items).ToList();
                 allNews.Reverse();
                 var currNewsIndex = allNews.IndexOf(allNews.Find(n => n.ID == currId));
-
-                if (step == 0)
+                NewsVM itemVM = null;
+                if (step == -1)
                 {
-                    return View(allNews[currNewsIndex - 1]);
+                    itemVM = allNews[currNewsIndex];
                 }
-                else if (step == 1)
+
+                if (step == 0 & currNewsIndex != 0 )
                 {
-                    return View(allNews[currNewsIndex + 1]);
-                }                
-            }
-            catch (ValidationException exc)
+                    itemVM = allNews[currNewsIndex - 1];
+                }
+                else if (step == 1 & currNewsIndex != allNews.Count - 1)
+                {
+                    itemVM = allNews[currNewsIndex + 1];
+                }
+                else if(step < -1 || step > 1)
+                {
+                    return RedirectToAction("Error", "Home", new { message = "Что-то пошло не так: например кто-то указал неверные параметры для действия" });
+                }
+
+                int positionIndex;
+
+                if (allNews.IndexOf(itemVM) == 0)
+                {
+                    positionIndex = 0;
+                }
+                else if (allNews.IndexOf(itemVM) == allNews.Count - 1)
+                {
+                    positionIndex = 1;
+                }
+                else
+                {
+                    positionIndex = -1;
+                }
+
+                var steppedNews = new Dictionary<int, NewsVM>();
+                steppedNews[positionIndex] = itemVM;
+                return View(steppedNews);             
+            }            
+            catch(Exception exc)
             {
-                ModelState.AddModelError(exc.Property, exc.Message);
+                return RedirectToAction("Error", "Home", new { message = exc.Message });
             }
-            return View();
         }
 
         [HttpGet]

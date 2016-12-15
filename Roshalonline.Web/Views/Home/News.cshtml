@@ -46,7 +46,7 @@
         <section id="grid" class="grid clearfix">
             @foreach (var n in Model)
             {
-                <a href="@Url.Action("ViewNews", "Home", new { n.ID })" id="view" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                <a href="@Url.Action("ViewNews", "Home", new { currID = n.ID, step = -1 })" id="view" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
                     <figure>                        
                         <img src=@n.PathToCover />
                         <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>

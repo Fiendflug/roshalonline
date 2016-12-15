@@ -48,7 +48,7 @@
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 300;
-	font-size: 100%;
+	font-size: 110%;
 	-webkit-transition: -webkit-transform 0.3s;
 	transition: transform 0.3s;
 }

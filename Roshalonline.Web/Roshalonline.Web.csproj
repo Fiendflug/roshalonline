@@ -178,6 +178,7 @@
     <Content Include="Assets\Logos\Home\News\holiday.png" />
     <Content Include="Assets\Logos\Home\News\impotant_news.png" />
     <Content Include="Assets\Logos\Home\News\info_news.png" />
+    <Content Include="Assets\Logos\Home\ViewNews\feedback_for_viewnews.png" />
     <Content Include="Assets\Logos\Home\ViewNews\holiday_128.png" />
     <Content Include="Assets\Logos\Home\ViewNews\impotant_news_128.png" />
     <Content Include="Assets\Logos\Home\ViewNews\info_news_128.png" />
@@ -185,6 +186,7 @@
     <Content Include="Assets\Logos\Home\News\sales.png" />
     <Content Include="Assets\Logos\Home\ViewNews\fb_48.png" />
     <Content Include="Assets\Logos\Home\ViewNews\news_backgroung.png" />
+    <Content Include="Assets\Logos\Home\ViewNews\new_client_for_viewnews.png" />
     <Content Include="Assets\Logos\Home\ViewNews\ok_48.png" />
     <Content Include="Assets\Logos\Home\ViewNews\take_a_break_128.png" />
     <Content Include="Assets\Logos\Home\ViewNews\twitter_48.png" />
@@ -349,7 +351,6 @@
     <Content Include="Views\Home\Client.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\ViewNews.cshtml" />
-    <Content Include="Views\Home\ViewStepNews.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

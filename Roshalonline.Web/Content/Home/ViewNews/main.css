@@ -106,13 +106,13 @@ a:hover, a:focus {
 	-webkit-font-smoothing: antialiased;
 }
 
-.codrops-icon-drop:before {
+/*.codrops-icon-drop:before {
 	content: "\e001";
 }
 
 .codrops-icon-prev:before {
 	content: "\e004";
-}
+}*/
 
 /* Demo Buttons Style */
 .codrops-demos {
@@ -137,7 +137,7 @@ a:hover, a:focus {
 .codrops-demos a.current-demo,
 .codrops-demos a.current-demo:hover {
 	border-color: #333;
-	color: white;
+	color: #333;
 }
 
 .body-form{
@@ -177,9 +177,14 @@ a:hover, a:focus {
 .news-body-content img {
     max-width:100% !important;
     height:auto;
-    /*width: auto;*/
     display:block;
     margin: 0 auto;
+}
+
+figure .news-body-footer{
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
 }
 
 .news-footer-header{
@@ -187,7 +192,7 @@ a:hover, a:focus {
     color: #3498DB;
 }
 
-.news-footer-ref{
+.news-footer-ref{   
     text-align: center;
 }
 

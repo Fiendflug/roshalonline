@@ -48,7 +48,7 @@
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 300;
-	font-size: 130%;
+	font-size: 110%; /* I changed it. It value did 130% */
 	-webkit-transition: -webkit-transform 0.3s;
 	transition: transform 0.3s;
 }

@@ -16,10 +16,11 @@
     padding-top: 1.9em;
     float: left; 
     width: 75%; 
-    max-width: 750px;
-    /*position: relative;
-	display: block;*/
-    /*background: #fff;*/
+    max-width: 750px;  
+}
+
+.news-body figure{
+    min-height: 700px;
 }
 
 
@@ -62,7 +63,7 @@
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	font-weight: 300;
-	font-size: 100%;
+	font-size: 110%;
 	-webkit-transition: -webkit-transform 0.3s;
 	transition: transform 0.3s;
 }
@@ -120,8 +121,8 @@
 
 .grid a:hover figcaption h2,
 .grid a:hover figcaption p {
-	-webkit-transform: translateY(0);
-	transform: translateY(0);
+	-webkit-transform: translateY(-5px); /* I cheged it */
+	transform: translateY(-5px); /* I cheged it */
 }
 
 .grid a:hover figcaption p {
