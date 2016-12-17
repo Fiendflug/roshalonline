@@ -6,8 +6,10 @@ using Roshalonline.Logic.Interfaces;
 using AutoMapper;
 using Roshalonline.Web.Models;
 using System.Web.Security;
+using Roshalonline.Web.Filters;
 using PagedList;
 using System;
+using Roshalonline.Data.Models;
 
 namespace Roshalonline.Web.Controllers
 {
@@ -341,6 +343,8 @@ namespace Roshalonline.Web.Controllers
             return View();
         }
 
+        [HttpGet]
+        [AuthenticationClientFilter]
         public ActionResult Client()
         {
             return View();
@@ -431,11 +435,11 @@ namespace Roshalonline.Web.Controllers
         public ActionResult Login(UserLoginVM userParam)
         {
             var user = _userService.GetUser(userParam.Login, userParam.Password);
-            if (user.Name != "Failed")
+            if (user.Name != "Failed" & user.UserRole == UserCategory.Client)
             {
                 FormsAuthentication.SetAuthCookie(userParam.Login, true);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Client");
         }
 
         [HttpGet]

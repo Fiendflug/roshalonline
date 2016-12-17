@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using Roshalonline.Data.Models;
 
 namespace Roshalonline.Web.Models
 {
@@ -13,6 +14,9 @@ namespace Roshalonline.Web.Models
 
         [Required]
         public string Name { get; set; }
+
+        [Required]
+        public UserCategory UserRole { get; set; }
 
         [Required]
         [DataType(DataType.Password)]

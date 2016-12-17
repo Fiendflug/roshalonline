@@ -111,6 +111,10 @@
     <Compile Include="Migrations\201612120914266_1155.Designer.cs">
       <DependentUpon>201612120914266_1155.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612161150275_UserCategory.cs" />
+    <Compile Include="Migrations\201612161150275_UserCategory.Designer.cs">
+      <DependentUpon>201612161150275_UserCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DatabaseWorker.cs" />
@@ -169,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612120914266_1155.resx">
       <DependentUpon>201612120914266_1155.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612161150275_UserCategory.resx">
+      <DependentUpon>201612161150275_UserCategory.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

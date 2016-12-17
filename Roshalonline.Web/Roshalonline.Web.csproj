@@ -200,13 +200,19 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\component.css" />
+    <Content Include="Content\Home\Business\component.css" />
+    <Content Include="Content\Home\Business\main.css" />
+    <Content Include="Content\Home\Client\common.css" />
+    <Content Include="Content\Home\Client\main.css" />
+    <Content Include="Content\Home\Index\component.css" />
+    <Content Include="Content\Home\Login\component.css" />
+    <Content Include="Content\Home\Login\main.css" />
     <Content Include="Content\Home\News\main.css" />
     <Content Include="Content\Home\News\common.css" />
     <Content Include="Content\Home\ViewNews\main.css" />
     <Content Include="Content\Home\ViewNews\common-style.css" />
-    <Content Include="Content\login.css" />
-    <Content Include="Content\main.css" />
+    <Content Include="Content\Home\Login\login.css" />
+    <Content Include="Content\Home\Index\main.css" />
     <Content Include="Content\management.css" />
     <Content Include="Content\normalise.css" />
     <Content Include="Content\PagedList.css" />
@@ -306,6 +312,8 @@
     <Compile Include="Controllers\AdministrationController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Filters\AuthenticationAdminFilter.cs" />
+    <Compile Include="Filters\AuthenticationClientFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

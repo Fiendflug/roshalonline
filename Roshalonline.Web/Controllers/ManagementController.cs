@@ -11,10 +11,10 @@ using AutoMapper;
 using Roshalonline.Web.Models;
 using Roshalonline.Logic.Infrastructure;
 using Roshalonline.Data.Models;
-using Roshalonline.Data.Repositories;
+using Roshalonline.Web.Filters;
 
 namespace Roshalonline.Web.Controllers
-{
+{    
     public class ManagementController : Controller
     {
         private IEntry<NewsME> _newsService;
@@ -28,16 +28,10 @@ namespace Roshalonline.Web.Controllers
         }
 
         [HttpGet]
+        [AuthenticationAdminFilter]
         public ActionResult Index()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }     
+            return View();
         }
 
         //Аутентификация
@@ -60,9 +54,9 @@ namespace Roshalonline.Web.Controllers
         public ActionResult Login(UserLoginVM userParam)
         {            
             var user = _userService.GetUser(userParam.Login, userParam.Password);
-            if (user.Name != "Failed")
+            if (user.Name != "Failed" & user.UserRole == UserCategory.Administrator)
             {
-                FormsAuthentication.SetAuthCookie(userParam.Login, true);                
+                FormsAuthentication.SetAuthCookie(userParam.Login, true);                               
             }
             return RedirectToAction("Index");
         }
@@ -107,19 +101,13 @@ namespace Roshalonline.Web.Controllers
         //Новости
 
         [HttpGet]
+        [AuthenticationAdminFilter]
         public ActionResult News()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                IList<NewsME> items = _newsService.GetAllItems();
-                Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
-                var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items);
-                return View(allNews.ToList());
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }            
+            IList<NewsME> items = _newsService.GetAllItems();
+            Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
+            var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items);
+            return View(allNews.ToList());
         }
 
         //[HttpGet]
@@ -154,244 +142,183 @@ namespace Roshalonline.Web.Controllers
         //}
 
         [HttpGet]
+        [AuthenticationAdminFilter]
         public ActionResult CreateNews()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }            
+            return View();
         }
 
         [HttpPost]
+        [AuthenticationAdminFilter]
         [ValidateInput(false)]
         public ActionResult CreateNews(NewsVM newsParam)
         {
-            if (User.Identity.IsAuthenticated)
+            try
             {
-                try
+                newsParam.CreateDate = DateTime.Now;
+                newsParam.Category = Relevance.Active;
+                switch (newsParam.Type)
                 {
-                    newsParam.CreateDate = DateTime.Now;
-                    newsParam.Category = Relevance.Active;
-                    switch (newsParam.Type)
-                    {
-                        case BackgroundType.Info:
-                            newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/info_news_128.png";
-                            newsParam.PathToCover = "/Assets/Logos/Home/News/info_news.png";
-                            break;
-                        case BackgroundType.Break:
-                            newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/take_a_break_128.png";
-                            newsParam.PathToCover = "/Assets/Logos/Home/News/break.png";
-                            break;
-                        case BackgroundType.Sales:
-                            newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/money_128.png";
-                            newsParam.PathToCover = "/Assets/Logos/Home/News/sales.png";
-                            break;
-                        case BackgroundType.Impotant:
-                            newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/impotant_news_128.png";
-                            newsParam.PathToCover = "/Assets/Logos/Home/News/impotant_news.png";
-                            break;
-                        case BackgroundType.Holiday:
-                            newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/holiday_128.png";
-                            newsParam.PathToCover = "/Assets/Logos/Home/News/holiday.png";
-                            break;
-                    }
-                    newsParam.ViewsCount = 0;
-
-                    var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name);
-                    newsParam.AuthorID = currUser.First().ID;
-                    newsParam.AuthorName = currUser.First().Name;
-
-                    Mapper.Initialize(cfg => cfg.CreateMap<NewsVM, NewsME>());
-                    var item = Mapper.Map<NewsVM, NewsME>(newsParam);
-                    _newsService.Create(item);
-                    return RedirectToAction("News");
+                    case BackgroundType.Info:
+                        newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/info_news_128.png";
+                        newsParam.PathToCover = "/Assets/Logos/Home/News/info_news.png";
+                        break;
+                    case BackgroundType.Break:
+                        newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/take_a_break_128.png";
+                        newsParam.PathToCover = "/Assets/Logos/Home/News/break.png";
+                        break;
+                    case BackgroundType.Sales:
+                        newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/money_128.png";
+                        newsParam.PathToCover = "/Assets/Logos/Home/News/sales.png";
+                        break;
+                    case BackgroundType.Impotant:
+                        newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/impotant_news_128.png";
+                        newsParam.PathToCover = "/Assets/Logos/Home/News/impotant_news.png";
+                        break;
+                    case BackgroundType.Holiday:
+                        newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/holiday_128.png";
+                        newsParam.PathToCover = "/Assets/Logos/Home/News/holiday.png";
+                        break;
                 }
-                catch (ValidationException exc)
-                {
-                    ModelState.AddModelError(exc.Property, exc.Message);
-                }
-                return View(newsParam);
+                newsParam.ViewsCount = 0;
+
+                var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name);
+                newsParam.AuthorID = currUser.First().ID;
+                newsParam.AuthorName = currUser.First().Name;
+
+                Mapper.Initialize(cfg => cfg.CreateMap<NewsVM, NewsME>());
+                var item = Mapper.Map<NewsVM, NewsME>(newsParam);
+                _newsService.Create(item);
+                return RedirectToAction("News");
             }
-            else
+            catch (ValidationException exc)
             {
-                return RedirectToAction("Login");
-            }            
+                ModelState.AddModelError(exc.Property, exc.Message);
+            }
+            return View(newsParam);
         }
 
         [HttpGet]
+        [AuthenticationAdminFilter]
         public ActionResult ViewNews(int? id)
         {
-            if (User.Identity.IsAuthenticated)
+            try
             {
-                try
-                {
-                    var item = _newsService.GetItem(id);
-                    Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
-                    var itemVM = Mapper.Map<NewsME, NewsVM>(item);
-                    return View(itemVM);
-                }
-                catch (ValidationException exc)
-                {
-                    ModelState.AddModelError(exc.Property, exc.Message);
-                }
-                return View();
+                var item = _newsService.GetItem(id);
+                Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
+                var itemVM = Mapper.Map<NewsME, NewsVM>(item);
+                return View(itemVM);
             }
-            else
+            catch (ValidationException exc)
             {
-                return RedirectToAction("Login");
-            }            
+                ModelState.AddModelError(exc.Property, exc.Message);
+            }
+            return View();
         }
 
         [HttpGet]
+        [AuthenticationAdminFilter]
         public ActionResult EditNews(int? id)
         {
-            if (User.Identity.IsAuthenticated)
+            try
             {
-                try
-                {
-                    var item = _newsService.GetItem(id);
-                    Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
-                    var itemVM = Mapper.Map<NewsME, NewsVM>(item);
-                    return View(itemVM);
-                }
-                catch (ValidationException exc)
-                {
-                    ModelState.AddModelError(exc.Property, exc.Message);
-                }
-                return View();
+                var item = _newsService.GetItem(id);
+                Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
+                var itemVM = Mapper.Map<NewsME, NewsVM>(item);
+                return View(itemVM);
             }
-            else
+            catch (ValidationException exc)
             {
-                return RedirectToAction("Login");
-            }            
+                ModelState.AddModelError(exc.Property, exc.Message);
+            }
+            return View();
         }
 
         [HttpPost]
+        [AuthenticationAdminFilter]
         public ActionResult EditNews(NewsVM itemParam)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                itemParam.CreateDate = DateTime.Now;
-                var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name);
-                itemParam.AuthorID = currUser.First().ID;
-                //var test = new DatabaseWorker(); //TEST
-                //itemParam.Author = test.Users.GetItem(1);   //TEST
+            itemParam.CreateDate = DateTime.Now;
+            var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name);
+            itemParam.AuthorID = currUser.First().ID;
+            //var test = new DatabaseWorker(); //TEST
+            //itemParam.Author = test.Users.GetItem(1);   //TEST
 
-                Mapper.Initialize(cfg => cfg.CreateMap<NewsVM, NewsME>());
-                var item = Mapper.Map<NewsVM, NewsME>(itemParam);
-                _newsService.Edit(item);
-                return RedirectToAction("News");
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }            
+            Mapper.Initialize(cfg => cfg.CreateMap<NewsVM, NewsME>());
+            var item = Mapper.Map<NewsVM, NewsME>(itemParam);
+            _newsService.Edit(item);
+            return RedirectToAction("News");
         }
 
-        [HttpGet]        
+        [HttpGet]       
+        [AuthenticationAdminFilter] 
         public ActionResult DeleteNews(int? id)
         {
-            if (User.Identity.IsAuthenticated)
+            try
             {
-                try
-                {
-                    var item = _newsService.GetItem(id);
-                    Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
-                    var itemVM = Mapper.Map<NewsME, NewsVM>(item);
-                    return View(itemVM);
-                }
-                catch (ValidationException exc)
-                {
-                    ModelState.AddModelError(exc.Property, exc.Message);
-                }
-                return View();
+                var item = _newsService.GetItem(id);
+                Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
+                var itemVM = Mapper.Map<NewsME, NewsVM>(item);
+                return View(itemVM);
             }
-            else
+            catch (ValidationException exc)
             {
-                return RedirectToAction("Login");
-            }            
+                ModelState.AddModelError(exc.Property, exc.Message);
+            }
+            return View();
         }
 
         [HttpPost, ActionName("DeleteNews")]
+        [AuthenticationAdminFilter]
         public ActionResult ConfirmDeleteNews(NewsVM itemParam)
         {
-            if (User.Identity.IsAuthenticated)
+            try
             {
-                try
-                {
-                    Mapper.Initialize(cfg => cfg.CreateMap<NewsVM, NewsME>());
-                    var item = Mapper.Map<NewsVM, NewsME>(itemParam);
-                    _newsService.Delete(item.ID);
-                    return RedirectToAction("News");
-                }
-                catch (ValidationException exc)
-                {
-                    ModelState.AddModelError(exc.Property, exc.Message);
-                }
-                return View();
+                Mapper.Initialize(cfg => cfg.CreateMap<NewsVM, NewsME>());
+                var item = Mapper.Map<NewsVM, NewsME>(itemParam);
+                _newsService.Delete(item.ID);
+                return RedirectToAction("News");
             }
-            else
+            catch (ValidationException exc)
             {
-                return RedirectToAction("Login");
-            }            
+                ModelState.AddModelError(exc.Property, exc.Message);
+            }
+            return View();
         }
 
         [HttpGet]
+        [AuthenticationAdminFilter]
         public ActionResult Users()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                var items = _userService.GetAllUsers();
-                Mapper.Initialize(cfg => cfg.CreateMap<UserME, UserLoginVM>());
-                var allUsers = Mapper.Map<IList<UserME>, IList<UserLoginVM>>(items);
-                return View(allUsers.ToList());
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }            
+            var items = _userService.GetAllUsers();
+            Mapper.Initialize(cfg => cfg.CreateMap<UserME, UserLoginVM>());
+            var allUsers = Mapper.Map<IList<UserME>, IList<UserLoginVM>>(items);
+            return View(allUsers.ToList());
         }
 
         [HttpGet]
+        [AuthenticationAdminFilter]
         public ActionResult AddUser()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
+            return View();
         }
 
         [HttpPost]
+        [AuthenticationAdminFilter]
         [ValidateAntiForgeryToken]
         public ActionResult AddUser(UserAddVM userParam)
         {
-            if (User.Identity.IsAuthenticated)
+            var user = _userService.GetUsers(u => u.Name == userParam.Name && u.Login == userParam.Login && u.Password == userParam.Password).FirstOrDefault();
+            if (user == null)
             {
-                var user = _userService.GetUsers(u => u.Name == userParam.Name && u.Login == userParam.Login && u.Password == userParam.Password).FirstOrDefault();
-                if (user == null)
-                {
-                    Mapper.Initialize(cfg => cfg.CreateMap<UserAddVM, UserME>());
-                    _userService.Create(Mapper.Map<UserAddVM, UserME>(userParam));
-                    return RedirectToAction("Users");
-                }
-                else
-                {
-                    return RedirectToAction("Users");
-                }                
+                Mapper.Initialize(cfg => cfg.CreateMap<UserAddVM, UserME>());
+                _userService.Create(Mapper.Map<UserAddVM, UserME>(userParam));
+                return RedirectToAction("Users");
             }
             else
             {
-                RedirectToAction("Index");
-            }
-            return RedirectToAction("Users");         
+                return RedirectToAction("Users");
+            }      
         }
     }
 }
