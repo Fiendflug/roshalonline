@@ -29,6 +29,7 @@ namespace Roshalonline.Web.Controllers
 
         [HttpGet]
         [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
         public ActionResult Index()
         {
             return View();
@@ -38,15 +39,8 @@ namespace Roshalonline.Web.Controllers
 
         [HttpGet]
         public ActionResult Login()
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View();
-            }            
+        {       
+            return View();
         }
 
         [HttpPost]
@@ -56,7 +50,7 @@ namespace Roshalonline.Web.Controllers
             var user = _userService.GetUser(userParam.Login, userParam.Password);
             if (user.Name != "Failed" & user.UserRole == UserCategory.Administrator)
             {
-                FormsAuthentication.SetAuthCookie(userParam.Login, true);                               
+                FormsAuthentication.SetAuthCookie(userParam.Login + "|" + user.UserRole.ToString(), true);                               
             }
             return RedirectToAction("Index");
         }
@@ -102,6 +96,7 @@ namespace Roshalonline.Web.Controllers
 
         [HttpGet]
         [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
         public ActionResult News()
         {
             IList<NewsME> items = _newsService.GetAllItems();
@@ -143,6 +138,7 @@ namespace Roshalonline.Web.Controllers
 
         [HttpGet]
         [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
         public ActionResult CreateNews()
         {
             return View();
@@ -150,6 +146,7 @@ namespace Roshalonline.Web.Controllers
 
         [HttpPost]
         [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
         [ValidateInput(false)]
         public ActionResult CreateNews(NewsVM newsParam)
         {
@@ -200,6 +197,7 @@ namespace Roshalonline.Web.Controllers
 
         [HttpGet]
         [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
         public ActionResult ViewNews(int? id)
         {
             try
@@ -218,6 +216,7 @@ namespace Roshalonline.Web.Controllers
 
         [HttpGet]
         [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
         public ActionResult EditNews(int? id)
         {
             try
@@ -236,6 +235,7 @@ namespace Roshalonline.Web.Controllers
 
         [HttpPost]
         [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
         public ActionResult EditNews(NewsVM itemParam)
         {
             itemParam.CreateDate = DateTime.Now;
@@ -251,7 +251,8 @@ namespace Roshalonline.Web.Controllers
         }
 
         [HttpGet]       
-        [AuthenticationAdminFilter] 
+        [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
         public ActionResult DeleteNews(int? id)
         {
             try
@@ -270,6 +271,7 @@ namespace Roshalonline.Web.Controllers
 
         [HttpPost, ActionName("DeleteNews")]
         [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
         public ActionResult ConfirmDeleteNews(NewsVM itemParam)
         {
             try
@@ -288,6 +290,7 @@ namespace Roshalonline.Web.Controllers
 
         [HttpGet]
         [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
         public ActionResult Users()
         {
             var items = _userService.GetAllUsers();
@@ -298,6 +301,7 @@ namespace Roshalonline.Web.Controllers
 
         [HttpGet]
         [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
         public ActionResult AddUser()
         {
             return View();
@@ -306,6 +310,7 @@ namespace Roshalonline.Web.Controllers
         [HttpPost]
         [AuthenticationAdminFilter]
         [ValidateAntiForgeryToken]
+        [AuthorizationAdminFilter]
         public ActionResult AddUser(UserAddVM userParam)
         {
             var user = _userService.GetUsers(u => u.Name == userParam.Name && u.Login == userParam.Login && u.Password == userParam.Password).FirstOrDefault();

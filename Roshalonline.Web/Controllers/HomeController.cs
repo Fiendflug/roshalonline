@@ -345,6 +345,7 @@ namespace Roshalonline.Web.Controllers
 
         [HttpGet]
         [AuthenticationClientFilter]
+        [AuthorizationClientFilter]
         public ActionResult Client()
         {
             return View();
@@ -420,14 +421,7 @@ namespace Roshalonline.Web.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Client");
-            }
-            else
-            {
-                return View();
-            }
+            return View();
         }
 
         [HttpPost]
@@ -437,7 +431,7 @@ namespace Roshalonline.Web.Controllers
             var user = _userService.GetUser(userParam.Login, userParam.Password);
             if (user.Name != "Failed" & user.UserRole == UserCategory.Client)
             {
-                FormsAuthentication.SetAuthCookie(userParam.Login, true);
+                FormsAuthentication.SetAuthCookie(userParam.Login + "|" + user.UserRole.ToString(), true);
             }
             return RedirectToAction("Client");
         }

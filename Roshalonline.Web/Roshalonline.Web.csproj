@@ -314,6 +314,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Filters\AuthenticationAdminFilter.cs" />
     <Compile Include="Filters\AuthenticationClientFilter.cs" />
+    <Compile Include="Filters\AuthorizationClientFilter.cs" />
+    <Compile Include="Filters\AuthorizationAdminFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
