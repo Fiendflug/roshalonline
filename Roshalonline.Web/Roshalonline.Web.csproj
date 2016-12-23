@@ -171,8 +171,8 @@
     <Content Include="Assets\Logos\Common\logo_96.png" />
     <Content Include="Assets\Logos\Home\Index\news.png" />
     <Content Include="Assets\Logos\Home\Index\new_client.png" />
-    <Content Include="Assets\Logos\Home\Index\notes.png" />
     <Content Include="Assets\Logos\Common\ok_flat_64.png" />
+    <Content Include="Assets\Logos\Home\Index\notes.png" />
     <Content Include="Assets\Logos\Home\Login\users-login.png" />
     <Content Include="Assets\Logos\Home\News\break.png" />
     <Content Include="Assets\Logos\Home\News\holiday.png" />
@@ -191,6 +191,31 @@
     <Content Include="Assets\Logos\Home\ViewNews\take_a_break_128.png" />
     <Content Include="Assets\Logos\Home\ViewNews\twitter_48.png" />
     <Content Include="Assets\Logos\Home\ViewNews\vk_48.png" />
+    <Content Include="Assets\Logos\Internet\Index\internet_feedback.png" />
+    <Content Include="Assets\Logos\Internet\Index\individual_internet_tarifs.png" />
+    <Content Include="Assets\Logos\Internet\Index\internet_descrition.png" />
+    <Content Include="Assets\Logos\Internet\Index\internet_discounts.png" />
+    <Content Include="Assets\Logos\Internet\Index\internet_extra.png" />
+    <Content Include="Assets\Logos\Internet\Index\internet_legal_info.png" />
+    <Content Include="Assets\Logos\Internet\Index\internet_new_client.png" />
+    <Content Include="Assets\Logos\Internet\Index\internet_notes.png" />
+    <Content Include="Assets\Logos\News\Index\break.png" />
+    <Content Include="Assets\Logos\News\Index\holiday.png" />
+    <Content Include="Assets\Logos\News\Index\impotant_news.png" />
+    <Content Include="Assets\Logos\News\Index\info_news.png" />
+    <Content Include="Assets\Logos\News\Index\sales.png" />
+    <Content Include="Assets\Logos\News\View\fb_48.png" />
+    <Content Include="Assets\Logos\News\View\feedback_for_viewnews.png" />
+    <Content Include="Assets\Logos\News\View\holiday_128.png" />
+    <Content Include="Assets\Logos\News\View\impotant_news_128.png" />
+    <Content Include="Assets\Logos\News\View\info_news_128.png" />
+    <Content Include="Assets\Logos\News\View\money_128.png" />
+    <Content Include="Assets\Logos\News\View\news_backgroung.png" />
+    <Content Include="Assets\Logos\News\View\new_client_for_viewnews.png" />
+    <Content Include="Assets\Logos\News\View\ok_48.png" />
+    <Content Include="Assets\Logos\News\View\take_a_break_128.png" />
+    <Content Include="Assets\Logos\News\View\twitter_48.png" />
+    <Content Include="Assets\Logos\News\View\vk_48.png" />
     <Content Include="Assets\Logos\payment.png" />
     <Content Include="Assets\Logos\Home\Index\phone.png" />
     <Content Include="Assets\Logos\Common\vk_flat_64.png" />
@@ -213,7 +238,15 @@
     <Content Include="Content\Home\ViewNews\common-style.css" />
     <Content Include="Content\Home\Login\login.css" />
     <Content Include="Content\Home\Index\main.css" />
+    <Content Include="Content\Internet\About\common-style.css" />
+    <Content Include="Content\Internet\About\main.css" />
+    <Content Include="Content\Internet\Index\component.css" />
+    <Content Include="Content\Internet\Index\main.css" />
     <Content Include="Content\management.css" />
+    <Content Include="Content\News\Index\common.css" />
+    <Content Include="Content\News\Index\main.css" />
+    <Content Include="Content\News\View\common-style.css" />
+    <Content Include="Content\News\View\main.css" />
     <Content Include="Content\normalise.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Fonts\glyphicons-halflings-regular.svg" />
@@ -310,8 +343,10 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Controllers\InternetController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Filters\AuthenticationAdminFilter.cs" />
     <Compile Include="Filters\AuthenticationClientFilter.cs" />
     <Compile Include="Filters\AuthorizationClientFilter.cs" />
@@ -320,12 +355,14 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\AllTarifsVM.cs" />
     <Compile Include="Models\FeedbackVM.cs" />
     <Compile Include="Models\ImageVM.cs" />
+    <Compile Include="Models\PeriodicTarifVM.cs" />
     <Compile Include="Models\NewsVM.cs" />
     <Compile Include="Models\NoteVM.cs" />
     <Compile Include="Models\ProductVM.cs" />
-    <Compile Include="Models\TarifVM.cs" />
+    <Compile Include="Models\TelephonyMgTarifVM.cs" />
     <Compile Include="Models\UserAddVM.cs" />
     <Compile Include="Models\UserLoginVM.cs" />
     <Compile Include="Models\UserVM.cs" />
@@ -361,6 +398,16 @@
     <Content Include="Views\Home\Client.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\ViewNews.cshtml" />
+    <Content Include="Views\Management\Tarifs.cshtml" />
+    <Content Include="Views\Management\CreatePeriodicTarif.cshtml" />
+    <Content Include="Views\Home\IndividualTarifs.cshtml" />
+    <Content Include="Views\Home\CorporationTarifs.cshtml" />
+    <Content Include="Views\Home\Internet.cshtml" />
+    <Content Include="Views\Internet\Index.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\View.cshtml" />
+    <Content Include="Views\Internet\Tarifs.cshtml" />
+    <Content Include="Views\Internet\About.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -371,6 +418,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Logos\Home\Notes\" />
+    <Folder Include="Assets\Logos\Internet\About\" />
+    <Folder Include="Assets\Logos\Internet\Tarifs\" />
     <Folder Include="Assets\Logos\Management\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Scripts\ckeditor\" />

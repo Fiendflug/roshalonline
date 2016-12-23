@@ -42,7 +42,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
             </nav>
         </header>
         <section id="grid" class="grid clearfix">
-            <a href="@Url.Action("News", "Home", new { page = 1 })" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+            <a href="@Url.Action("Index", "News")" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
                 <figure>
                     <img src="~/Assets/Logos/Home/Index/news.png" />
                     <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
@@ -52,7 +52,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
                     </figcaption>
                 </figure>
             </a>
-            <a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+            <a href="@Url.Action("Index", "Internet")" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
                 <figure>
                     <img src="~/Assets/Logos/Home/Index/internet.png" />
                     <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>

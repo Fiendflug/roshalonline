@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Roshalonline.Data.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace Roshalonline.Data.Models
 
         public virtual IEnumerable<News> AllUserNews { get; set; }
         public virtual IEnumerable<Note> AllUserNotes { get; set; }
-        public virtual IEnumerable<Tarif> AllUserTarifs { get; set; }
+        public virtual IEnumerable<PeriodicTarif> AllUserInternetPeriodicTaris { get; set; }
+        public virtual IEnumerable<TelephonyMgTarif> AllUserTelephonyMgTarifs { get; set; }
     }
 }

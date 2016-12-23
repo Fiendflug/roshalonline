@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity;
-using Roshalonline.Data.Models;
+using Roshalonline.Data.Entities;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Roshalonline.Data.Models;
 
 namespace Roshalonline.Data.Context
 {
@@ -9,7 +10,8 @@ namespace Roshalonline.Data.Context
         public DbSet<News> AllNews { get; set; }
         public DbSet<Note> Notes { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Tarif> Tarifs { get; set; }
+        public DbSet<PeriodicTarif> PeriodicTarifs { get; set; }
+        public DbSet<TelephonyMgTarif> TelephonyMgTarifs { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<User> Users { get; set; }
 

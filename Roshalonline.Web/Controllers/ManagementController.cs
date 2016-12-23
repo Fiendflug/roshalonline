@@ -18,12 +18,14 @@ namespace Roshalonline.Web.Controllers
     public class ManagementController : Controller
     {
         private IEntry<NewsME> _newsService;
+        private IEntry<PeriodicTarifME> _PeriodicTarifService;
         private IUser _userService;
         //private IEntry<NoteME> _noteService;    
         
-        public ManagementController(IEntry<NewsME> newsService, IUser userService)
+        public ManagementController(IEntry<NewsME> newsService, IEntry<PeriodicTarifME> internetPeriodicTarifService, IUser userService)
         {
             _newsService = newsService;
+            _PeriodicTarifService = internetPeriodicTarifService;
             _userService = userService;
         }
 
@@ -69,7 +71,7 @@ namespace Roshalonline.Web.Controllers
             }
         }
 
-        //Медиа-контент
+        //Media content section
 
         [HttpPost]
         public void Upload(HttpPostedFileWrapper upload)
@@ -92,7 +94,7 @@ namespace Roshalonline.Web.Controllers
             return View(allImages);
         }
 
-        //Новости
+        //News section
 
         [HttpGet]
         [AuthenticationAdminFilter]
@@ -104,37 +106,6 @@ namespace Roshalonline.Web.Controllers
             var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items);
             return View(allNews.ToList());
         }
-
-        //[HttpGet]
-        //public ActionResult FiltredNews(int filter)
-        //{
-        //    if (User.Identity.IsAuthenticated)
-        //    {
-        //        if (filter != 1 && filter != 2)
-        //        {
-        //            return View("Index"); //Добавить редирект на страницу ошибки
-        //        }
-        //        IList<NewsME> items = null;
-        //        switch (filter)
-        //        {
-        //            case 1:
-        //                items = _newsService.GetItems(u => u.Category == Relevance.Active);
-        //                break;
-        //            case 2:
-        //                items = _newsService.GetItems(u => u.Category == Relevance.Archive);
-        //                break;
-        //            default:
-        //                break;
-        //        }
-        //        Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
-        //        var filtredItems = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items);
-        //        return View("News", filtredItems.ToList());
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("Login");
-        //    }
-        //}
 
         [HttpGet]
         [AuthenticationAdminFilter]
@@ -157,29 +128,29 @@ namespace Roshalonline.Web.Controllers
                 switch (newsParam.Type)
                 {
                     case BackgroundType.Info:
-                        newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/info_news_128.png";
-                        newsParam.PathToCover = "/Assets/Logos/Home/News/info_news.png";
+                        newsParam.PathToIcon = "/Assets/Logos/News/View/info_news_128.png";
+                        newsParam.PathToCover = "/Assets/Logos/News/Index/info_news.png";
                         break;
                     case BackgroundType.Break:
-                        newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/take_a_break_128.png";
-                        newsParam.PathToCover = "/Assets/Logos/Home/News/break.png";
+                        newsParam.PathToIcon = "/Assets/Logos/News/View/take_a_break_128.png";
+                        newsParam.PathToCover = "/Assets/Logos/News/Index/break.png";
                         break;
                     case BackgroundType.Sales:
-                        newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/money_128.png";
-                        newsParam.PathToCover = "/Assets/Logos/Home/News/sales.png";
+                        newsParam.PathToIcon = "/Assets/Logos/News/View/money_128.png";
+                        newsParam.PathToCover = "/Assets/Logos/News/Index/sales.png";
                         break;
                     case BackgroundType.Impotant:
-                        newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/impotant_news_128.png";
-                        newsParam.PathToCover = "/Assets/Logos/Home/News/impotant_news.png";
+                        newsParam.PathToIcon = "/Assets/Logos/News/View/impotant_news_128.png";
+                        newsParam.PathToCover = "/Assets/Logos/News/Index/impotant_news.png";
                         break;
                     case BackgroundType.Holiday:
-                        newsParam.PathToIcon = "/Assets/Logos/Home/ViewNews/holiday_128.png";
-                        newsParam.PathToCover = "/Assets/Logos/Home/News/holiday.png";
+                        newsParam.PathToIcon = "/Assets/Logos/News/View/holiday_128.png";
+                        newsParam.PathToCover = "/Assets/Logos/News/Index/holiday.png";
                         break;
                 }
                 newsParam.ViewsCount = 0;
 
-                var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name);
+                var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name.Split('|')[0]);
                 newsParam.AuthorID = currUser.First().ID;
                 newsParam.AuthorName = currUser.First().Name;
 
@@ -241,9 +212,6 @@ namespace Roshalonline.Web.Controllers
             itemParam.CreateDate = DateTime.Now;
             var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name);
             itemParam.AuthorID = currUser.First().ID;
-            //var test = new DatabaseWorker(); //TEST
-            //itemParam.Author = test.Users.GetItem(1);   //TEST
-
             Mapper.Initialize(cfg => cfg.CreateMap<NewsVM, NewsME>());
             var item = Mapper.Map<NewsVM, NewsME>(itemParam);
             _newsService.Edit(item);
@@ -287,6 +255,133 @@ namespace Roshalonline.Web.Controllers
             }
             return View();
         }
+
+        // All tarifs action
+
+        [HttpGet]
+        [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
+        public ActionResult Tarifs()
+        {
+            return View();
+        }
+        
+        // Periodical tarif section
+
+        [HttpGet]
+        [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
+        public ActionResult PeriodicTarifs()
+        {
+            IList<PeriodicTarifME> items = _PeriodicTarifService.GetAllItems();
+            Mapper.Initialize(cfg => cfg.CreateMap<PeriodicTarifME, PeriodicTarifVM>());
+            var allInternetTarifs = Mapper.Map<IList<PeriodicTarifME>, IList<PeriodicTarifVM>>(items);
+            return View(allInternetTarifs.ToList());
+        }
+
+        [HttpGet]
+        [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
+        public ActionResult CreatePeriodicTarif()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
+        [ValidateInput(false)]
+        public ActionResult CreatePeriodicTarif(PeriodicTarifVM tarifParam)
+        {
+            try
+            {
+                var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name.Split('|')[0]);
+                tarifParam.AuthorID = currUser.First().ID;
+                tarifParam.AuthorName = currUser.First().Name;
+                tarifParam.Category = Relevance.Active;    
+                Mapper.Initialize(cfg => cfg.CreateMap<PeriodicTarifVM, PeriodicTarifME>());
+                var item = Mapper.Map<PeriodicTarifVM, PeriodicTarifME>(tarifParam);
+                _PeriodicTarifService.Create(item);
+                return RedirectToAction("Index");
+            }
+            catch (ValidationException exc)
+            {
+                ModelState.AddModelError(exc.Property, exc.Message);
+            }
+            return View(tarifParam);
+        }
+
+        [HttpGet]
+        [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
+        public ActionResult ViewPeriodicTarif(int? id)
+        {
+            try
+            {
+                var item = _PeriodicTarifService.GetItem(id);
+                Mapper.Initialize(cfg => cfg.CreateMap<PeriodicTarifME, PeriodicTarifVM>());
+                var itemVM = Mapper.Map<PeriodicTarifME, PeriodicTarifVM>(item);
+                return View(itemVM);
+            }
+            catch (ValidationException exc)
+            {
+                ModelState.AddModelError(exc.Property, exc.Message);
+            }
+            return View();
+        }
+
+        [HttpPost]
+        [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
+        public ActionResult EditPeriodicTarif(PeriodicTarifVM itemParam)
+        {
+            var currUser = _userService.GetUsers(u => u.Name == User.Identity.Name);
+            itemParam.AuthorID = currUser.First().ID;
+            Mapper.Initialize(cfg => cfg.CreateMap<PeriodicTarifVM, PeriodicTarifME>());
+            var item = Mapper.Map<PeriodicTarifVM, PeriodicTarifME>(itemParam);
+            _PeriodicTarifService.Edit(item);
+            return RedirectToAction("PeriodicTarifs");
+        }
+
+        [HttpGet]
+        [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
+        public ActionResult DeletePeriodicTarif(int? id)
+        {
+            try
+            {
+                var item = _PeriodicTarifService.GetItem(id);
+                Mapper.Initialize(cfg => cfg.CreateMap<PeriodicTarifME, PeriodicTarifVM>());
+                var itemVM = Mapper.Map<PeriodicTarifME, PeriodicTarifVM>(item);
+                return View(itemVM);
+            }
+            catch (ValidationException exc)
+            {
+                ModelState.AddModelError(exc.Property, exc.Message);
+            }
+            return View();
+        }
+
+        [HttpPost, ActionName("DeletePeriodicTarif")]
+        [AuthenticationAdminFilter]
+        [AuthorizationAdminFilter]
+        public ActionResult ConfirmDeletePeriodicTarif(PeriodicTarifVM itemParam)
+        {
+            try
+            {
+                Mapper.Initialize(cfg => cfg.CreateMap<PeriodicTarifVM, PeriodicTarifME>());
+                var item = Mapper.Map<PeriodicTarifVM, PeriodicTarifME>(itemParam);
+                _newsService.Delete(item.ID);
+                return RedirectToAction("PeriodicTarifs");
+            }
+            catch (ValidationException exc)
+            {
+                ModelState.AddModelError(exc.Property, exc.Message);
+            }
+            return View();
+        }
+
+        // User section
 
         [HttpGet]
         [AuthenticationAdminFilter]

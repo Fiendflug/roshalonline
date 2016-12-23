@@ -15,14 +15,16 @@ namespace Roshalonline.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private IEntry<NewsME> _newsService;
+        //private IEntry<NewsME> _newsService;
         private IUser _userService;
+        //private IEntry<PeriodicTarifME> _periodicTarifService;
         //private IEntry<NoteME> _noteService;    
 
-        public HomeController(IEntry<NewsME> newsService, IUser userService)
+        public HomeController(/*IEntry<NewsME> newsService, IEntry<PeriodicTarifME> periodicTarifService, */IUser userService)
         {
-            _newsService = newsService;
+            //_newsService = newsService;
             _userService = userService;
+            //_periodicTarifService = periodicTarifService;
         }
 
         public ActionResult Index()
@@ -351,72 +353,113 @@ namespace Roshalonline.Web.Controllers
             return View();
         }
             
-        [HttpGet]
-        public ActionResult News(int? page)
-        {
-            IList<NewsME> items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active);
-            Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
-            var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items).ToList();
-            allNews.Reverse();
-            var pageSize = 8;
-            var pageNumber = (page ?? 1);
+        //[HttpGet]
+        //public ActionResult News(int? page)
+        //{
+        //    IList<NewsME> items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active);
+        //    Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
+        //    var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items).ToList();
+        //    allNews.Reverse();
+        //    var pageSize = 8;
+        //    var pageNumber = (page ?? 1);
 
-            return View(allNews.ToPagedList(pageNumber, pageSize));
+        //    return View(allNews.ToPagedList(pageNumber, pageSize));
+        //}
+
+        //[HttpGet]
+        //public ActionResult ViewNews(int currId, int step) 
+        //{
+        //    try
+        //    {
+        //        IList<NewsME> items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active);
+        //        Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
+        //        var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items).ToList();
+        //        allNews.Reverse();
+        //        var currNewsIndex = allNews.IndexOf(allNews.Find(n => n.ID == currId));
+        //        NewsVM itemVM = null;
+        //        if (step == -1)
+        //        {
+        //            itemVM = allNews[currNewsIndex];
+        //        }
+
+        //        if (step == 0 & currNewsIndex != 0 )
+        //        {
+        //            itemVM = allNews[currNewsIndex - 1];
+        //        }
+        //        else if (step == 1 & currNewsIndex != allNews.Count - 1)
+        //        {
+        //            itemVM = allNews[currNewsIndex + 1];
+        //        }
+        //        else if(step < -1 || step > 1)
+        //        {
+        //            return RedirectToAction("Error", "Home", new { message = "Что-то пошло не так: например кто-то указал неверные параметры для действия" });
+        //        }
+
+        //        int positionIndex;
+
+        //        if (allNews.IndexOf(itemVM) == 0)
+        //        {
+        //            positionIndex = 0;
+        //        }
+        //        else if (allNews.IndexOf(itemVM) == allNews.Count - 1)
+        //        {
+        //            positionIndex = 1;
+        //        }
+        //        else
+        //        {
+        //            positionIndex = -1;
+        //        }
+
+        //        var steppedNews = new Dictionary<int, NewsVM>();
+        //        steppedNews[positionIndex] = itemVM;
+        //        return View(steppedNews);             
+        //    }            
+        //    catch(Exception exc)
+        //    {
+        //        return RedirectToAction("Error", "Home", new { message = exc.Message });
+        //    }
+        //}
+
+        public ActionResult Internet()
+        {
+            return View();
         }
 
-        [HttpGet]
-        public ActionResult ViewNews(int currId, int step) 
-        {
-            try
-            {
-                IList<NewsME> items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active);
-                Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
-                var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items).ToList();
-                allNews.Reverse();
-                var currNewsIndex = allNews.IndexOf(allNews.Find(n => n.ID == currId));
-                NewsVM itemVM = null;
-                if (step == -1)
-                {
-                    itemVM = allNews[currNewsIndex];
-                }
+        //Tarifs section
 
-                if (step == 0 & currNewsIndex != 0 )
-                {
-                    itemVM = allNews[currNewsIndex - 1];
-                }
-                else if (step == 1 & currNewsIndex != allNews.Count - 1)
-                {
-                    itemVM = allNews[currNewsIndex + 1];
-                }
-                else if(step < -1 || step > 1)
-                {
-                    return RedirectToAction("Error", "Home", new { message = "Что-то пошло не так: например кто-то указал неверные параметры для действия" });
-                }
+        //[HttpGet]
+        //public ActionResult Tarifs(string targetAudence = "Individual")
+        //{
+        //    try
+        //    {
+        //        var items = _periodicTarifService.GetItems(t => t.Category == Relevance.Active);
+        //        Mapper.Initialize(cfg => cfg.CreateMap<PeriodicTarifME, PeriodicTarifVM>());
+        //        var tarifsVM = (from t in Mapper.Map<IList<PeriodicTarifME>, IList<PeriodicTarifVM>>(items) orderby t.Price select t);
 
-                int positionIndex;
+        //        if (targetAudence == "Individual")
+        //        {
+        //            var individualTarif = from t in tarifsVM where t.Audience == Data.Entities.PeriodicTarif.TargetAudience.Individual select t; 
+        //            return View("IndividualTarifs", individualTarif.ToList());
+        //        }
+        //        else if (targetAudence == "Corporation")
+        //        {
+        //            var individualTarif = from t in tarifsVM where t.Audience == Data.Entities.PeriodicTarif.TargetAudience.Corporation select t;
+        //            return View("CorporationTarifs", individualTarif.ToList());
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction("Error", "Home", new { message = "Нет тарифов для данной категории клиентов" });
+        //        }
+        //    }
+        //    catch (Exception exc)
+        //    {
+        //        return RedirectToAction("Error", "Home", new { message = exc.Message });
+        //    }            
+        //}
 
-                if (allNews.IndexOf(itemVM) == 0)
-                {
-                    positionIndex = 0;
-                }
-                else if (allNews.IndexOf(itemVM) == allNews.Count - 1)
-                {
-                    positionIndex = 1;
-                }
-                else
-                {
-                    positionIndex = -1;
-                }
+        
 
-                var steppedNews = new Dictionary<int, NewsVM>();
-                steppedNews[positionIndex] = itemVM;
-                return View(steppedNews);             
-            }            
-            catch(Exception exc)
-            {
-                return RedirectToAction("Error", "Home", new { message = exc.Message });
-            }
-        }
+        //Authorization section
 
         [HttpGet]
         public ActionResult Login()

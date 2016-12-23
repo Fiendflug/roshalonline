@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="roshalonline no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roshalonline = провайдер, который всегда с тобой</title>
+    <meta name="author" content="Kineev Alexey" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="~/Content/Home/Internet/main.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/Home/Internet/component.css" />
+    <script src="~/Scripts/snapsvg.js"></script>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    @*<script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-7243260-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+            </script>*@
+
+
+</head>
+<body>
+    <div class="container">
+        <!-- Top Navigation -->
+        <div class="codrops-top">
+            <a class="top-center" href="#"><span>+7(496)455-81-05 ООО "Альтес-Р" г. Рошаль, ул. Косякова, д. 13</span></a>
+        </div>
+        <header class="codrops-header">
+            <img src="~/Assets/Logos/Common/logo_96.png" /><h1>ROSHAL ONLINE<span>Первый городской оператор связи</span></h1>
+            <nav class="codrops-demos">
+                <a class="current-demo" href="#">интернет</a>
+                <a href="@Url.Action("Index", "Home")">на главную</a>
+                <a href="@Url.Action("Feedback", "Home")">обратная связь</a>
+                <a href="@Url.Action("Client", "Home")">личный кабинет</a>
+            </nav>
+        </header>
+        <section id="grid" class="grid clearfix">
+            <a href="@Url.Action("News", "Home", new { page = 1 })" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                <figure>
+                    <img src="~/Assets/Logos/Home/Index/news.png" />
+                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                    <figcaption>
+                        <h2>описание услуги</h2>
+                        <p>Правила оказания услуги Интернет можно прочесть здесь</p>
+                    </figcaption>
+                </figure>
+            </a>
+            <a href="@Url.Action("Internet", "Home", new { page = 1 })" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                <figure>
+                    <img src="~/Assets/Logos/Home/Index/internet.png" />
+                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                    <figcaption>
+                        <h2>тарифы</h2>
+                        <p>Все актуальные на текущий момент тарифные планы для доступа к сети Интернет</p>
+                    </figcaption>
+                </figure>
+            </a>
+            <a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                <figure>
+                    <img src="~/Assets/Logos/Home/Index/phone.png" />
+                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                    <figcaption>
+                        <h2>акции</h2>
+                        <p>С этом разделе мы храним все действующие специальные предложения</p>
+                    </figcaption>
+                </figure>
+            </a>
+            <a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                <figure>
+                    <img src="~/Assets/Logos/Home/Index/domofon.png" />
+                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                    <figcaption>
+                        <h2>хочу подключиться</h2>
+                        <p>Оставьте запрос на подключние. Безграничные возможности станут для вас доступнее</p>
+                    </figcaption>
+                </figure>
+            </a>
+            <a href="#" data-path-hover="m 180,46.57627 -180,0 L 0,0 180,0 z">
+                <figure>
+                    <img src="~/Assets/Logos/Home/Index/new_client.png" />
+                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                    <figcaption>
+                        <h2>дополнительные услуги</h2>
+                        <p>С перечнем сопутствующих услуг можно ознакомиться в этом разделе</p>
+                    </figcaption>
+                </figure>
+            </a>
+            <a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                <figure>
+                    <img src="~/Assets/Logos/Home/Index/notes.png" />
+                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                    <figcaption>
+                        <h2>публикации</h2>
+                        <p>Интересная информация "по теме". Можно почерпнуть для себя много нового</p>
+                    </figcaption>
+                </figure>
+            </a>
+            <a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                <figure>
+                    <img src="~/Assets/Logos/Home/Index/feedback.png" />
+                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                    <figcaption>
+                        <h2>обратная связь</h2>
+                        <p>У вас есть вопрос? Предложение? Хвалебный отзыв? Тогда вам сюда</p>
+                    </figcaption>
+                </figure>
+            </a>
+            <a href="#" data-path-hover="m 180,46.57627 -180,0 L 0,0 180,0 z">
+                <figure>
+                    <img src="~/Assets/Logos/Home/Index/about.png" />
+                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                    <figcaption>
+                        <h2>правовая информация</h2>
+                        <p>Немного скучной информации: регламентриующей нашу деятельность</p>
+                    </figcaption>
+                </figure>
+            </a>
+        </section>
+        <section class="footer">
+            <p>Присоединяйся к нам в популярных социальных сервисах</p>
+            <div><a href="#"><img src="~/Assets/Logos/Common/vk_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/ok_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/fb_flat_64.png" /></a></div>
+            <div><a href="#"><h6>Powered by Kineev Alexey</h6></a></div>
+        </section>
+    </div><!-- /container -->
+    <script>
+			(function() {
+
+				function init() {
+					var speed = 250,
+						easing = mina.easeinout;
+
+					[].slice.call ( document.querySelectorAll( '#grid > a' ) ).forEach( function( el ) {
+						var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
+							pathConfig = {
+								from : path.attr( 'd' ),
+								to : el.getAttribute( 'data-path-hover' )
+							};
+
+						el.addEventListener( 'mouseenter', function() {
+							path.animate( { 'path' : pathConfig.to }, speed, easing );
+						} );
+
+						el.addEventListener( 'mouseleave', function() {
+							path.animate( { 'path' : pathConfig.from }, speed, easing );
+						} );
+					} );
+				}
+
+				init();
+
+			})();
+    </script>
+</body>
+</html>
+

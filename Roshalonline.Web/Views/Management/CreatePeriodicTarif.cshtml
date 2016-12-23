@@ -1,0 +1,97 @@
+﻿@model Roshalonline.Web.Models.PeriodicTarifVM
+@using Roshalonline.Data.Models
+
+@{
+    List<SelectListItem> AudiencesList = new List<SelectListItem>();
+    AudiencesList.Add(new SelectListItem { Text = "Тариф для физических лиц", Value = "Individual" });
+    AudiencesList.Add(new SelectListItem { Text = "Тариф для юридических лиц", Value = "Corporation" });
+
+    List<SelectListItem> TechnologiesList = new List<SelectListItem>();
+    TechnologiesList.Add(new SelectListItem { Text = "Тип подключения: Телефон", Value = "Telephone" });
+    TechnologiesList.Add(new SelectListItem { Text = "Тип подключения: Ethernet", Value = "Ethernet" });
+    TechnologiesList.Add(new SelectListItem { Text = "Тип подключения: ADSL", Value = "ADSL" });
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/management.css" rel="stylesheet" />
+    <title>Добавить тариф</title>
+    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand small-logo" href="#">
+                    <img alt="Logo" src="~/Assets/Logos/current_main_logo_32x137px.png">
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><p class="navbar-text">Вы вошли как</p> </li>
+                    <li><a href="#">@User.Identity.Name.Split('|')[0]</a></li>
+                    <li class="active"><a href="/Management/Logout" /><span class="glyphicon glyphicon-log-out"></span>Выйти</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar text-center">
+                <ul class="nav nav-sidebar">
+                    <li class="sub-header">Панель управления</li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li class="active"><a href="javascript: submitForm();">Создать</a></li>
+                    <li>@Html.ActionLink("Отмена", "Tarifs", "Management") </li>
+                </ul>
+                @*<ul class="nav nav-sidebar">
+                        <li><a href="javascript: previewNews();">Превью новости</a></li></li>
+                    </ul>*@
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        @using (Html.BeginForm("CreatePeriodicTarif", "Management", FormMethod.Post, new { @id = "formCreate" }))
+        {
+            @Html.EditorFor(t => t.Name, new { htmlAttributes = new { @class = "form-control input-sm", @placeholder = "Введите название тарифа" } })
+            @Html.EditorFor(t => t.Price, new { htmlAttributes = new { @class = "form-control input-sm", @placeholder = "Укажите базовую стоимость тарифа" } })
+            @Html.EnumDropDownListFor(t => t.Audience, new { @class = "selectpicker" }) //SELECT audience
+            @Html.EnumDropDownListFor(t => t.TarifTechnology, new { @class = "selectpicker" }) //SELECT technology
+            @Html.TextAreaFor(t => t.Description, new { @id = "editor1", @name = "editor1" })
+        <script>
+                CKEDITOR.replace('editor1', {
+                    filebrowserImageBrowseUrl: '/Management/UploadPartial',
+                    filebrowserImageUploadUrl: '/Management/Upload'
+                });
+
+                function updateValue(id, value) {
+                    var dialog = CKEDITOR.dialog.getCurrent();
+                    dialog.setValueOf('info', 'txtUrl', value);
+                }
+         </script>
+        }
+    </div>
+</body>
+</html>
+<script>
+    function submitForm(){
+        $('#formCreate').submit();
+    }
+</script>
+

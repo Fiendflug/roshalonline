@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/management.css" rel="stylesheet" />
+    <title>Панель управления</title>
+    <script src="~/scripts/jquery-1.9.1.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand small-logo" href="#">
+                    <img alt="Logo" src="~/Assets/Logos/current_main_logo_32x137px.png">
+                </a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><p class="navbar-text">Вы вошли как</p> </li>
+                    <li><a href="#">@User.Identity.Name.Split('|')[0]</a></li>
+                    <li class="active"><a href="/Management/Logout" /><span class="glyphicon glyphicon-log-out"></span>Выйти</li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar text-center">
+                <ul class="nav nav-sidebar">
+                    <li class="sub-header">Управление тарифами</li>
+                </ul>               
+                <ul class="nav nav-sidebar">
+                    <li>@Html.ActionLink("Вернуться на главную", "Index", "Management")</li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li class="active">@Html.ActionLink("Добавить периодический тариф", "CreatePeriodicTarif", "Management")</li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li class="active">@Html.ActionLink("Добавить тариф для дальней связи", "CreateTelephonyMgTarif", "Management")</li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li class="small">Отображать</li>
+                </ul>
+                <ul class="nav nav-sidebar">
+                    <li>
+                        <div class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-primary btn-xs active">
+                                <input type="radio" name="options" id="option1" checked="" onclick="">Все
+                            </label>
+                            <label class="btn btn-primary btn-xs">
+                                <input type="radio" name="options" id="option2">Активные
+                            </label>
+                            <label class="btn btn-primary btn-xs">
+                                <input type="radio" name="options" id="option3">Архивные
+                            </label>
+                        </div>
+                    </li>
+                </ul>
+                @*<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover" id="news">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">ID</th>
+                                    <th class="text-center">Название</th>
+                                    <th class="text-center">Автор</th>
+                                    <th class="text-center">Категория</th>
+                                    <th class="text-center">Дата создания</th>
+                                    <th class="text-center">Просмотры</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var n in Model)
+                                {
+                                    <tr onclick="location.href='@Url.Action("ViewNews", "Management", new { n.ID })'" onmouseover="this.style.cursor = 'pointer'">
+                                        <td class="text-center">@n.ID</td>
+                                        <td class="text-center">@n.Header</td>
+                                        <td class="text-center">@n.AuthorID</td>
+                                        <td class="text-center">@n.Category</td>
+                                        <td class="text-center">@n.CreateDate</td>
+                                        <td class="text-center">@n.ViewsCount</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>*@     
+            </div>
+        </div>
+    </div>
+</body>
+</html>

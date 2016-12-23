@@ -1,0 +1,145 @@
+﻿@model Dictionary<int, Roshalonline.Web.Models.NewsVM>
+
+<!DOCTYPE html>
+<html lang="en" class="roshalonline no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roshalonline = провайдер, который всегда с тобой</title>
+    <meta name="author" content="Kineev Alexey" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="~/Content/News/View/main.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/News/View/common-style.css" />
+    @*<link rel="stylesheet" type="text/css" href="~/Content/Home/ViewNews/view.css"
+    *@
+    <script src="~/Scripts/snapsvg.js"></script>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    @*<script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-7243260-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+            </script>*@
+
+
+</head>
+<body>
+    <div class="container">
+        <!-- Top Navigation -->
+        <div class="codrops-top">
+            <a class="top-center" href="#"><span>+7(496)455-81-05 ООО "Альтес-Р" г. Рошаль, ул. Косякова, д. 13</span></a>
+        </div>
+        <header class="codrops-header">
+            <img src="~/Assets/Logos/Common/logo_96.png" /><h1>ROSHAL ONLINE<span>Первый городской оператор связи</span></h1>
+            <nav class="codrops-demos">
+                <a href="@Url.Action("Index", "Home")">На главную</a>
+                <a href="@Url.Action("Index", "News")">К списку новостей</a>
+                @if (Model.FirstOrDefault().Key == 0)
+                {
+                    <a href="@Url.Action("View", "News", new { currId = Model.FirstOrDefault().Value.ID, step = 1 })">Следующая</a>
+                }
+                else if (Model.FirstOrDefault().Key == 1)
+                {
+                    <a href="@Url.Action("View", "News", new { currId = Model.FirstOrDefault().Value.ID, step = 0 })">Предыдущая</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("View", "News", new { currId = Model.FirstOrDefault().Value.ID, step = 0 })">Предыдущая</a>
+                    <a href="@Url.Action("View", "News", new { currId = Model.FirstOrDefault().Value.ID, step = 1 })">Следующая</a>
+                }
+
+            </nav>
+        </header>
+        @*<div class="view-container">
+                <div class="left-col">
+                    @Html.Raw(Model.Body)
+                </div>
+                <div class="right-col">
+
+                </div>
+            </div>*@
+        <section id="grid" class="grid clearfix">
+            <div class="news-body">
+                @*<h2 style="color: black;">@Model.Header</h2>*@
+                <figure>
+                    <p class="news-body-header">@Model.FirstOrDefault().Value.Header</p>
+                    <p class="news-header-img"><img src=@Model.FirstOrDefault().Value.PathToIcon /></p>
+                    <p class="news-author">Автор: @Model.FirstOrDefault().Value.AuthorName</p>
+                    <p class="news-date">@Model.FirstOrDefault().Value.CreateDate</p>
+                    <div class="news-body-content"><p>@Html.Raw(Model.FirstOrDefault().Value.Body)</p></div>
+                    <div class="news-body-footer">
+                        <p class="news-footer-header">Поделитесь с новостью с друзьями - нажмите иконку для репоста</p>
+                        <p class="news-footer-ref">
+                            <img src="~/Assets/Logos/News/View/vk_48.png" />
+                            <img src="~/Assets/Logos/News/View/fb_48.png" />
+                            <img src="~/Assets/Logos/News/View/ok_48.png" />
+                            <img src="~/Assets/Logos/News/View/twitter_48.png" />
+                        </p>
+                    </div>
+                </figure>
+            </div>
+            <a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                <figure>
+                    <img class="nav-logo" src="~/Assets/Logos/News/View/new_client_for_viewnews.png" />
+                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                    <figcaption>
+                        <h2>стать клиентом</h2>
+                        <p>Вы еще не явлеяетсь нашим клиентом? Это легко исправить! </p>
+                    </figcaption>
+                </figure>
+            </a>
+            <a href="#" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                <figure>
+                    <img class="nav-logo" src="~/Assets/Logos/News/View/feedback_for_viewnews.png" />
+                    <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                    <figcaption>
+                        <h2>связаться с нами</h2>
+                        <p>В этом разделе мы с радостью поможем вам с ответом.</p>
+                    </figcaption>
+                </figure>
+            </a>
+        </section>
+        <section class="footer">
+            <p>Присоединяйся к нам в популярных социальных сервисах</p>
+            <div><a href="#"><img src="~/Assets/Logos/Common/vk_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/ok_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/fb_flat_64.png" /></a></div>
+            <div><a href="#"><h6>Powered by Kineev Alexey</h6></a></div>
+        </section>
+    </div><!-- /container -->
+</body>
+</html>
+<script>
+			(function() {
+
+				function init() {
+					var speed = 250,
+						easing = mina.easeinout;
+
+					[].slice.call ( document.querySelectorAll( '#grid > a' ) ).forEach( function( el ) {
+						var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
+							pathConfig = {
+								from : path.attr( 'd' ),
+								to : el.getAttribute( 'data-path-hover' )
+							};
+
+						el.addEventListener( 'mouseenter', function() {
+							path.animate( { 'path' : pathConfig.to }, speed, easing );
+						} );
+
+						el.addEventListener( 'mouseleave', function() {
+							path.animate( { 'path' : pathConfig.from }, speed, easing );
+						} );
+					} );
+				}
+
+				init();
+
+			})();
+</script>
+

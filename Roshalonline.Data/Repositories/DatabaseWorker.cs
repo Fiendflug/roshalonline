@@ -7,6 +7,7 @@ using Roshalonline.Data.Repositories;
 using Roshalonline.Data.Interfaces;
 using Roshalonline.Data.Context;
 using Roshalonline.Data.Models;
+using Roshalonline.Data.Entities;
 
 namespace Roshalonline.Data.Repositories
 {
@@ -15,9 +16,10 @@ namespace Roshalonline.Data.Repositories
         private NewsRepository _newsRepository;
         private NoteRepository _noteRepository;
         private UserRepository _userRepository;
-        private TarifRepository _tarifRepository;
         private ProductRepository _productRepository;
         private FeedbackRepository _feedbackRepository;
+        private PeriodicTarifRepository _periodicRepository;
+        private TelephonyMgTarifRepository _telephonyMgRepository;
 
         private DatabaseContext _database;
 
@@ -75,19 +77,7 @@ namespace Roshalonline.Data.Repositories
                 }
                 return _productRepository;
             }
-        }
-
-        public IRepository<Tarif> Tarifs
-        {
-            get
-            {
-                if (_tarifRepository == null)
-                {
-                    _tarifRepository = new TarifRepository(_database);
-                }
-                return _tarifRepository;
-            }
-        }
+        }        
 
         public IRepository<User> Users
         {
@@ -98,6 +88,30 @@ namespace Roshalonline.Data.Repositories
                     _userRepository = new UserRepository(_database);
                 }
                 return _userRepository;
+            }
+        }
+
+        public IRepository<PeriodicTarif> PeriodicTarifs
+        {
+            get
+            {
+                if(_periodicRepository == null)
+                {
+                    _periodicRepository = new PeriodicTarifRepository(_database);
+                }
+                return _periodicRepository;
+            }
+        }        
+
+        public IRepository<TelephonyMgTarif> TelephonyMgTarif
+        {
+            get
+            {
+                if (_telephonyMgRepository == null)
+                {
+                    _telephonyMgRepository = new TelephonyMgTarifRepository(_database);
+                }
+                return _telephonyMgRepository;
             }
         }
 

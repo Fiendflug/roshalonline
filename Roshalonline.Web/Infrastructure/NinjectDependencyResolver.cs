@@ -33,6 +33,7 @@ namespace Roshalonline.Web.Infrastructure
         public void AddBindings()
         {
             _kernel.Bind<IEntry<NewsME>>().To<NewsService>();
+            _kernel.Bind<IEntry<PeriodicTarifME>>().To<PeriodicTarifService>();
             _kernel.Bind<IUser>().To<UserService>();
         }
     }

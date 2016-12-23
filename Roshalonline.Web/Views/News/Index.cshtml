@@ -1,0 +1,99 @@
+﻿@model PagedList.IPagedList<Roshalonline.Web.Models.NewsVM>
+@using PagedList.Mvc;
+
+<!DOCTYPE html>
+<html lang="en" class="roshalonline no-js">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Roshalonline = провайдер, который всегда с тобой</title>
+    <meta name="author" content="Kineev Alexey" />
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" type="text/css" href="~/Content/News/Index/main.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/News/Index/common.css" />
+    <script src="~/Scripts/snapsvg.js"></script>
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    @*<script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-7243260-2']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+            </script>*@
+
+
+</head>
+<body>
+    <div class="container">
+        <!-- Top Navigation -->
+        <div class="codrops-top">
+            <a class="top-center" href="#"><span>+7(496)455-81-05 ООО "Альтес-Р" г. Рошаль, ул. Косякова, д. 13</span></a>
+        </div>
+        <header class="codrops-header">
+            <img src="~/Assets/Logos/Common/logo_96.png" /><h1>ROSHAL ONLINE<span>Первый городской оператор связи</span></h1>
+            <nav class="codrops-demos">
+                <a class="current-demo" href="#">новости</a>
+                <a href="@Url.Action("Index", "Home")">на главную</a>
+                <a href="@Url.Action("Feedback", "Home")">обратная связь</a>
+                <a href="@Url.Action("Client", "Home")">личный кабинет</a>
+            </nav>
+        </header>
+        <section id="grid" class="grid clearfix">
+            @foreach (var n in Model)
+            {
+                <a href="@Url.Action("View", "News", new { currID = n.ID, step = -1 })" id="view" data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z">
+                    <figure>
+                        <img src=@n.PathToCover />
+                        <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
+                        <figcaption>
+                            <h2>@n.Header</h2>
+                            <p>@n.CreateDate</p>
+                        </figcaption>
+                    </figure>
+                </a>
+            }
+        </section>
+        @Html.PagedListPager(Model, page => Url.Action("Index", "News", new { page }))
+        <section class="footer">
+            <p>Присоединяйся к нам в популярных социальных сервисах</p>
+            <div><a href="#"><img src="~/Assets/Logos/Common/vk_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/ok_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/fb_flat_64.png" /></a></div>
+            <div><a href="#"><h6>Powered by Kineev Alexey</h6></a></div>
+        </section>
+    </div><!-- /container -->
+    <script>
+			(function() {
+
+				function init() {
+					var speed = 250,
+						easing = mina.easeinout;
+
+					[].slice.call ( document.querySelectorAll( '#grid > a' ) ).forEach( function( el ) {
+						var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
+							pathConfig = {
+								from : path.attr( 'd' ),
+								to : el.getAttribute( 'data-path-hover' )
+							};
+
+						el.addEventListener( 'mouseenter', function() {
+							path.animate( { 'path' : pathConfig.to }, speed, easing );
+						} );
+
+						el.addEventListener( 'mouseleave', function() {
+							path.animate( { 'path' : pathConfig.from }, speed, easing );
+						} );
+					} );
+				}
+
+				init();
+
+			})();
+    </script>
+</body>
+</html>
+

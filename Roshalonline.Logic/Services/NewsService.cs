@@ -30,6 +30,17 @@ namespace Roshalonline.Logic.Services
             _database.Save();
         }
 
+        public void AddToArchive(int? id)
+        {
+            if (id == null)
+            {
+                throw new ValidationException("Не указан id", "");
+            }
+            var item = _database.News.GetItem(id);
+            item.Category = Relevance.Archive;
+            _database.Save();
+        }
+
         public void Delete(int? id)
         {
             if (id == null)

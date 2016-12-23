@@ -1,4 +1,5 @@
-﻿using Roshalonline.Data.Models;
+﻿using Roshalonline.Data.Entities;
+using Roshalonline.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,8 @@ namespace Roshalonline.Data.Interfaces
         IRepository<News> News { get; }
         IRepository<Note> Notes { get; }
         IRepository<User> Users { get; }
-        IRepository<Tarif> Tarifs { get; }
+        IRepository<PeriodicTarif> PeriodicTarifs { get; }
+        IRepository<TelephonyMgTarif> TelephonyMgTarif { get; }
         IRepository<Product> Products { get; }
         IRepository<Feedback> Feedbacks { get; }
 

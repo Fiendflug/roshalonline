@@ -1,6 +1,6 @@
 ﻿using Roshalonline.Data.Context;
+using Roshalonline.Data.Entities;
 using Roshalonline.Data.Interfaces;
-using Roshalonline.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,42 +9,43 @@ using System.Threading.Tasks;
 
 namespace Roshalonline.Data.Repositories
 {
-    public class TarifRepository : IRepository<Tarif>
+    class PeriodicTarifRepository : IRepository<PeriodicTarif>
     {
         private DatabaseContext _database;
 
-        public TarifRepository(DatabaseContext database)
+        public PeriodicTarifRepository(DatabaseContext database)
         {
             _database = database;
         }
 
-        public void Create(Tarif item)
+
+        public void Create(PeriodicTarif item)
         {
-            _database.Tarifs.Add(item);
+            _database.PeriodicTarifs.Add(item);
         }
 
         public void Delete(int? id)
         {
-            var item = _database.Tarifs.Find(id);
+            var item = _database.PeriodicTarifs.Find(id);
             if (item != null)
             {
-                _database.Tarifs.Remove(item);
+                _database.PeriodicTarifs.Remove(item);
             }
         }
 
-        public void Edit(Tarif item)
+        public void Edit(PeriodicTarif item)
         {
             _database.Entry(item).State = System.Data.Entity.EntityState.Modified;
         }
 
-        public IList<Tarif> GetAllItems()
+        public IList<PeriodicTarif> GetAllItems()
         {
-            return _database.Tarifs.ToList();
+            return _database.PeriodicTarifs.ToList();
         }
 
-        public Tarif GetItem(int? id)
+        public PeriodicTarif GetItem(int? id)
         {
-            return _database.Tarifs.Find(id);
+            return _database.PeriodicTarifs.Find(id);
         }
     }
 }

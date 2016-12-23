@@ -52,10 +52,11 @@
     <Compile Include="Context\DatabaseContext.cs" />
     <Compile Include="Context\Initializer.cs" />
     <Compile Include="Entities\Feedback.cs" />
+    <Compile Include="Entities\PeriodicTarif.cs" />
     <Compile Include="Entities\News.cs" />
     <Compile Include="Entities\Note.cs" />
     <Compile Include="Entities\Product.cs" />
-    <Compile Include="Entities\Tarif.cs" />
+    <Compile Include="Entities\TelephonyMgTarif.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Interfaces\IDatabaseWorker.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
@@ -115,14 +116,31 @@
     <Compile Include="Migrations\201612161150275_UserCategory.Designer.cs">
       <DependentUpon>201612161150275_UserCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612201301599_tarifs.cs" />
+    <Compile Include="Migrations\201612201301599_tarifs.Designer.cs">
+      <DependentUpon>201612201301599_tarifs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612210812219_tarifsEdit.cs" />
+    <Compile Include="Migrations\201612210812219_tarifsEdit.Designer.cs">
+      <DependentUpon>201612210812219_tarifsEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612211122109_anothertarif.cs" />
+    <Compile Include="Migrations\201612211122109_anothertarif.Designer.cs">
+      <DependentUpon>201612211122109_anothertarif.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612211245338_anothertarif1.cs" />
+    <Compile Include="Migrations\201612211245338_anothertarif1.Designer.cs">
+      <DependentUpon>201612211245338_anothertarif1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\DatabaseWorker.cs" />
     <Compile Include="Repositories\FeedbackRepository.cs" />
+    <Compile Include="Repositories\PeriodicTarifRepository.cs" />
     <Compile Include="Repositories\NewsRepository.cs" />
     <Compile Include="Repositories\NoteRepository.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
-    <Compile Include="Repositories\TarifRepository.cs" />
+    <Compile Include="Repositories\TelephonyMgTarifRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +194,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612161150275_UserCategory.resx">
       <DependentUpon>201612161150275_UserCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201301599_tarifs.resx">
+      <DependentUpon>201612201301599_tarifs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612210812219_tarifsEdit.resx">
+      <DependentUpon>201612210812219_tarifsEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612211122109_anothertarif.resx">
+      <DependentUpon>201612211122109_anothertarif.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612211245338_anothertarif1.resx">
+      <DependentUpon>201612211245338_anothertarif1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
