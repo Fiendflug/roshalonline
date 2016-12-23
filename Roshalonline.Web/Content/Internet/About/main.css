@@ -181,6 +181,14 @@ a:hover, a:focus {
     margin: 0 auto;
 }
 
+.news-body-href{
+    color: #3498DB; 
+}
+
+.news-body-href:hover{
+    text-decoration: underline; 
+}
+
 figure .news-body-footer{
     width: 100%;
     position: absolute;

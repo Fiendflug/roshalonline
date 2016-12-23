@@ -191,6 +191,9 @@
     <Content Include="Assets\Logos\Home\ViewNews\take_a_break_128.png" />
     <Content Include="Assets\Logos\Home\ViewNews\twitter_48.png" />
     <Content Include="Assets\Logos\Home\ViewNews\vk_48.png" />
+    <Content Include="Assets\Logos\Internet\About\internet_about_logo1.png" />
+    <Content Include="Assets\Logos\Internet\About\internet_about_logo2.png" />
+    <Content Include="Assets\Logos\Internet\About\internet_about_logo3.png" />
     <Content Include="Assets\Logos\Internet\Index\internet_feedback.png" />
     <Content Include="Assets\Logos\Internet\Index\individual_internet_tarifs.png" />
     <Content Include="Assets\Logos\Internet\Index\internet_descrition.png" />
@@ -418,7 +421,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Logos\Home\Notes\" />
-    <Folder Include="Assets\Logos\Internet\About\" />
     <Folder Include="Assets\Logos\Internet\Tarifs\" />
     <Folder Include="Assets\Logos\Management\" />
     <Folder Include="Content\Images\" />
