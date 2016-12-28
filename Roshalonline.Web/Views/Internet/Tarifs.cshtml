@@ -14,22 +14,13 @@
     <link rel="stylesheet" type="text/css" href="~/Scripts/slick/slick.css">
     <link rel="stylesheet" type="text/css" href="~/Scripts/slick/slick-theme.css">
     <style type="text/css">
-        /*html, body {
-            margin: 0;
-            padding: 0;
-        }
-
-        * {
-            box-sizing: border-box;
-        }*/
-
         .slider {
-            width: 70%;
-            margin: 100px auto;
+            width: 80%;
+            margin: 10px auto;
         }
 
         .slick-slide {
-            margin: 0px 20px;
+            margin: 0px 10px;
         }
 
             .slick-slide img {
@@ -80,7 +71,17 @@
             @foreach (var t in Model.Where(t => t.TarifTechnology == Roshalonline.Data.Entities.PeriodicTarif.Technology.Ethernet))
             {
                 <div>
-                    <img src="~/Assets/Logos/payment.png">
+                    @*<img src="~/Assets/Logos/payment.png">*@
+                    <a href="#" @*data-path-hover="m 180,34.57627 -180,0 L 0,0 180,0 z"*@>
+                        <figure>
+                            <img src="~/Assets/Logos/Internet/Index/internet_descrition.png" />
+                            @*<svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>*@
+                            <figcaption>
+                                <h2>@t.Name</h2>
+                                <p>Правила оказания услуги Интернет можно прочесть здесь</p>
+                            </figcaption>
+                        </figure>
+                    </a>
                 </div>
             }    
         </section>
@@ -90,7 +91,7 @@
             $('.responsive').slick({
                 dots: true,
                 infinite: true,
-                
+                //centerMode: true,
                 speed: 300,
                 slidesToShow: 3,
                 slidesToScroll: 1,
