@@ -14,14 +14,14 @@ using Roshalonline.Data.Models;
 using Roshalonline.Web.Filters;
 
 namespace Roshalonline.Web.Controllers
-{    
+{
     public class ManagementController : Controller
     {
         private IEntry<NewsME> _newsService;
         private IEntry<PeriodicTarifME> _PeriodicTarifService;
         private IUser _userService;
         //private IEntry<NoteME> _noteService;    
-        
+
         public ManagementController(IEntry<NewsME> newsService, IEntry<PeriodicTarifME> internetPeriodicTarifService, IUser userService)
         {
             _newsService = newsService;
@@ -35,7 +35,7 @@ namespace Roshalonline.Web.Controllers
         public ActionResult Index()
         {
             return View();
-        }
+        }        
 
         //Аутентификация
 

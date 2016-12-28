@@ -45,7 +45,7 @@ namespace Roshalonline.Web.Controllers
                 if (targetAudence == "Individual")
                 {
                     var individualTarif = from t in tarifsVM where t.Audience == Data.Entities.PeriodicTarif.TargetAudience.Individual select t;
-                    return View("IndividualTarifs", individualTarif.ToList());
+                    return View(individualTarif.ToList());
                 }
                 else if (targetAudence == "Corporation")
                 {

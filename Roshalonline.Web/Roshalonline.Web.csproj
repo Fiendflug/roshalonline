@@ -245,6 +245,8 @@
     <Content Include="Content\Internet\About\main.css" />
     <Content Include="Content\Internet\Index\component.css" />
     <Content Include="Content\Internet\Index\main.css" />
+    <Content Include="Content\Internet\Tarifs\component.css" />
+    <Content Include="Content\Internet\Tarifs\main.css" />
     <Content Include="Content\management.css" />
     <Content Include="Content\News\Index\common.css" />
     <Content Include="Content\News\Index\main.css" />
@@ -267,6 +269,7 @@
     <Content Include="Scripts\bootstrap-select.js" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Content\bootstrap-select.css.map" />
+    <None Include="Properties\PublishProfiles\test.pubxml" />
     <None Include="Scripts\jquery-1.9.1.intellisense.js" />
     <Content Include="Scripts\bootstrap-select.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -425,6 +428,7 @@
     <Folder Include="Assets\Logos\Management\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Scripts\ckeditor\" />
+    <Folder Include="Scripts\slick\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Roshalonline.Data\Roshalonline.Data.csproj">
