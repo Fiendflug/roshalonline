@@ -202,6 +202,7 @@
     <Content Include="Assets\Logos\Internet\Index\internet_legal_info.png" />
     <Content Include="Assets\Logos\Internet\Index\internet_new_client.png" />
     <Content Include="Assets\Logos\Internet\Index\internet_notes.png" />
+    <Content Include="Assets\Logos\Internet\Tarifs\default_tarif_logo_250x400.png" />
     <Content Include="Assets\Logos\News\Index\break.png" />
     <Content Include="Assets\Logos\News\Index\holiday.png" />
     <Content Include="Assets\Logos\News\Index\impotant_news.png" />
@@ -424,7 +425,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Assets\Logos\Home\Notes\" />
-    <Folder Include="Assets\Logos\Internet\Tarifs\" />
     <Folder Include="Assets\Logos\Management\" />
     <Folder Include="Content\Images\" />
     <Folder Include="Scripts\ckeditor\" />
