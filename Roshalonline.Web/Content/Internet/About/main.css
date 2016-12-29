@@ -133,12 +133,18 @@ a:hover, a:focus {
 	font-weight: 700;
 }
 
-.codrops-demos a:hover,
-.codrops-demos a.current-demo,
-.codrops-demos a.current-demo:hover {
-	border-color: #333;
+.codrops-demos a.current-demo {
+	pointer-events: none;
+    border-color: #333;
 	color: #333;
 }
+
+.codrops-demos a:hover,
+.codrops-demos a.current-demo:hover {	
+    border-color: #333;
+	color: #333;
+}
+
 
 .body-form{
     width:90%;

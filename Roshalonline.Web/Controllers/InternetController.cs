@@ -34,11 +34,20 @@ namespace Roshalonline.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Tarifs(string targetAudence = "Individual")
+        public ActionResult Tarifs(string targetAudence = "Individual", string technology = "Ethernet")
         {
             try
             {
-                var items = _periodicTarifService.GetItems(t => t.Category == Relevance.Active);
+                IList<PeriodicTarifME> items = null;
+                switch (technology)
+                {
+                    case "Ethernet":
+                        items = _periodicTarifService.GetItems(t => t.Category == Relevance.Active & t.TarifTechnology == Data.Entities.PeriodicTarif.Technology.Ethernet);
+                        break;
+                    case "ADSL":
+                        items = _periodicTarifService.GetItems(t => t.Category == Relevance.Active & t.TarifTechnology == Data.Entities.PeriodicTarif.Technology.ADSL);
+                        break;
+                }
                 Mapper.Initialize(cfg => cfg.CreateMap<PeriodicTarifME, PeriodicTarifVM>());
                 var tarifsVM = (from t in Mapper.Map<IList<PeriodicTarifME>, IList<PeriodicTarifVM>>(items) orderby t.Price select t);
 
