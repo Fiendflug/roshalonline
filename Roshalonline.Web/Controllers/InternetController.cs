@@ -71,5 +71,13 @@ namespace Roshalonline.Web.Controllers
                 return RedirectToAction("Error", "Home", new { message = exc.Message });
             }
         }
+
+        [HttpGet]
+        public ActionResult PersonalTarif()
+        {
+            return View();
+        }
+
+        
     }
 }

@@ -67,13 +67,13 @@
                 {
                     <a class="current-demo" href="#">Локальная сеть</a>
                     <a href="@Url.Action("Tarifs", "Internet", new { technology = "ADSL" })">Телефонная линия</a>
-                    <a href="#">подобрать тариф</a>
+                    <a href="@Url.Action("PersonalTarif", "Internet", new { technology = "ADSL" })">подобрать тариф</a>
                 }
                 else
                 {
                     <a href="@Url.Action("Tarifs", "Internet", new { technology = "Ethernet" })">Локальная сеть</a>
                     <a class="current-demo" href="#">Телефонная линия</a>
-                    <a href="#">подобрать тариф</a>
+                    <a href="@Url.Action("PersonalTarif", "Internet", new { technology = "ADSL" })">подобрать тариф</a>
                 }
                 <h3>Выберите интересующий способ подключения и тарифный план для подключения услуги</h3>
                 <h3>Если сомневаетесь в выборе нажмите "подобрать тариф"</h3>
@@ -114,13 +114,81 @@
                   }
                 ]
             });
-        </script>       
+        </script>     
+        @*<section class="form-section">
+            <form class="main-form">
+                <div class="first-page">
+                    <p class="message">Оу. Кажестся у вас возникли сомнения по поводу выбора тарифа?</p>
+                    <p class="message">Если вы уделите несколько минут своего времени и ответите на несколько вопросов: мы с радостью подберем вам подходящий тариф</p>
+                    <button class="start-button">Приступить</button>
+                </div>
+                <div class="second-page">
+                    <ul>
+                        <li>Какое количество устройств вы планируете подключать к Интернету?</li>
+                        <li><input type="radio" name="1q" value="1">Не более двух</li>
+                        <li><input type="radio" name="1q" value="2">Не более четырех</li>
+                        <li><input type="radio" name="1q" value="3">Не хочу себя ограничивать</li>
+                    </ul>
+                    <button class="cancel-button">Отмена</button>
+                    <button class="next-button">Далее</button>
+                </div>
+                <div class="third-page">
+                    <ul>
+                        <li>
+                            <input type="radio" />
+                            <input type="radio" />
+                            <input type="radio" />
+                        </li>
+                    </ul>
+                    <button class="cancel-button">Отменить</button>
+                    <button class="next-button">Далее</button>
+                </div>
+                <div class="fourth-page">
+                    <ul>
+                        <li>
+                            <input type="radio" />
+                            <input type="radio" />
+                            <input type="radio" />
+                        </li>
+                    </ul>                    
+                    <button type="submit" class="finsh-button">Подобрать тариф</button>
+                </div>
+            </form>
+        </section>   
+        <script>
+            $(function () {
+
+                var allPages = $('.form-section div');
+                var currPageIndex = 0;
+
+                $('.get-tarif-button').click(function () {
+                    $('.codrops-demos h3').hide();
+                    $('.form-section').show();
+                });
+
+                $('.cancel-button').click(function () {
+                    $('.form-section').hide();
+                    $('.codrops-demos h3').show();
+                });
+
+                $('.start-button').click(function () {
+                    $(".first-page").hide();
+                    $(".second-page").show();
+                });
+
+                $('.next-button').click(function () {
+                    currPageIndex++;
+                    allPages.eq(currPageIndex).hide();
+                    allPages.eq(currPageIndex + 1).show();
+                });
+            });
+        </script>*@      
         <section class="footer">
             <p>Присоединяйся к нам в популярных социальных сервисах</p>
             <div><a href="#"><img src="~/Assets/Logos/Common/vk_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/ok_flat_64.png" /></a><a href="#"><img src="~/Assets/Logos/Common/fb_flat_64.png" /></a></div>
             <div><a href="#"><h6>Powered by Kineev Alexey</h6></a></div>
         </section>
-    </div><!-- /container -->
+    </div><!-- /container -->    
 </body>
 </html>
 
