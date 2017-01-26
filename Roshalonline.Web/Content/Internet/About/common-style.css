@@ -31,30 +31,6 @@
 	margin: 30px 0 -30px 0;
 }
 
-/*Содержимое плитки*/
-
-.custom-content{   
-	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
-	transition: opacity 0.6s;
-    color: #aaa;
-	font-weight: 300;
-    opacity: 0;
-}
-
-/* SVG */
-
-.grid svg {
-	position: absolute;
-	top: -1px; /* fixes rendering issue in FF */
-	z-index: 10;
-	width: 100%;
-	height: 100%;
-}
-
-.grid svg path {
-	fill: #fff;
-}
-
 /*Фигуры*/
 
 .grid figure {
@@ -63,6 +39,13 @@
 	margin: 5px;
 	background: #ffffff;
     color: #333;
+}
+
+.grid figure .background-img {
+	position: relative;
+	display: block;
+	-webkit-transition: opacity 1.3s;
+	transition: opacity 1.3s;
 }
 
 .grid figcaption {
@@ -107,20 +90,108 @@
 	backface-visibility: hidden;
 }
 
+
+/*Содержимое плитки*/
+
+.custom-content {       
+	-webkit-transition: opacity 0.2s;
+	transition: opacity 0.2s;
+    color: #aaa;
+	font-weight: 300;
+    opacity: 0;
+}
+
+.text-content {
+    text-align: justify;
+    text-indent: 25px;
+}
+.ref-content {       
+	-webkit-transition: opacity 0.2s;
+	transition: opacity 0.2s;
+    color: #aaa;
+	font-weight: 300;
+    opacity: 0;
+    text-align: center;
+}
+
+.ref-content button {
+    font-size: 0.95em;
+	background-color: #fffFFF;
+	padding: 0.5em 0.5em;
+	outline: none;
+	border: 2px solid #3498db;
+	color: #3498db;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 500;
+}
+
+.ref-content button:hover {
+    border-color: black;
+    color: black;
+    cursor: pointer;
+}
+
+.ref-content h3 {
+    font-size: 1.1em;
+    color: #3498db;
+    text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 500;
+}
+
+/*Положение содержимого плитки*/
+
+ #first {
+    margin-top: -45px;
+}
+
+#second{
+    margin-top: 10px;
+}
+
+#third {
+    margin-top: -20px;
+}
+
+#fourth {
+    margin-top: 30px;
+}
+
+/* SVG */
+
+.grid svg {
+	position: absolute;
+	top: -1px; /* fixes rendering issue in FF */
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+}
+
+.grid svg path {
+	fill: #fff;
+}
+
 /* Div Hover эффекты */
 
 .grid div:hover figcaption h2,
 .grid div:hover figcaption .description {
-	-webkit-transform: translateY(-5px); /* I cheged it */
-	transform: translateY(-5px); /* I cheged it */
+	-webkit-transform: translateY(1px); /* I cheged it */
+	transform: translateY(1px); /* I cheged it */
 }
 
 .grid div:hover figcaption .description {
 	opacity: 0;
 }
 
-.grid div:hover .custom-content {
+.grid div:hover section {
 	opacity: 1;
+}
+
+.grid div:hover .background-img {
+    opacity: 0;
 }
 
 /* Hover эффекты якорей */
@@ -142,18 +213,44 @@
 
 /* Медиа запросы */
 
-@media screen and (max-width: 58em) {
-	.grid a {
-		width: 33.333%;
-	}
+@media screen and (max-width: 70em) {
+    #first {
+        margin-top: -80px;
+    }
 
-    .grid div {
+    #second{
+        margin-top: -30px;
+    }
+
+    #third {
+        margin-top: -65px;
+    }
+
+    #fourth {
+        margin-top: 0px;
+    }
+}
+
+@media screen and (max-width: 58em) {
+	.grid div {
 		width: 50%;
         margin: auto;
 	}
 
-    .news-body{
-        width: 100%;
+    #first {
+        margin-top: -80px;
+    }
+
+    #second{
+        margin-top: -30px;
+    }
+
+    #third {
+        margin-top: -65px;
+    }
+
+    #fourth {
+        margin-top: 0px;
     }
 
     .grid div:nth-child(2n-1) {
@@ -161,18 +258,34 @@
 	}
 }
 
+@media screen and (max-width: 51em){
+
+}
+
 @media screen and (max-width: 38em) {
     .grid{
        max-width: 500px;
 	}
 
-	.grid a {
-		width: 100%;
-	}	
-
     .grid div {
 		width: 100%;        
 	}
+
+    #first {
+        margin-top: -40px;
+    }
+
+    #second{
+        margin-top: 20px;
+    }
+
+    #third {
+        margin-top: -25px;
+    }
+
+    #fourth {
+        margin-top: 20px;
+    }
 
     .grid div:nth-child(even) {
 		margin: 30px 0 -30px 0
@@ -185,13 +298,34 @@
        max-width: 250px;
 	}
 
-	.grid a {
-		width: 100%;
-	}	
-
     .grid div {
 		width: 100%;        
 	}
+
+    .description {
+        display: none;
+    }
+
+    .custom-content img,
+    .ref-content img {
+        display: none;
+    }
+    
+    #first {
+        margin-top: -15px;
+    }
+
+    #second{
+        margin-top: 90px;
+    }
+
+    #third {
+        margin-top: 0px;
+    }
+
+    #fourth {
+        margin-top: 30px;
+    }
 
     .grid div:nth-child(even) {
 		margin: 30px 0 -30px 0
