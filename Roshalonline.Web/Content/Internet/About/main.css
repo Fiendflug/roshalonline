@@ -12,9 +12,10 @@
 
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
+/* Общее */
 
 body {
-	background: #3498db;
+	background: #333;
 	color: #fff;
 	font-weight: 400;
 	font-size: 1em;
@@ -44,13 +45,14 @@ a:hover, a:focus {
 	clear: both;
 }
 
+/* Логотип и все что с ним связано */
+
 .codrops-header {
 	margin: 0 auto;
     padding-top: 0.70em;
-    padding-bottom: 2em;
     padding-left: 2em;
     padding-right: 2em;
-	/*padding: 2em;*/
+    padding-bottom: 2em;
 	text-align: center;
 }
 
@@ -68,7 +70,8 @@ a:hover, a:focus {
 	opacity: 0.7;
 }
 
-/* To Navigation Style */
+/* Самый верхний заголовок с адресом */
+
 .codrops-top {
 	width: 100%;
 	text-transform: uppercase;
@@ -85,28 +88,18 @@ a:hover, a:focus {
 	letter-spacing: 1px;
 }
 
-.codrops-top span.right {
-	float: right;
-}
+/* Кнопки навигации */
 
-.codrops-top span.right a {
-	display: inline;
-	float: left;
-}
-
-
-/*.codrops-icon-drop:before {
-	content: "\e001";
-}
-
-.codrops-icon-prev:before {
-	content: "\e004";
-}*/
-
-/* Demo Buttons Style */
 .codrops-demos {
 	padding-top: 1em;
 	font-size: 0.8em;
+}
+
+.codrops-demos h3{
+    text-transform: uppercase;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 .codrops-demos a {
@@ -134,8 +127,10 @@ a:hover, a:focus {
 	color: #333;
 }
 
+/* Футер */
 
 .footer{
+    padding-top: 50px;
     width: 100%;
     text-align: center;
 }
@@ -156,17 +151,5 @@ a:hover, a:focus {
 .footer h6 {
     font-size: 0.80em;
 }
-
-
-/*@media screen and (max-width: 25em) {
-
-    .news-body-content img{
-        display: none;
-    }
-
-	.codrops-icon span {
-		display: none;
-	}
-}*/
 
 

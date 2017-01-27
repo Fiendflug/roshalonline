@@ -12,6 +12,8 @@
 
 *, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 
+/* Общее */
+
 body {
 	background: #333;
 	color: #fff;
@@ -43,13 +45,13 @@ a:hover, a:focus {
 	clear: both;
 }
 
+/* Логотип и все что с ним связано */
+
 .codrops-header {
 	margin: 0 auto;
     padding-top: 0.70em;
-    /*padding-bottom: 2em;*/
     padding-left: 2em;
     padding-right: 2em;
-	/*padding: 2em;*/
 	text-align: center;
 }
 
@@ -67,7 +69,8 @@ a:hover, a:focus {
 	opacity: 0.7;
 }
 
-/* To Navigation Style */
+/* Самый верхний заголовок с адресом */
+
 .codrops-top {
 	width: 100%;
 	text-transform: uppercase;
@@ -84,36 +87,8 @@ a:hover, a:focus {
 	letter-spacing: 1px;
 }
 
-.codrops-top span.right {
-	float: right;
-}
+/* Кнопки навигации */
 
-.codrops-top span.right a {
-	display: inline;
-	float: left;
-}
-
-.codrops-icon:before {
-	margin: 0 4px;
-	text-transform: none;
-	font-weight: normal;
-	font-style: normal;
-	font-variant: normal;
-	font-family: 'codropsicons';
-	line-height: 1;
-	speak: none;
-	-webkit-font-smoothing: antialiased;
-}
-
-.codrops-icon-drop:before {
-	content: "\e001";
-}
-
-.codrops-icon-prev:before {
-	content: "\e004";
-}
-
-/* Demo Buttons Style */
 .codrops-demos {
 	padding-top: 1em;
 	font-size: 0.8em;
@@ -151,12 +126,7 @@ a:hover, a:focus {
 	color: #333;
 }
 
-
-.body-form{
-    width:90%;
-}
-
-/*Slider*/
+/* Слайдер */
 
 .slider {
     width: 80%;
@@ -185,45 +155,7 @@ a:hover, a:focus {
     color: white;
 }
 
-/*Form form tarif*/
-
-/*.form-section{    
-    text-align: center; 
-    display: none;
-}
-
-.form-section button{
-    display: inline-block;
-    background: #3498DB;
-	margin: 0.5em;
-	padding: 0.7em 1.1em;
-	outline: none;
-	border: 2px solid #fff;
-	color: #fff;
-	text-decoration: none;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-weight: 700;
-}
-
-.form-section button:hover{
-    cursor: pointer;
-    border-color: #333;
-	color: #333;
-}
-
-.first-page{
-    min-width: 700px;
-}
-
-.second-page,
-.third-page,
-.fourth-page{
-    min-width: 700px;
-    display: none;
-}*/
-
-/*Footer*/
+/* Футер */
 
 .footer{
     padding-top: 50px;
@@ -246,13 +178,6 @@ a:hover, a:focus {
 
 .footer h6 {
     font-size: 0.80em;
-}
-
-@media screen and (max-width: 25em) {
-
-	.codrops-icon span {
-		display: none;
-	}
 }
 
 
