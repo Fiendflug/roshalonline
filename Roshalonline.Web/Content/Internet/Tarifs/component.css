@@ -87,18 +87,6 @@
 
 /*Содержимое плитки*/
 
-.custom-content {       
-	-webkit-transition: opacity 0.2s;
-	transition: opacity 0.2s;
-    color: #aaa;
-	font-weight: 300;
-    opacity: 0;
-}
-
-.text-content {
-    text-align: justify;
-    text-indent: 25px;
-}
 .ref-content {       
 	-webkit-transition: opacity 0.2s;
 	transition: opacity 0.2s;
@@ -108,7 +96,8 @@
     text-align: center;
 }
 
-.ref-content a {
+.ref-content a,
+.ref-content button {
     font-size: 0.95em;
 	background-color: #fffFFF;
 	padding: 0.5em 0.5em;
@@ -121,7 +110,9 @@
 	font-weight: 500;
 }
 
-.ref-content a:hover {
+.ref-content a:hover,
+.ref-content button:hover,
+.quiz-p:hover {
     border-color: black;
     color: black;
     cursor: pointer;
@@ -136,22 +127,60 @@
 	font-weight: 500;
 }
 
+.quiz-p{
+    font-size: 0.95em;
+	background-color: #fffFFF;
+	padding: 0.5em 0.5em;
+	outline: none;
+	border: 2px solid #aaa;
+	color: #aaa;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 500;
+}
+
+/*Элементы формы опроса*/
+
+.hide-content{
+    -webkit-transition: opacity 0.2s;
+	transition: opacity 0.2s;
+    color: #aaa;
+	font-weight: 300;
+    opacity: 0;
+    text-align: center;
+    display: none;
+}
+
+.hide-content a,
+.hide-content button {
+    font-size: 0.95em;
+	background-color: #fffFFF;
+	padding: 0.5em 0.5em;
+	outline: none;
+	border: 2px solid #3498db;
+	color: #3498db;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 500;
+}
+
+.hide-content a:hover,
+.hide-content button:hover {
+    border-color: black;
+    color: black;
+    cursor: pointer;
+}
+
 /*Положение содержимого плитки*/
 
- #first {
+#first {
     margin-top: -45px;
 }
 
-#second{
-    margin-top: 10px;
-}
-
-#third {
-    margin-top: -20px;
-}
-
-#fourth {
-    margin-top: 30px;
+.hide-content {
+    margin-top: -65px;
 }
 
 /* SVG */

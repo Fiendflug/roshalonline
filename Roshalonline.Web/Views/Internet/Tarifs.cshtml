@@ -78,14 +78,18 @@
         <section id="grid" class="grid clearfix">
             <div data-path-hover="m 180,320 -180,0 L 0,0 180,0 z">
                 <figure>
-                    <img class="background-img" src="~/Assets/Logos/Internet/About/internet_500x437_about.png" />
+                    <img class="background-img" src="~/Assets/Logos/Internet/About/internet_500x437_customer.png" />
                     <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
                     <figcaption>
-                        <h2>что такое интернет</h2>
-                        <p class="description">Технически это компьютерная сеть глобального масштаба, организваонная для обмена данными между удаленными компьютерами. Однако...</p>
-                        <section class="custom-content" id="first">
-                            <img src="~/Assets/Logos/Internet/About/internet_about_logo1.png" />
-                            <p class="text-content">Однако фактически Интернет это нечто большее чем просто сеть, это скорее удивительное социальное явление, буквально за 15 лет активного развития произведшее скорушительную революцию во всех сферах человеческой жизни. Интернет настолько плотно вошел в повседневный обиход жителей нашей планеты, что сейчас крайне тяжело себе представить утро без новостной ленты, день без смешных видео с котиками и вечеров без социальных интернет-сервисов.</p>
+                        <h2>как я могу подключить данную услугу</h2>
+                        <p class="description">Нет ничего проще. Воспользуйтесь одной из рекомендаций в данном разделе или свяжитесь с нами любым доступным вам способом</p>
+                        <section class="ref-content" id="first">
+                            <p>Отправьте электронное заявление на подключение услуги</p>
+                            <button>Хочу подключиться</button>
+                            <p>Свяжитесь с нами по телефону</p>
+                            <h3>8-(496)-455-81-05</h3>
+                            <p>Подключитесь в офисе компании</p>
+                            <button>Как нас найти</button>
                         </section>
                     </figcaption>
                 </figure>
@@ -94,15 +98,64 @@
                 <figure>
                     <img class="background-img" src="~/Assets/Logos/Internet/About/internet_500x437_extra.png" />
                     <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
-                    <figcaption>
+                    <figcaption id="all-quiz-pages">
                         <h2>подобрать тариф</h2>
                         <p class="description">Ответьте на несколько несложных вопросов и мы поможем вам подобрать тариф</p>
-                        <section class="ref-content" id="fourth">
-                            <form>
-                                <img src="~/Assets/Logos/Home/Login/users-login.png" />
-                                <p>Чтобы подобрать тариф, соберитесь духом и нажмите кнопку "Приступить"</p>
-                                <a id="start-btn">приступить</a>
-                            </form>
+                        <section class="ref-content" id="quiz">
+                            <img src="~/Assets/Logos/Home/Login/users-login.png" />
+                            <p>Чтобы подобрать тариф, соберитесь духом и нажмите кнопку "Приступить"</p>
+                            <button id="start-btn">приступить</button>                                
+                        </section>
+                        <section class="hide-content" id="1-quiz">
+                            <img src="~/Assets/Logos/Home/Login/users-login.png" />
+                            <p>В каком раойне города Рошаль вы проживаете</p>
+                            <p class="quiz-p" id="eth">В районе с многоквартирной застройкой</p>
+                            <p class="quiz-p" id="dsl">В районе частной застройки</p>
+                            <button id="next-btn1">далее</button>                                
+                        </section>
+                        <section class="hide-content" id="2-quiz">
+                            <img src="~/Assets/Logos/Home/Login/users-login.png" />
+                            <p>Сколько ваших устройств будут активно исопльзовать выход в Интернет</p>
+                            <p class="quiz-p" id="1-point">не более двух</p>
+                            <p class="quiz-p" id="2-point">от двух до пяти</p>
+                            <p class="quiz-p" id="3-point">свыше пяти</p>
+                            <button id="next-btn2">далее</button>                                
+                        </section>
+                        <section class="hide-content" id="3-quiz">
+                            <img src="~/Assets/Logos/Home/Login/users-login.png" />
+                            <p>Насколько для вас важна скорость загрузки и передачи файлов в сети Интернет</p>
+                            <p class="quiz-p" id="1-point">не имеет принципиального значения</p>
+                            <p class="quiz-p" id="2-point">достаточно важно для меня</p>
+                            <p class="quiz-p" id="3-point">готов пожертвовать всем ради скорости</p>                            
+                            <button id="next-btn2">далее</button>          
+                        </section>
+                        <section class="hide-content" id="4-quiz">
+                            <img src="~/Assets/Logos/Home/Login/users-login.png" />
+                            <p>Есть ли у вас в планах использование государственных или частных онлайн-сервисов</p>
+                            <p class="quiz-p" id="1-point">скроее нет чем да</p>
+                            <p class="quiz-p" id="2-point">да, я планирую активно их использовать</p>
+                            <p class="quiz-p" id="3-point">не понимаю о чем речь</p>
+                            <button id="next-btn2">далее</button>
+                        </section>
+                        <section class="hide-content" id="5-quiz">
+                            <img src="~/Assets/Logos/Home/Login/users-login.png" />
+                            <p>А что насчет онлайн-игр - насколько для вас важно время отклика в играх</p>
+                            <p class="quiz-p" id="1-point">не имеет значения - я не геймер</p>
+                            <p class="quiz-p" id="2-point">достаточно важно для меня</p>
+                            <p class="quiz-p" id="3-point">крайне важно для меня </p>
+                            <button id="next-btn2">далее</button>
+                        </section>
+                        <section class="hide-content" id="6-quiz">
+                            <img src="~/Assets/Logos/Home/Login/users-login.png" />
+                            <p>Планируете ли вы активно просматривать потоковое видео и прослушивать аудио</p>
+                            <p class="quiz-p" id="1-point">время от времени, преимущественно аудио</p>
+                            <p class="quiz-p" id="2-point">без фанатизма и акцента на качество</p>
+                            <p class="quiz-p" id="3-point">не хочу себя ни в чем ограничивать</p>
+                            <button id="finish-btn">подобрать тариф</button>                               
+                        </section>
+                        <section class="hide-content" id="7-quiz">
+                            <img src="~/Assets/Logos/Home/Login/users-login.png" />
+                            <p>Total page</p>                           
                         </section>
                     </figcaption>
                 </figure>
@@ -171,6 +224,19 @@
 				init();
 
 			})();
+        </script>
+        <script>
+            var total = 0;
+            var currPage = 0;
+            var allPagesID = $('#all-quiz-pages section').map(function (index) {
+                return this.id;
+            });
+
+            $('#all-quiz-pages button').click(function () {
+                $('#' + allPagesID[currPage]).hide();
+                $('#' + allPagesID[currPage + 1]).animate({ height: "toggle", opacity: "toggle" }, "1000");
+                currPage += 1;
+            });
         </script>
         <section class="footer">
             <p>Присоединяйся к нам в популярных социальных сервисах</p>
