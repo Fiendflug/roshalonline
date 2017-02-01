@@ -42,6 +42,17 @@
                 <a href="@Url.Action("Client", "Home")">личный кабинет</a>
             </nav>
         </header>
+        <section class="hidden-tarifs">
+            @foreach(var t in Model)
+            {
+               <div class="tarif">
+                   <p id="type">@t.TarifTechnology</p>
+                   <p id="name">@t.Name</p>
+                   <p id="price">@t.Price</p>
+                   @Html.Raw(t.Description)
+               </div>
+            }
+        </section>
         <section class="responsive slider">
             @foreach (var t in Model)
             {
@@ -104,46 +115,46 @@
                         <section class="ref-content" id="quiz">
                             <img src="~/Assets/Logos/Home/Login/users-login.png" />
                             <p>Чтобы подобрать тариф, соберитесь духом и нажмите кнопку "Приступить"</p>
-                            <button id="start-btn">приступить</button>                                
+                            <button class="next-btn">приступить</button>                                
                         </section>
                         <section class="hide-content" id="1-quiz">
                             <img src="~/Assets/Logos/Home/Login/users-login.png" />
                             <p>В каком раойне города Рошаль вы проживаете</p>
                             <p class="quiz-p" id="eth">В районе с многоквартирной застройкой</p>
                             <p class="quiz-p" id="dsl">В районе частной застройки</p>
-                            <button id="next-btn1">далее</button>                                
+                            <button class="next-btn">далее</button>                                
                         </section>
                         <section class="hide-content" id="2-quiz">
                             <img src="~/Assets/Logos/Home/Login/users-login.png" />
                             <p>Сколько ваших устройств будут активно исопльзовать выход в Интернет</p>
-                            <p class="quiz-p" id="1-point">не более двух</p>
-                            <p class="quiz-p" id="2-point">от двух до пяти</p>
-                            <p class="quiz-p" id="3-point">свыше пяти</p>
-                            <button id="next-btn2">далее</button>                                
+                            <p class="quiz-p" id="1">не более двух</p>
+                            <p class="quiz-p" id="2">от двух до пяти</p>
+                            <p class="quiz-p" id="3">свыше пяти</p>
+                            <button class="next-btn">далее</button>                                
                         </section>
                         <section class="hide-content" id="3-quiz">
                             <img src="~/Assets/Logos/Home/Login/users-login.png" />
                             <p>Насколько для вас важна скорость загрузки и передачи файлов в сети Интернет</p>
-                            <p class="quiz-p" id="1-point">не имеет принципиального значения</p>
-                            <p class="quiz-p" id="2-point">достаточно важно для меня</p>
-                            <p class="quiz-p" id="3-point">готов пожертвовать всем ради скорости</p>                            
-                            <button id="next-btn2">далее</button>          
+                            <p class="quiz-p" id="1">не имеет принципиального значения</p>
+                            <p class="quiz-p" id="2">достаточно важно для меня</p>
+                            <p class="quiz-p" id="3">готов пожертвовать всем ради скорости</p>                            
+                            <button class="next-btn">далее</button>          
                         </section>
                         <section class="hide-content" id="4-quiz">
                             <img src="~/Assets/Logos/Home/Login/users-login.png" />
                             <p>Есть ли у вас в планах использование государственных или частных онлайн-сервисов</p>
-                            <p class="quiz-p" id="1-point">скроее нет чем да</p>
-                            <p class="quiz-p" id="2-point">да, я планирую активно их использовать</p>
-                            <p class="quiz-p" id="3-point">не понимаю о чем речь</p>
-                            <button id="next-btn2">далее</button>
+                            <p class="quiz-p" id="1">скроее нет чем да</p>
+                            <p class="quiz-p" id="2">да, я планирую активно их использовать</p>
+                            <p class="quiz-p" id="3">не понимаю о чем речь</p>
+                            <button class="next-btn">далее</button>
                         </section>
                         <section class="hide-content" id="5-quiz">
                             <img src="~/Assets/Logos/Home/Login/users-login.png" />
                             <p>А что насчет онлайн-игр - насколько для вас важно время отклика в играх</p>
-                            <p class="quiz-p" id="1-point">не имеет значения - я не геймер</p>
-                            <p class="quiz-p" id="2-point">достаточно важно для меня</p>
-                            <p class="quiz-p" id="3-point">крайне важно для меня </p>
-                            <button id="next-btn2">далее</button>
+                            <p class="quiz-p" id="1">не имеет значения - я не геймер</p>
+                            <p class="quiz-p" id="2">достаточно важно для меня</p>
+                            <p class="quiz-p" id="3">крайне важно для меня </p>
+                            <button class="next-btn">далее</button>
                         </section>
                         <section class="hide-content" id="6-quiz">
                             <img src="~/Assets/Logos/Home/Login/users-login.png" />
@@ -151,7 +162,7 @@
                             <p class="quiz-p" id="1-point">время от времени, преимущественно аудио</p>
                             <p class="quiz-p" id="2-point">без фанатизма и акцента на качество</p>
                             <p class="quiz-p" id="3-point">не хочу себя ни в чем ограничивать</p>
-                            <button id="finish-btn">подобрать тариф</button>                               
+                            <button class="finish-btn">подобрать тариф</button>                               
                         </section>
                         <section class="hide-content" id="7-quiz">
                             <img src="~/Assets/Logos/Home/Login/users-login.png" />
@@ -231,11 +242,50 @@
             var allPagesID = $('#all-quiz-pages section').map(function (index) {
                 return this.id;
             });
+            var readyToNextPage = true;
+            var currentTechnology = 'All';
 
-            $('#all-quiz-pages button').click(function () {
-                $('#' + allPagesID[currPage]).hide();
-                $('#' + allPagesID[currPage + 1]).animate({ height: "toggle", opacity: "toggle" }, "1000");
-                currPage += 1;
+            $('.next-btn').click(function () {
+                if (readyToNextPage) {
+                    $('#' + allPagesID[currPage]).hide();
+                    $('#' + allPagesID[currPage + 1]).animate({ height: "toggle", opacity: "toggle" }, "1000");
+                    currPage += 1;
+                    readyToNextPage = false;
+
+                    if (typeof $('.clicked-p').attr('id') == "undefined") {
+
+                    }
+                    else if ($('.clicked-p').attr('id') == 'eth') {
+                        currentTechnology = 'Ethernet';
+                    }
+                    else if ($('.clicked-p').attr('id') == 'dsl') {
+                        currentTechnology = 'ADSL';
+                    }
+                    else {
+                        total += parseInt($('.clicked-p').attr('id'));
+                    }
+                }                
+            });
+
+            $('.quiz-p').click(function () {
+                if ($('.quiz-p').hasClass('clicked-p')) {
+                    $('.quiz-p').removeClass('clicked-p');
+                    $(this).addClass('clicked-p');
+                    readyToNextPage = true;
+                }
+                else {
+                    $(this).addClass('clicked-p');
+                    readyToNextPage = true;
+                }
+            });
+
+            $('.finish-btn').click(function () {
+                if (readyToNextPage) {
+                    $('#' + allPagesID[currPage]).hide();
+                    $('#' + allPagesID[currPage + 1]).animate({ height: "toggle", opacity: "toggle" }, "1000");
+                    total += parseInt($('.clicked-p').attr('id'));
+                    
+                }
             });
         </script>
         <section class="footer">
