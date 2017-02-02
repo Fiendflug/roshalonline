@@ -22,7 +22,8 @@
 
 /*Скрытая секция с тарифами для работы скрипта подбора*/
 
-.hidden-tarifs{
+.hidden-t-h,
+.hidden-t-p{
     display: none;
 }
 

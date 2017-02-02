@@ -42,17 +42,6 @@
                 <a href="@Url.Action("Client", "Home")">личный кабинет</a>
             </nav>
         </header>
-        <section class="hidden-tarifs">
-            @foreach(var t in Model)
-            {
-               <div class="tarif">
-                   <p id="type">@t.TarifTechnology</p>
-                   <p id="name">@t.Name</p>
-                   <p id="price">@t.Price</p>
-                   @Html.Raw(t.Description)
-               </div>
-            }
-        </section>
         <section class="responsive slider">
             @foreach (var t in Model)
             {
@@ -166,6 +155,14 @@
                         </section>
                         <section class="hide-content" id="7-quiz">
                             <img src="~/Assets/Logos/Home/Login/users-login.png" />
+                            @foreach(var t in ViewBag.Tarifs)
+                            {
+                                <h3 class="hidden-t-h" id="">@t.Name</h3>
+                                <p class="hidden-t-p">@t.Description @t.Price</p>
+                            }
+
+
+                            
                             <p>Total page</p>                           
                         </section>
                     </figcaption>
@@ -243,6 +240,8 @@
                 return this.id;
             });
             var readyToNextPage = true;
+            
+            var allTarifs = $('.tarif');
             var currentTechnology = 'All';
 
             $('.next-btn').click(function () {
@@ -284,7 +283,6 @@
                     $('#' + allPagesID[currPage]).hide();
                     $('#' + allPagesID[currPage + 1]).animate({ height: "toggle", opacity: "toggle" }, "1000");
                     total += parseInt($('.clicked-p').attr('id'));
-                    
                 }
             });
         </script>

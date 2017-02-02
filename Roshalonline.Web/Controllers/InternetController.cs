@@ -39,6 +39,8 @@ namespace Roshalonline.Web.Controllers
             try
             {
                 IList<PeriodicTarifME> items = null;
+                var listTarifsForHelper = _periodicTarifService.GetAllItems();
+                ViewBag.Tarifs = listTarifsForHelper;
                 switch (technology)
                 {
                     case "Ethernet":
