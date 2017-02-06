@@ -14,9 +14,9 @@
 
 /* Стили плиток Якори и Блоки */
 
-.grid div {
+.plate {
 	float: left;
-	max-width: 500px;
+	min-width: 500px;
 	width: 50%;
 }
 
@@ -33,7 +33,7 @@
 
 /* Смещение каждой четной плитки на 30 пикселей */
 
-.grid div:nth-child(odd) {
+.plate:nth-child(odd) {
 	margin: 30px 0 -30px 0;
 }
 
@@ -190,22 +190,30 @@
     cursor: pointer;
 }
 
+#t-name{
+    color: #3498db;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 300;
+	font-size: 110%;
+}
+
 /*Положение содержимого плитки*/
 
 #first {
-    margin-top: -45px;
+    margin-top: -25px;
 }
 
 .main-quiz{
-    margin-top: -15px;
+    margin-top: -20px;
 }
 
 .page-quiz{
-    margin-top: -45px;
+    margin-top: -50px;
 }
 
 .end-quiz{
-    margin-top: -55px;
+    margin-top: -65px;
 }
 
 /* SVG */
@@ -244,15 +252,44 @@
 
 /* Медиа запросы */
 
-@media screen and (max-width: 58em) {
+@media screen and (max-width: 1024px){
+    .grid {
+		max-width: 500px;
+	}
+
+	.plate a {
+		width: 100%;
+	}
+
+    .plate:nth-child(odd) {
+	    margin-bottom: 5px;
+    }
+}
+
+@media screen and (max-width: 532px){
+    .grid {
+		max-width: 400px;
+	}
+
+    .plate {
+	    
+	    width: 100%;
+    }
+}
+
+/*@media screen and (max-width: 50em) {
 	.grid {
 		max-width: 500px;
 	}
 
-	.grid a {
-		width: 50%;
+	.plate a {
+		width: 100%;
 	}
-}
+
+    .plate:nth-child(odd) {
+	    margin-bottom: 5px;
+    }
+}*/
 
 @media screen and (max-width: 45em) {
 	.slider {

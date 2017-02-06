@@ -51,7 +51,7 @@
                             <img src="~/Assets/Logos/Internet/Tarifs/default_tarif_logo_250x400.png" />
                             <figcaption>
                                 <h2>@t.Name</h2>
-                                <h3>@t.Price рублей</h3>
+                                <h3>@t.Price рублей в мес.</h3>
                                 <p>@Html.Raw(t.Description)</p>
                             </figcaption>
                         </figure>
@@ -72,11 +72,11 @@
                     <a class="current-demo" href="#">Телефонная линия</a>
                 }
                 <h3>Выберите интересующий способ подключения и тарифный план для подключения услуги</h3>
-                <h3>Если сомневаетесь в выборе воспользуйтесь разделом "подобрать тариф", расопложенным чуть ниже</h3>
+                <h3>Если сомневаетесь в выборе воспользуйтесь разделом "подобрать тариф", расположенным чуть ниже</h3>
             </nav>
         </header>
         <section id="grid" class="grid clearfix">
-            <div data-path-hover="m 180,320 -180,0 L 0,0 180,0 z">
+            <div class="plate" data-path-hover="m 180,320 -180,0 L 0,0 180,0 z">
                 <figure>
                     <img class="background-img" src="~/Assets/Logos/Internet/About/internet_500x437_customer.png" />
                     <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
@@ -94,7 +94,7 @@
                     </figcaption>
                 </figure>
             </div>
-            <div data-path-hover="m 180,320 -180,0 L 0,0 180,0 z">
+            <div class="plate" data-path-hover="m 180,320 -180,0 L 0,0 180,0 z">
                 <figure>
                     <img class="background-img" src="~/Assets/Logos/Internet/About/internet_500x437_extra.png" />
                     <svg viewBox="0 0 180 320" preserveAspectRatio="none"><path d="M 180,160 0,218 0,0 180,0 z" /></svg>
@@ -132,9 +132,9 @@
                         <section class="hide-content page-quiz" id="4-quiz">
                             <img src="~/Assets/Logos/Internet/Tarifs/numeric_pages_quiz_logo_small.png" />
                             <p>Есть ли у вас в планах использование государственных или частных онлайн-сервисов</p>
-                            <p class="quiz-p" id="0">скроее нет чем да</p>
-                            <p class="quiz-p" id="1">да, я планирую активно их использовать</p>
-                            <p class="quiz-p" id="2">не понимаю о чем речь</p>
+                            <p class="quiz-p" id="0">не понимаю о чем речь</p>
+                            <p class="quiz-p" id="1">скорее нет чем да</p>
+                            <p class="quiz-p" id="2">да, я планирую активно их использовать</p>
                             <button class="next-btn">далее</button>
                         </section>
                         <section class="hide-content page-quiz" id="5-quiz">
@@ -158,9 +158,10 @@
                             {
                                 <div class="hidden-t" id="@t.TarifTechnology">
                                     <img src="~/Assets/Logos/Internet/Tarifs/final_page_quiz_logo.png" />
-                                    <h3>@t.Name</h3>
-                                    <p>@t.Description</p>
-                                    <p>@t.Price</p>
+                                    <p>Исходя из ваших потребностей, мы подобрали вам подходящий тариф. Чтобы подключить услугу с подобранным тарифом, воспользуйтесь особой кнопкой</p>
+                                    <h3 id="t-name">@t.Name</h3>
+                                    <h3 id="t-price">@t.Price рублей в мес.</h3>
+                                    <p>@t.Description</p>                                    
                                     <button>подключить</button>
                                 </div>                                
                             }                         
