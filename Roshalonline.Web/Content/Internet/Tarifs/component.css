@@ -22,9 +22,13 @@
 
 /*Скрытая секция с тарифами для работы скрипта подбора*/
 
-.hidden-t-h,
-.hidden-t-p{
+.hidden-t{
     display: none;
+}
+
+#Ethernet,
+#ADSL{
+    width: 100%;
 }
 
 /* Смещение каждой четной плитки на 30 пикселей */
@@ -192,8 +196,16 @@
     margin-top: -45px;
 }
 
-.hide-content {
-    margin-top: -65px;
+.main-quiz{
+    margin-top: -15px;
+}
+
+.page-quiz{
+    margin-top: -45px;
+}
+
+.end-quiz{
+    margin-top: -55px;
 }
 
 /* SVG */

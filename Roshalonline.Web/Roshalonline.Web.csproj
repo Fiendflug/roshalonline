@@ -208,6 +208,10 @@
     <Content Include="Assets\Logos\Internet\Index\internet_new_client.png" />
     <Content Include="Assets\Logos\Internet\Index\internet_notes.png" />
     <Content Include="Assets\Logos\Internet\Tarifs\default_tarif_logo_250x400.png" />
+    <Content Include="Assets\Logos\Internet\Tarifs\final_page_quiz_logo.png" />
+    <Content Include="Assets\Logos\Internet\Tarifs\main_page_quiz_logo.png" />
+    <Content Include="Assets\Logos\Internet\Tarifs\numeric_pages_quiz_logo.png" />
+    <Content Include="Assets\Logos\Internet\Tarifs\numeric_pages_quiz_logo_small.png" />
     <Content Include="Assets\Logos\News\Index\break.png" />
     <Content Include="Assets\Logos\News\Index\holiday.png" />
     <Content Include="Assets\Logos\News\Index\impotant_news.png" />
