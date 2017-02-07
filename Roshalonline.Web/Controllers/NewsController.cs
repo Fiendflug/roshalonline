@@ -21,9 +21,30 @@ namespace Roshalonline.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string type = "all")
         {
-            IList<NewsME> items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active);
+            IList<NewsME> items = null;
+            switch (type)
+            {
+                case "all":
+                    items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active);
+                    break;
+                case "info":
+                    items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active & n.Type == Data.Models.BackgroundType.Info);
+                    break;
+                case "sales":
+                    items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active & n.Type == Data.Models.BackgroundType.Sales);
+                    break;
+                case "break":
+                    items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active & n.Type == Data.Models.BackgroundType.Break);
+                    break;
+                case "impotant":
+                    items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active & n.Type == Data.Models.BackgroundType.Impotant);
+                    break;
+                case "holiday":
+                    items = _newsService.GetItems(n => n.Category == Data.Models.Relevance.Active & n.Type == Data.Models.BackgroundType.Holiday);
+                    break;
+            }
             Mapper.Initialize(cfg => cfg.CreateMap<NewsME, NewsVM>());
             var allNews = Mapper.Map<IList<NewsME>, IList<NewsVM>>(items).ToList();
             allNews.Reverse();
